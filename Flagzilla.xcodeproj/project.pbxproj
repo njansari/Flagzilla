@@ -7,18 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD1AB90226E3A30B00C38D33 /* Bundle+JSONDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90126E3A30B00C38D33 /* Bundle+JSONDecode.swift */; };
+		BD1AB90426E3A61C00C38D33 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90326E3A61C00C38D33 /* LearnView.swift */; };
+		BD3D196326E50E5400400886 /* MapSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196226E50E5400400886 /* MapSettingsView.swift */; };
+		BD3D196926E5165F00400886 /* CLLocationCoordinate2D+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196826E5165F00400886 /* CLLocationCoordinate2D+Decodable.swift */; };
+		BD3D196B26E51E3300400886 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196A26E51E3300400886 /* CountryView.swift */; };
+		BD46D68526E7D69B0073FCF2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD46D68426E7D69B0073FCF2 /* Settings.swift */; };
+		BD46D68726E7D8CB0073FCF2 /* ListRowButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */; };
 		BD5A210626D8FABA0025CCF3 /* FlagzillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5A210526D8FABA0025CCF3 /* FlagzillaApp.swift */; };
 		BD5A210826D8FABA0025CCF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5A210726D8FABA0025CCF3 /* ContentView.swift */; };
 		BD5A210A26D8FABB0025CCF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5A210926D8FABB0025CCF3 /* Assets.xcassets */; };
 		BD5A210D26D8FABB0025CCF3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5A210C26D8FABB0025CCF3 /* Preview Assets.xcassets */; };
+		BD62FC0426DE13C10058EEE6 /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD62FC0326DE13C10058EEE6 /* FlagView.swift */; };
+		BD7B196526DB8449004F3643 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196426DB8449004F3643 /* MapView.swift */; };
+		BD7B196726DD4F92004F3643 /* CountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196626DD4F92004F3643 /* CountriesView.swift */; };
+		BD9CE41626EE72FA00BEA927 /* View+QuerySize.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41526EE72FA00BEA927 /* View+QuerySize.swift */; };
+		BD9CE41826EE735200BEA927 /* FlagAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41726EE735200BEA927 /* FlagAnnotation.swift */; };
+		BD9CE41A26EE786300BEA927 /* FlagAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41926EE786300BEA927 /* FlagAnnotationView.swift */; };
+		BD9CE41C26EE789000BEA927 /* FlagClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41B26EE789000BEA927 /* FlagClusterAnnotationView.swift */; };
+		BD9CE41E26EE78BD00BEA927 /* FlagsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41D26EE78BD00BEA927 /* FlagsMapView.swift */; };
+		BDCF63C826D93BBA00E4E4E6 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCF63C726D93BBA00E4E4E6 /* Country.swift */; };
+		BDCF63CA26DA6BD000E4E4E6 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = BDCF63C926DA6BD000E4E4E6 /* countries.json */; };
+		BDEAE3A026ECF65B00A77183 /* ConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAE39F26ECF65B00A77183 /* ConverterView.swift */; };
+		BDF43C8C26EE43AF00D21B9F /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BDF43C8E26EE43AF00D21B9F /* Localizable.stringsdict */; };
+		BDF43C9026EE479400D21B9F /* FlagGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF43C8F26EE479400D21B9F /* FlagGridItem.swift */; };
+		BDF43C9226EE55B800D21B9F /* ShapeStyle+GroupedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF43C9126EE55B800D21B9F /* ShapeStyle+GroupedBackground.swift */; };
+		BDF43C9426EE629900D21B9F /* InformationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF43C9326EE629900D21B9F /* InformationRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD1AB90126E3A30B00C38D33 /* Bundle+JSONDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+JSONDecode.swift"; sourceTree = "<group>"; };
+		BD1AB90326E3A61C00C38D33 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
+		BD3D196226E50E5400400886 /* MapSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsView.swift; sourceTree = "<group>"; };
+		BD3D196826E5165F00400886 /* CLLocationCoordinate2D+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Decodable.swift"; sourceTree = "<group>"; };
+		BD3D196A26E51E3300400886 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
+		BD46D68426E7D69B0073FCF2 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowButtonStyle.swift; sourceTree = "<group>"; };
 		BD5A210226D8FABA0025CCF3 /* Flagzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flagzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5A210526D8FABA0025CCF3 /* FlagzillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagzillaApp.swift; sourceTree = "<group>"; };
 		BD5A210726D8FABA0025CCF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BD5A210926D8FABB0025CCF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5A210C26D8FABB0025CCF3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BD62FC0326DE13C10058EEE6 /* FlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagView.swift; sourceTree = "<group>"; };
+		BD7B196426DB8449004F3643 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BD7B196626DD4F92004F3643 /* CountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesView.swift; sourceTree = "<group>"; };
+		BD9CE41526EE72FA00BEA927 /* View+QuerySize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+QuerySize.swift"; sourceTree = "<group>"; };
+		BD9CE41726EE735200BEA927 /* FlagAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagAnnotation.swift; sourceTree = "<group>"; };
+		BD9CE41926EE786300BEA927 /* FlagAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagAnnotationView.swift; sourceTree = "<group>"; };
+		BD9CE41B26EE789000BEA927 /* FlagClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagClusterAnnotationView.swift; sourceTree = "<group>"; };
+		BD9CE41D26EE78BD00BEA927 /* FlagsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsMapView.swift; sourceTree = "<group>"; };
+		BDCF63C726D93BBA00E4E4E6 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		BDCF63C926DA6BD000E4E4E6 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		BDEAE39F26ECF65B00A77183 /* ConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterView.swift; sourceTree = "<group>"; };
+		BDF43C8D26EE43AF00D21B9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		BDF43C8F26EE479400D21B9F /* FlagGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagGridItem.swift; sourceTree = "<group>"; };
+		BDF43C9126EE55B800D21B9F /* ShapeStyle+GroupedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+GroupedBackground.swift"; sourceTree = "<group>"; };
+		BDF43C9326EE629900D21B9F /* InformationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationRowView.swift; sourceTree = "<group>"; };
+		BDF43C9626EE64BB00D21B9F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +77,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD3D196426E50E6200400886 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BD3D196226E50E5400400886 /* MapSettingsView.swift */,
+				BD9CE41D26EE78BD00BEA927 /* FlagsMapView.swift */,
+				BD7B196426DB8449004F3643 /* MapView.swift */,
+				BD9CE41926EE786300BEA927 /* FlagAnnotationView.swift */,
+				BD9CE41B26EE789000BEA927 /* FlagClusterAnnotationView.swift */,
+				BD62FC0326DE13C10058EEE6 /* FlagView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		BD3D196526E50E6B00400886 /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				BD1AB90326E3A61C00C38D33 /* LearnView.swift */,
+			);
+			path = Learn;
+			sourceTree = "<group>";
+		};
+		BD3D196626E50E7200400886 /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+				BD7B196626DD4F92004F3643 /* CountriesView.swift */,
+				BDF43C8F26EE479400D21B9F /* FlagGridItem.swift */,
+				BD3D196A26E51E3300400886 /* CountryView.swift */,
+				BDF43C9326EE629900D21B9F /* InformationRowView.swift */,
+			);
+			path = Countries;
+			sourceTree = "<group>";
+		};
+		BD3D196726E50E8000400886 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BD1AB90126E3A30B00C38D33 /* Bundle+JSONDecode.swift */,
+				BD3D196826E5165F00400886 /* CLLocationCoordinate2D+Decodable.swift */,
+				BDF43C9126EE55B800D21B9F /* ShapeStyle+GroupedBackground.swift */,
+				BD9CE41526EE72FA00BEA927 /* View+QuerySize.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BD46D68826E7DA620073FCF2 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		BD5A20F926D8FABA0025CCF3 = {
 			isa = PBXGroup;
 			children = (
@@ -53,7 +149,17 @@
 			children = (
 				BD5A210526D8FABA0025CCF3 /* FlagzillaApp.swift */,
 				BD5A210726D8FABA0025CCF3 /* ContentView.swift */,
+				BD3D196626E50E7200400886 /* Countries */,
+				BD3D196426E50E6200400886 /* Map */,
+				BD3D196526E50E6B00400886 /* Learn */,
+				BD46D68826E7DA620073FCF2 /* Custom */,
+				BD3D196726E50E8000400886 /* Extensions */,
+				BDB1964626E676E1001DC31F /* Models */,
+				BDEAE39F26ECF65B00A77183 /* ConverterView.swift */,
 				BD5A210926D8FABB0025CCF3 /* Assets.xcassets */,
+				BDCF63C926DA6BD000E4E4E6 /* countries.json */,
+				BDF43C8E26EE43AF00D21B9F /* Localizable.stringsdict */,
+				BDF43C9626EE64BB00D21B9F /* Info.plist */,
 				BD5A210B26D8FABB0025CCF3 /* Preview Content */,
 			);
 			path = Flagzilla;
@@ -65,6 +171,16 @@
 				BD5A210C26D8FABB0025CCF3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BDB1964626E676E1001DC31F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BD46D68426E7D69B0073FCF2 /* Settings.swift */,
+				BDCF63C726D93BBA00E4E4E6 /* Country.swift */,
+				BD9CE41726EE735200BEA927 /* FlagAnnotation.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +241,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDCF63CA26DA6BD000E4E4E6 /* countries.json in Resources */,
+				BDF43C8C26EE43AF00D21B9F /* Localizable.stringsdict in Resources */,
 				BD5A210D26D8FABB0025CCF3 /* Preview Assets.xcassets in Resources */,
 				BD5A210A26D8FABB0025CCF3 /* Assets.xcassets in Resources */,
 			);
@@ -137,12 +255,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDF43C9226EE55B800D21B9F /* ShapeStyle+GroupedBackground.swift in Sources */,
+				BD9CE41E26EE78BD00BEA927 /* FlagsMapView.swift in Sources */,
+				BDF43C9426EE629900D21B9F /* InformationRowView.swift in Sources */,
 				BD5A210826D8FABA0025CCF3 /* ContentView.swift in Sources */,
+				BD7B196526DB8449004F3643 /* MapView.swift in Sources */,
+				BDCF63C826D93BBA00E4E4E6 /* Country.swift in Sources */,
+				BD1AB90226E3A30B00C38D33 /* Bundle+JSONDecode.swift in Sources */,
 				BD5A210626D8FABA0025CCF3 /* FlagzillaApp.swift in Sources */,
+				BD9CE41A26EE786300BEA927 /* FlagAnnotationView.swift in Sources */,
+				BDF43C9026EE479400D21B9F /* FlagGridItem.swift in Sources */,
+				BD62FC0426DE13C10058EEE6 /* FlagView.swift in Sources */,
+				BD46D68526E7D69B0073FCF2 /* Settings.swift in Sources */,
+				BD7B196726DD4F92004F3643 /* CountriesView.swift in Sources */,
+				BD9CE41C26EE789000BEA927 /* FlagClusterAnnotationView.swift in Sources */,
+				BD3D196926E5165F00400886 /* CLLocationCoordinate2D+Decodable.swift in Sources */,
+				BD9CE41826EE735200BEA927 /* FlagAnnotation.swift in Sources */,
+				BD9CE41626EE72FA00BEA927 /* View+QuerySize.swift in Sources */,
+				BDEAE3A026ECF65B00A77183 /* ConverterView.swift in Sources */,
+				BD3D196326E50E5400400886 /* MapSettingsView.swift in Sources */,
+				BD1AB90426E3A61C00C38D33 /* LearnView.swift in Sources */,
+				BD3D196B26E51E3300400886 /* CountryView.swift in Sources */,
+				BD46D68726E7D8CB0073FCF2 /* ListRowButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BDF43C8E26EE43AF00D21B9F /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDF43C8D26EE43AF00D21B9F /* en */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BD5A210E26D8FABB0025CCF3 /* Debug */ = {
@@ -151,8 +300,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -212,8 +361,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -272,12 +421,13 @@
 				DEVELOPMENT_TEAM = CZK97YC4GP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flagzilla/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access photos of flags to identfy their country.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,12 +452,13 @@
 				DEVELOPMENT_TEAM = CZK97YC4GP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flagzilla/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Access photos of flags to identfy their country.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
