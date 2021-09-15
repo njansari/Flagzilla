@@ -14,7 +14,7 @@ class FlagAnnotation: NSObject, MKAnnotation {
         self.country = country
     }
 
-    var coordinate: CLLocationCoordinate2D {
+    var coordinate: Coordinate {
         country.coordinates
     }
 

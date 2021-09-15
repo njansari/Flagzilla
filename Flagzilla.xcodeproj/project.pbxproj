@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD1AB90226E3A30B00C38D33 /* Bundle+JSONDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90126E3A30B00C38D33 /* Bundle+JSONDecode.swift */; };
+		BD1AB90226E3A30B00C38D33 /* Bundle+DecodeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90126E3A30B00C38D33 /* Bundle+DecodeJSON.swift */; };
 		BD1AB90426E3A61C00C38D33 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90326E3A61C00C38D33 /* LearnView.swift */; };
 		BD3D196326E50E5400400886 /* MapSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196226E50E5400400886 /* MapSettingsView.swift */; };
-		BD3D196926E5165F00400886 /* CLLocationCoordinate2D+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196826E5165F00400886 /* CLLocationCoordinate2D+Decodable.swift */; };
+		BD3D196926E5165F00400886 /* Coordinate+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196826E5165F00400886 /* Coordinate+Decodable.swift */; };
 		BD3D196B26E51E3300400886 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196A26E51E3300400886 /* CountryView.swift */; };
 		BD46D68526E7D69B0073FCF2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD46D68426E7D69B0073FCF2 /* Settings.swift */; };
 		BD46D68726E7D8CB0073FCF2 /* ListRowButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */; };
@@ -21,7 +21,7 @@
 		BD62FC0426DE13C10058EEE6 /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD62FC0326DE13C10058EEE6 /* FlagView.swift */; };
 		BD7B196526DB8449004F3643 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196426DB8449004F3643 /* MapView.swift */; };
 		BD7B196726DD4F92004F3643 /* CountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196626DD4F92004F3643 /* CountriesView.swift */; };
-		BD9CE41626EE72FA00BEA927 /* View+QuerySize.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41526EE72FA00BEA927 /* View+QuerySize.swift */; };
+		BD9CE41626EE72FA00BEA927 /* View+SizeChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41526EE72FA00BEA927 /* View+SizeChange.swift */; };
 		BD9CE41826EE735200BEA927 /* FlagAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41726EE735200BEA927 /* FlagAnnotation.swift */; };
 		BD9CE41A26EE786300BEA927 /* FlagAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41926EE786300BEA927 /* FlagAnnotationView.swift */; };
 		BD9CE41C26EE789000BEA927 /* FlagClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41B26EE789000BEA927 /* FlagClusterAnnotationView.swift */; };
@@ -36,10 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD1AB90126E3A30B00C38D33 /* Bundle+JSONDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+JSONDecode.swift"; sourceTree = "<group>"; };
+		BD1AB90126E3A30B00C38D33 /* Bundle+DecodeJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+DecodeJSON.swift"; sourceTree = "<group>"; };
 		BD1AB90326E3A61C00C38D33 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		BD3D196226E50E5400400886 /* MapSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsView.swift; sourceTree = "<group>"; };
-		BD3D196826E5165F00400886 /* CLLocationCoordinate2D+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Decodable.swift"; sourceTree = "<group>"; };
+		BD3D196826E5165F00400886 /* Coordinate+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinate+Decodable.swift"; sourceTree = "<group>"; };
 		BD3D196A26E51E3300400886 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		BD46D68426E7D69B0073FCF2 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowButtonStyle.swift; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		BD62FC0326DE13C10058EEE6 /* FlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagView.swift; sourceTree = "<group>"; };
 		BD7B196426DB8449004F3643 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BD7B196626DD4F92004F3643 /* CountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesView.swift; sourceTree = "<group>"; };
-		BD9CE41526EE72FA00BEA927 /* View+QuerySize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+QuerySize.swift"; sourceTree = "<group>"; };
+		BD9CE41526EE72FA00BEA927 /* View+SizeChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+SizeChange.swift"; sourceTree = "<group>"; };
 		BD9CE41726EE735200BEA927 /* FlagAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagAnnotation.swift; sourceTree = "<group>"; };
 		BD9CE41926EE786300BEA927 /* FlagAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagAnnotationView.swift; sourceTree = "<group>"; };
 		BD9CE41B26EE789000BEA927 /* FlagClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagClusterAnnotationView.swift; sourceTree = "<group>"; };
@@ -112,10 +112,10 @@
 		BD3D196726E50E8000400886 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BD1AB90126E3A30B00C38D33 /* Bundle+JSONDecode.swift */,
-				BD3D196826E5165F00400886 /* CLLocationCoordinate2D+Decodable.swift */,
+				BD1AB90126E3A30B00C38D33 /* Bundle+DecodeJSON.swift */,
+				BD3D196826E5165F00400886 /* Coordinate+Decodable.swift */,
 				BDF43C9126EE55B800D21B9F /* ShapeStyle+GroupedBackground.swift */,
-				BD9CE41526EE72FA00BEA927 /* View+QuerySize.swift */,
+				BD9CE41526EE72FA00BEA927 /* View+SizeChange.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -261,7 +261,7 @@
 				BD5A210826D8FABA0025CCF3 /* ContentView.swift in Sources */,
 				BD7B196526DB8449004F3643 /* MapView.swift in Sources */,
 				BDCF63C826D93BBA00E4E4E6 /* Country.swift in Sources */,
-				BD1AB90226E3A30B00C38D33 /* Bundle+JSONDecode.swift in Sources */,
+				BD1AB90226E3A30B00C38D33 /* Bundle+DecodeJSON.swift in Sources */,
 				BD5A210626D8FABA0025CCF3 /* FlagzillaApp.swift in Sources */,
 				BD9CE41A26EE786300BEA927 /* FlagAnnotationView.swift in Sources */,
 				BDF43C9026EE479400D21B9F /* FlagGridItem.swift in Sources */,
@@ -269,9 +269,9 @@
 				BD46D68526E7D69B0073FCF2 /* Settings.swift in Sources */,
 				BD7B196726DD4F92004F3643 /* CountriesView.swift in Sources */,
 				BD9CE41C26EE789000BEA927 /* FlagClusterAnnotationView.swift in Sources */,
-				BD3D196926E5165F00400886 /* CLLocationCoordinate2D+Decodable.swift in Sources */,
+				BD3D196926E5165F00400886 /* Coordinate+Decodable.swift in Sources */,
 				BD9CE41826EE735200BEA927 /* FlagAnnotation.swift in Sources */,
-				BD9CE41626EE72FA00BEA927 /* View+QuerySize.swift in Sources */,
+				BD9CE41626EE72FA00BEA927 /* View+SizeChange.swift in Sources */,
 				BDEAE3A026ECF65B00A77183 /* ConverterView.swift in Sources */,
 				BD3D196326E50E5400400886 /* MapSettingsView.swift in Sources */,
 				BD1AB90426E3A61C00C38D33 /* LearnView.swift in Sources */,

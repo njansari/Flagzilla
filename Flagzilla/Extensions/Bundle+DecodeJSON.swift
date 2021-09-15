@@ -1,6 +1,6 @@
 //
-//  Bundle+JSONDecode.swift
-//  Bundle+JSONDecode
+//  Bundle+DecodeJSON.swift
+//  Bundle+DecodeJSON
 //
 //  Created by Nayan Jansari on 28/08/2021.
 //

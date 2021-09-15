@@ -1,13 +1,15 @@
 //
-//  CLLocationCoordinate2D+Decodable.swift
-//  CLLocationCoordinate2D+Decodable
+//  Coordinate+Decodable.swift
+//  Coordinate+Decodable
 //
 //  Created by Nayan Jansari on 05/09/2021.
 //
 
 import MapKit
 
-extension CLLocationCoordinate2D: Decodable {
+typealias Coordinate = CLLocationCoordinate2D
+
+extension Coordinate: Decodable {
     private enum CodingKeys: CodingKey {
         case latitude
         case longitude
@@ -22,7 +24,7 @@ extension CLLocationCoordinate2D: Decodable {
     }
 }
 
-extension CLLocationCoordinate2D {
+extension Coordinate {
     func formatted() -> String {
         let formattedLatitude: String = {
             if latitude.isLess(than: .zero) {

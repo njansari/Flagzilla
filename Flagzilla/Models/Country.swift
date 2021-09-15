@@ -12,7 +12,7 @@ struct Country: Decodable, Identifiable {
     let name: String
     let officialName: String
     let continents: [String]
-    let coordinates: CLLocationCoordinate2D
+    let coordinates: Coordinate
 //    let flagDescription: String
 
     var gridFlag: URL? {

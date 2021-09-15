@@ -1,6 +1,6 @@
 //
-//  View+QuerySize.swift
-//  View+QuerySize
+//  View+SizeChange.swift
+//  View+SizeChange
 //
 //  Created by Nayan Jansari on 12/09/2021.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func querySize(onChange: @escaping (CGSize) -> Void) -> some View {
+    func onSizeChange(perform onChange: @escaping (CGSize) -> Void) -> some View {
         background {
             GeometryReader { geometry in
                 Color.clear
