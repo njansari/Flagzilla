@@ -11,22 +11,26 @@ import SwiftUI
 struct FlagsMapView: View {
     @Environment(\.dismiss) private var dismiss
 
-    @State private var filterContinent: Continent?
+    @State private var filterContinent: Continents = .all
 
     let mapType: MKMapType
 
     var annotations: [MKAnnotation] {
         var countries: [Country] = Bundle.main.decodeJSON(from: "countries")
 
-        if let filterContinent = filterContinent {
-            countries = countries.filter { $0.continents.contains(filterContinent.rawValue) }
+        if filterContinent != .all {
+            countries = countries.filter { $0.continents.isSuperset(of: filterContinent) }
         }
 
         return countries.map(FlagAnnotation.init)
     }
 
     var statusBarHeight: CGFloat {
-        let window = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.flatMap { $0.windows }.first { $0.isKeyWindow }
+        let window = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+
         return window?.safeAreaInsets.top ?? 0
     }
 
@@ -58,15 +62,15 @@ struct FlagsMapView: View {
                     Spacer()
 
                     Menu {
-                        Picker("Filter Continents", selection: $filterContinent) {
+                        Picker("Filter Continents", selection: $filterContinent.animation()) {
                             Text("All")
-                                .tag(nil as Continent?)
+                                .tag(Continents.all)
 
                             Divider()
 
                             ForEach(Continent.allCases, id: \.self) { continent in
                                 Text(continent.rawValue)
-                                    .tag(continent as Continent?)
+                                    .tag(Continents([continent]))
                             }
                         }
                     } label: {

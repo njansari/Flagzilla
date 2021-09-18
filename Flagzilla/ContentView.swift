@@ -9,7 +9,25 @@ import SwiftUI
 
 let countries: [Country] = Bundle.main.decodeJSON(from: "countries")
 
+enum Tab: String {
+    case countries
+    case map
+    case converter
+    case learn
+
+    var tabItem: some View {
+        switch self {
+            case .countries: return Label("Countries", systemImage: "flag")
+            case .map: return Label("Map", systemImage: "map")
+            case .converter: return Label("Converter", systemImage: "arrow.triangle.2.circlepath")
+            case .learn: return Label("Learn", systemImage: "brain")
+        }
+    }
+}
+
 struct ContentView: View {
+    @SceneStorage("selectedTab") private var selectedTab: Tab?
+
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.tintColor]
 
@@ -18,26 +36,30 @@ struct ContentView: View {
     }
 
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             CountriesView()
                 .tabItem {
-                    Label("Countries", systemImage: "flag")
+                    Tab.countries.tabItem
                 }
+                .tag(Tab.countries.rawValue)
 
             MapSettingsView()
                 .tabItem {
-                    Label("Map", systemImage: "map")
+                    Tab.map.tabItem
                 }
+                .tag(Tab.map.rawValue)
 
             ConverterView()
                 .tabItem {
-                    Label("Converter", systemImage: "arrow.triangle.2.circlepath")
+                    Tab.converter.tabItem
                 }
+                .tag(Tab.converter.rawValue)
 
             LearnView()
                 .tabItem {
-                    Label("Learn", systemImage: "brain")
+                    Tab.learn.tabItem
                 }
+                .tag(Tab.learn.rawValue)
         }
     }
 }
@@ -46,6 +68,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(Settings())
     }
 }

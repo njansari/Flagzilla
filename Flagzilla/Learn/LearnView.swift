@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-enum Style {
-    case flagQuestion
-    case flagAnswer
+enum LearnSettingsSection {
+    case style
+    case next
 }
 
 struct LearnView: View {
-    @State private var tab = 0
-    @State private var style: Style = .flagQuestion
+    @StateObject private var settings = LearnSettings()
+
+    @State private var tab: LearnSettingsSection = .style
 
     var flagQuestionStyle: some View {
         VStack {
@@ -79,58 +80,66 @@ struct LearnView: View {
         NavigationView {
             TabView(selection: $tab) {
                 Form {
-                    Section("Style") {
+                    Section("Question and Answer Style") {
                         HStack {
                             Spacer()
 
-                            VStack(spacing: 20) {
+                            VStack(spacing: 10) {
                                 flagQuestionStyle
 
-                                switch style {
+                                Text("Flag Question")
+
+                                switch settings.style {
                                     case .flagQuestion: selectedImage
                                     case .flagAnswer: unselectedImage
                                 }
                             }
                             .onTapGesture {
-                                style = .flagQuestion
+                                settings.style = .flagQuestion
                             }
 
                             Spacer()
                             Spacer()
                             Spacer()
 
-                            VStack(spacing: 20) {
+                            VStack(spacing: 10) {
                                 flagAnswerStyle
 
-                                switch style {
+                                Text("Flag Answer")
+
+                                switch settings.style {
                                     case .flagQuestion: unselectedImage
                                     case .flagAnswer: selectedImage
                                 }
                             }
                             .onTapGesture {
-                                style = .flagAnswer
+                                settings.style = .flagAnswer
                             }
 
                             Spacer()
                         }
                         .imageScale(.large)
+                        .font(.callout)
                         .padding()
                     }
 
                     Button("Next") {
-
+                        withAnimation {
+                            tab = .next
+                        }
                     }
                     .buttonStyle(.listRow)
                 }
-                .tag(0)
+                .tag(LearnSettingsSection.style)
 
                 Text("Next")
-                    .tag(1)
+                    .tag(LearnSettingsSection.next)
             }
             .navigationTitle("Learn")
             .tabViewStyle(.page)
             .background(.groupedBackground)
         }
+        .environmentObject(settings)
     }
 }
 

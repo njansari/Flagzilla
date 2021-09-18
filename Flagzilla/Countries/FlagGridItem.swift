@@ -14,7 +14,6 @@ struct FlagGridItem: View {
 
     var placeholderColor: Color {
         let colors: [Color] = [.blue, .cyan, .green, .indigo, .mint, .orange, .primary, .red, .yellow]
-
         return colors.randomElement()!.opacity(0.6)
     }
 

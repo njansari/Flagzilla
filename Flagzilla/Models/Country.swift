@@ -11,7 +11,7 @@ struct Country: Decodable, Identifiable {
     let id: String
     let name: String
     let officialName: String
-    let continents: [String]
+    let continents: Continents
     let coordinates: Coordinate
 //    let flagDescription: String
 
@@ -28,14 +28,4 @@ struct Country: Decodable, Identifiable {
     }
 
     static let example = countries[183]
-}
-
-enum Continent: String, CaseIterable, Decodable {
-    case asia = "Asia"
-    case africa = "Africa"
-    case antarctica = "Antarctica"
-    case europe = "Europe"
-    case northAmerica = "North America"
-    case oceania = "Oceania"
-    case southAmerica = "South America"
 }

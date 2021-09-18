@@ -9,15 +9,29 @@ import MapKit
 import SwiftUI
 
 struct MapSettingsView: View {
-    @EnvironmentObject private var settings: Settings
+    enum MapType: String, CaseIterable {
+        case standard = "Standard"
+        case hybrid = "Hybrid"
+        case satellite = "Satellite"
+
+        var mapType: MKMapType {
+            switch self {
+                case .standard: return .standard
+                case .hybrid: return .hybrid
+                case .satellite: return .satellite
+            }
+        }
+    }
+
+    @AppStorage("mapType") var mapType: MapType = .standard
 
     @State private var showingMap = false
 
     var body: some View {
         NavigationView {
             Form {
-                Picker("Map Type", selection: $settings.mapType) {
-                    ForEach(Settings.MapType.allCases, id: \.self) { type in
+                Picker("Map Type", selection: $mapType) {
+                    ForEach(MapType.allCases, id: \.self) { type in
                         Text(type.rawValue)
                     }
                 }
@@ -28,7 +42,7 @@ struct MapSettingsView: View {
                 }
                 .buttonStyle(.listRow)
                 .fullScreenCover(isPresented: $showingMap) {
-                    FlagsMapView(mapType: settings.mapType.mapType)
+                    FlagsMapView(mapType: mapType.mapType)
                 }
             }
             .navigationTitle("Map")
@@ -39,6 +53,5 @@ struct MapSettingsView: View {
 struct MapSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         MapSettingsView()
-            .environmentObject(Settings())
     }
 }

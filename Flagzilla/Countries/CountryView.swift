@@ -38,7 +38,7 @@ struct CountryView: View {
     var body: some View {
         Form {
             Section {
-                InformationRowView(label: LocalizedStringKey("Continents \(country.continents.count)"), content: country.continents.formatted())
+                InformationRowView(label: LocalizedStringKey("Continents \(country.continents.count)"), content: country.continents.map(\.rawValue).formatted())
 
                 InformationRowView(label: "Country Code", content: country.id.uppercased())
 

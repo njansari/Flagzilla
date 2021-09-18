@@ -18,7 +18,7 @@ class FlagAnnotation: NSObject, MKAnnotation {
         country.coordinates
     }
 
-    #warning("Remove to not have automatic callouts.")
+    // FIXME: Remove to not have automatic callouts.
     var title: String? {
         country.name
     }

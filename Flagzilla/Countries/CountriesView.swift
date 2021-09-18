@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CountriesView: View {
-    @State private var filterContinent: Continent?
+    @State private var filterContinent: Continents = .all
     @State private var searchText = ""
 
     let columns = [GridItem(.adaptive(minimum: 320 / 3))]
@@ -18,13 +18,17 @@ struct CountriesView: View {
             var shouldInclude = true
 
             if !searchText.isEmpty {
-                shouldInclude = country.name.localizedCaseInsensitiveContains(searchText) ||
-                country.officialName.localizedCaseInsensitiveContains(searchText) ||
-                country.id.localizedCaseInsensitiveContains(searchText)
+                let searchParameters: [KeyPath<Country, String>] = [\.name, \.officialName, \.id]
+
+                let containsSearch = searchParameters.map {
+                    country[keyPath: $0].localizedCaseInsensitiveContains(searchText)
+                }
+
+                shouldInclude = containsSearch.contains(true)
             }
 
-            if let filterContinent = filterContinent {
-                shouldInclude = shouldInclude && country.continents.contains(filterContinent.rawValue)
+            if filterContinent != .all {
+                shouldInclude = shouldInclude && country.continents.isSuperset(of: filterContinent)
             }
 
             return shouldInclude
@@ -32,29 +36,25 @@ struct CountriesView: View {
     }
 
     var navigationTitle: String {
-        if let filterContinent = filterContinent {
-            return filterContinent.rawValue
-        } else {
-            return "All Countries"
-        }
+        filterContinent == .all ? "All Countries" : filterContinent.formatted()
     }
 
     var filterMenu: some View {
         Menu {
             Picker("Filter Continents", selection: $filterContinent.animation()) {
                 Text("All")
-                    .tag(nil as Continent?)
+                    .tag(Continents.all)
 
                 Divider()
 
                 ForEach(Continent.allCases, id: \.self) { continent in
                     Text(continent.rawValue)
-                        .tag(continent as Continent?)
+                        .tag(Continents([continent]))
                 }
             }
         } label: {
             Label("Filter countries by continent", systemImage: "line.3.horizontal.decrease.circle")
-                .symbolVariant(filterContinent == nil ? .none : .fill)
+                .symbolVariant(filterContinent == .all ? .none : .fill)
         }
     }
 
