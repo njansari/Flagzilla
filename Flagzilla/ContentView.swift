@@ -12,14 +12,14 @@ let countries: [Country] = Bundle.main.decodeJSON(from: "countries")
 enum Tab: String {
     case countries
     case map
-    case converter
+    case classifier
     case learn
 
     var tabItem: some View {
         switch self {
             case .countries: return Label("Countries", systemImage: "flag")
             case .map: return Label("Map", systemImage: "map")
-            case .converter: return Label("Converter", systemImage: "arrow.triangle.2.circlepath")
+            case .classifier: return Label("Classifier", systemImage: "viewfinder")
             case .learn: return Label("Learn", systemImage: "brain")
         }
     }
@@ -49,11 +49,11 @@ struct ContentView: View {
                 }
                 .tag(Tab.map.rawValue)
 
-            ConverterView()
+            FlagClassifierView()
                 .tabItem {
-                    Tab.converter.tabItem
+                    Tab.classifier.tabItem
                 }
-                .tag(Tab.converter.rawValue)
+                .tag(Tab.classifier.rawValue)
 
             LearnView()
                 .tabItem {
