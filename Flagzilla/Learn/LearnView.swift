@@ -16,6 +16,9 @@ struct LearnView: View {
                 QuestionAnswerStyleView(settings: settings)
                     .tag(LearnSettings.Section.style)
 
+                ContinentsFilterView(settings: settings)
+                    .tag(LearnSettings.Section.continents)
+
                 Text("Next")
                     .tag(LearnSettings.Section.next)
             }

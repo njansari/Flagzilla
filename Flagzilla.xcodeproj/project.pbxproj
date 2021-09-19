@@ -12,6 +12,7 @@
 		BD07A9AB26F63E5200F7BAD0 /* QuestionAnswerStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9AA26F63E5200F7BAD0 /* QuestionAnswerStyleView.swift */; };
 		BD07A9AD26F7364000F7BAD0 /* FlagToTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9AC26F7364000F7BAD0 /* FlagToTextStyle.swift */; };
 		BD07A9B126F738A800F7BAD0 /* TextToFlagStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9B026F738A800F7BAD0 /* TextToFlagStyle.swift */; };
+		BD07A9B426F7BCC200F7BAD0 /* ContinentsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9B326F7BCC200F7BAD0 /* ContinentsFilterView.swift */; };
 		BD1AB90226E3A30B00C38D33 /* Bundle+DecodeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90126E3A30B00C38D33 /* Bundle+DecodeJSON.swift */; };
 		BD1AB90426E3A61C00C38D33 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90326E3A61C00C38D33 /* LearnView.swift */; };
 		BD3D196326E50E5400400886 /* MapSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196226E50E5400400886 /* MapSettingsView.swift */; };
@@ -45,6 +46,7 @@
 		BD07A9AA26F63E5200F7BAD0 /* QuestionAnswerStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerStyleView.swift; sourceTree = "<group>"; };
 		BD07A9AC26F7364000F7BAD0 /* FlagToTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagToTextStyle.swift; sourceTree = "<group>"; };
 		BD07A9B026F738A800F7BAD0 /* TextToFlagStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToFlagStyle.swift; sourceTree = "<group>"; };
+		BD07A9B326F7BCC200F7BAD0 /* ContinentsFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentsFilterView.swift; sourceTree = "<group>"; };
 		BD1AB90126E3A30B00C38D33 /* Bundle+DecodeJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+DecodeJSON.swift"; sourceTree = "<group>"; };
 		BD1AB90326E3A61C00C38D33 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		BD3D196226E50E5400400886 /* MapSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD07A9B226F7B6F600F7BAD0 /* Classifier */ = {
+			isa = PBXGroup;
+			children = (
+				BDEAE39F26ECF65B00A77183 /* FlagClassifierView.swift */,
+			);
+			path = Classifier;
+			sourceTree = "<group>";
+		};
 		BD3D196426E50E6200400886 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 			children = (
 				BD1AB90326E3A61C00C38D33 /* LearnView.swift */,
 				BD07A9AA26F63E5200F7BAD0 /* QuestionAnswerStyleView.swift */,
+				BD07A9B326F7BCC200F7BAD0 /* ContinentsFilterView.swift */,
 				BD07A9AC26F7364000F7BAD0 /* FlagToTextStyle.swift */,
 				BD07A9B026F738A800F7BAD0 /* TextToFlagStyle.swift */,
 			);
@@ -162,11 +173,11 @@
 				BD5A210726D8FABA0025CCF3 /* ContentView.swift */,
 				BD3D196626E50E7200400886 /* Countries */,
 				BD3D196426E50E6200400886 /* Map */,
+				BD07A9B226F7B6F600F7BAD0 /* Classifier */,
 				BD3D196526E50E6B00400886 /* Learn */,
 				BD46D68826E7DA620073FCF2 /* Custom */,
 				BD3D196726E50E8000400886 /* Extensions */,
 				BDB1964626E676E1001DC31F /* Models */,
-				BDEAE39F26ECF65B00A77183 /* FlagClassifierView.swift */,
 				BD5A210926D8FABB0025CCF3 /* Assets.xcassets */,
 				BDCF63C926DA6BD000E4E4E6 /* countries.json */,
 				BDF43C8E26EE43AF00D21B9F /* Localizable.stringsdict */,
@@ -292,6 +303,7 @@
 				BD46D68726E7D8CB0073FCF2 /* ListRowButtonStyle.swift in Sources */,
 				BD07A9B126F738A800F7BAD0 /* TextToFlagStyle.swift in Sources */,
 				BD07A9A926F62C4B00F7BAD0 /* Continents.swift in Sources */,
+				BD07A9B426F7BCC200F7BAD0 /* ContinentsFilterView.swift in Sources */,
 				BD07A9AD26F7364000F7BAD0 /* FlagToTextStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

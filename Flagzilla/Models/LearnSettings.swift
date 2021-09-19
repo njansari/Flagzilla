@@ -10,6 +10,7 @@ import SwiftUI
 @MainActor class LearnSettings: ObservableObject {
     enum Section: Int {
         case style
+        case continents
         case next
 
         mutating func next() {
@@ -24,9 +25,9 @@ import SwiftUI
 
     @AppStorage("qAndAStyle") var style: QuestionAnswerStyle = .flagQuestion
 
-    @AppStorage("numberOfQuestions") private var numberOfQuestions = 10
+    @AppStorage("numberOfQuestions") var numberOfQuestions = 10
 
-//    @AppStorage("continents") private var continents: Continents = .all
+    @Published var continents: Continents = .all
 
     @Published var section: Section = .style
 }
