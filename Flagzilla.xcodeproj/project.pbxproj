@@ -10,8 +10,8 @@
 		BD07A9A726F4DE1000F7BAD0 /* LearnSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9A626F4DE1000F7BAD0 /* LearnSettings.swift */; };
 		BD07A9A926F62C4B00F7BAD0 /* Continents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9A826F62C4B00F7BAD0 /* Continents.swift */; };
 		BD07A9AB26F63E5200F7BAD0 /* QuestionAnswerStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9AA26F63E5200F7BAD0 /* QuestionAnswerStyleView.swift */; };
-		BD07A9AD26F7364000F7BAD0 /* FlagToTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9AC26F7364000F7BAD0 /* FlagToTextStyle.swift */; };
-		BD07A9B126F738A800F7BAD0 /* TextToFlagStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9B026F738A800F7BAD0 /* TextToFlagStyle.swift */; };
+		BD07A9AD26F7364000F7BAD0 /* FlagToNameStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9AC26F7364000F7BAD0 /* FlagToNameStyle.swift */; };
+		BD07A9B126F738A800F7BAD0 /* NameToFlagStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9B026F738A800F7BAD0 /* NameToFlagStyle.swift */; };
 		BD07A9B426F7BCC200F7BAD0 /* ContinentsFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07A9B326F7BCC200F7BAD0 /* ContinentsFilterView.swift */; };
 		BD1AB90226E3A30B00C38D33 /* Bundle+DecodeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90126E3A30B00C38D33 /* Bundle+DecodeJSON.swift */; };
 		BD1AB90426E3A61C00C38D33 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90326E3A61C00C38D33 /* LearnView.swift */; };
@@ -25,7 +25,7 @@
 		BD5A210D26D8FABB0025CCF3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5A210C26D8FABB0025CCF3 /* Preview Assets.xcassets */; };
 		BD62FC0426DE13C10058EEE6 /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD62FC0326DE13C10058EEE6 /* FlagView.swift */; };
 		BD7B196526DB8449004F3643 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196426DB8449004F3643 /* MapView.swift */; };
-		BD7B196726DD4F92004F3643 /* CountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196626DD4F92004F3643 /* CountriesView.swift */; };
+		BD7B196726DD4F92004F3643 /* FlagsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196626DD4F92004F3643 /* FlagsGridView.swift */; };
 		BD9CE41626EE72FA00BEA927 /* View+SizeChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41526EE72FA00BEA927 /* View+SizeChange.swift */; };
 		BD9CE41826EE735200BEA927 /* FlagAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41726EE735200BEA927 /* FlagAnnotation.swift */; };
 		BD9CE41A26EE786300BEA927 /* FlagAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41926EE786300BEA927 /* FlagAnnotationView.swift */; };
@@ -44,8 +44,8 @@
 		BD07A9A626F4DE1000F7BAD0 /* LearnSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnSettings.swift; sourceTree = "<group>"; };
 		BD07A9A826F62C4B00F7BAD0 /* Continents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Continents.swift; sourceTree = "<group>"; };
 		BD07A9AA26F63E5200F7BAD0 /* QuestionAnswerStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerStyleView.swift; sourceTree = "<group>"; };
-		BD07A9AC26F7364000F7BAD0 /* FlagToTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagToTextStyle.swift; sourceTree = "<group>"; };
-		BD07A9B026F738A800F7BAD0 /* TextToFlagStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToFlagStyle.swift; sourceTree = "<group>"; };
+		BD07A9AC26F7364000F7BAD0 /* FlagToNameStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagToNameStyle.swift; sourceTree = "<group>"; };
+		BD07A9B026F738A800F7BAD0 /* NameToFlagStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameToFlagStyle.swift; sourceTree = "<group>"; };
 		BD07A9B326F7BCC200F7BAD0 /* ContinentsFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentsFilterView.swift; sourceTree = "<group>"; };
 		BD1AB90126E3A30B00C38D33 /* Bundle+DecodeJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+DecodeJSON.swift"; sourceTree = "<group>"; };
 		BD1AB90326E3A61C00C38D33 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		BD5A210C26D8FABB0025CCF3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BD62FC0326DE13C10058EEE6 /* FlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagView.swift; sourceTree = "<group>"; };
 		BD7B196426DB8449004F3643 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		BD7B196626DD4F92004F3643 /* CountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesView.swift; sourceTree = "<group>"; };
+		BD7B196626DD4F92004F3643 /* FlagsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsGridView.swift; sourceTree = "<group>"; };
 		BD9CE41526EE72FA00BEA927 /* View+SizeChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+SizeChange.swift"; sourceTree = "<group>"; };
 		BD9CE41726EE735200BEA927 /* FlagAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagAnnotation.swift; sourceTree = "<group>"; };
 		BD9CE41926EE786300BEA927 /* FlagAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagAnnotationView.swift; sourceTree = "<group>"; };
@@ -113,9 +113,9 @@
 			children = (
 				BD1AB90326E3A61C00C38D33 /* LearnView.swift */,
 				BD07A9AA26F63E5200F7BAD0 /* QuestionAnswerStyleView.swift */,
+				BD07A9AC26F7364000F7BAD0 /* FlagToNameStyle.swift */,
+				BD07A9B026F738A800F7BAD0 /* NameToFlagStyle.swift */,
 				BD07A9B326F7BCC200F7BAD0 /* ContinentsFilterView.swift */,
-				BD07A9AC26F7364000F7BAD0 /* FlagToTextStyle.swift */,
-				BD07A9B026F738A800F7BAD0 /* TextToFlagStyle.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -123,7 +123,7 @@
 		BD3D196626E50E7200400886 /* Countries */ = {
 			isa = PBXGroup;
 			children = (
-				BD7B196626DD4F92004F3643 /* CountriesView.swift */,
+				BD7B196626DD4F92004F3643 /* FlagsGridView.swift */,
 				BDF43C8F26EE479400D21B9F /* FlagGridItem.swift */,
 				BD3D196A26E51E3300400886 /* CountryView.swift */,
 				BDF43C9326EE629900D21B9F /* InformationRowView.swift */,
@@ -291,7 +291,7 @@
 				BD9CE41A26EE786300BEA927 /* FlagAnnotationView.swift in Sources */,
 				BDF43C9026EE479400D21B9F /* FlagGridItem.swift in Sources */,
 				BD62FC0426DE13C10058EEE6 /* FlagView.swift in Sources */,
-				BD7B196726DD4F92004F3643 /* CountriesView.swift in Sources */,
+				BD7B196726DD4F92004F3643 /* FlagsGridView.swift in Sources */,
 				BD9CE41C26EE789000BEA927 /* FlagClusterAnnotationView.swift in Sources */,
 				BD3D196926E5165F00400886 /* Coordinate+Decodable.swift in Sources */,
 				BD9CE41826EE735200BEA927 /* FlagAnnotation.swift in Sources */,
@@ -301,10 +301,10 @@
 				BD1AB90426E3A61C00C38D33 /* LearnView.swift in Sources */,
 				BD3D196B26E51E3300400886 /* CountryView.swift in Sources */,
 				BD46D68726E7D8CB0073FCF2 /* ListRowButtonStyle.swift in Sources */,
-				BD07A9B126F738A800F7BAD0 /* TextToFlagStyle.swift in Sources */,
+				BD07A9B126F738A800F7BAD0 /* NameToFlagStyle.swift in Sources */,
 				BD07A9A926F62C4B00F7BAD0 /* Continents.swift in Sources */,
 				BD07A9B426F7BCC200F7BAD0 /* ContinentsFilterView.swift in Sources */,
-				BD07A9AD26F7364000F7BAD0 /* FlagToTextStyle.swift in Sources */,
+				BD07A9AD26F7364000F7BAD0 /* FlagToNameStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

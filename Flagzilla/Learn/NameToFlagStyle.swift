@@ -1,5 +1,5 @@
 //
-//  TextToFlagStyle.swift
+//  NameToFlagStyle.swift
 //  Flagzilla
 //
 //  Created by Nayan Jansari on 19/09/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TextToFlagStyle: View {
+struct NameToFlagStyle: View {
     var textQuestion: some View {
         RoundedRectangle(cornerRadius: 2, style: .continuous)
             .fill(.tint)
@@ -49,7 +49,7 @@ struct TextToFlagStyle: View {
 
 struct TextToFlagStyle_Previews: PreviewProvider {
     static var previews: some View {
-        TextToFlagStyle()
+        NameToFlagStyle()
             .frame(width: 100)
             .padding()
             .previewLayout(.sizeThatFits)

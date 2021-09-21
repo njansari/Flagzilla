@@ -10,14 +10,14 @@ import SwiftUI
 let countries: [Country] = Bundle.main.decodeJSON(from: "countries")
 
 enum Tab: String {
-    case countries
+    case flags
     case map
     case classifier
     case learn
 
     var tabItem: some View {
         switch self {
-            case .countries: return Label("Countries", systemImage: "flag")
+            case .flags: return Label("Flags", systemImage: "flag.filled.and.flag.crossed")
             case .map: return Label("Map", systemImage: "map")
             case .classifier: return Label("Classifier", systemImage: "viewfinder")
             case .learn: return Label("Learn", systemImage: "brain")
@@ -26,7 +26,7 @@ enum Tab: String {
 }
 
 struct ContentView: View {
-    @SceneStorage("selectedTab") private var selectedTab: Tab?
+    @SceneStorage("selectedTab") private var selectedTab: Tab = .flags
 
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.tintColor]
@@ -37,29 +37,29 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            CountriesView()
+            FlagsGridView()
                 .tabItem {
-                    Tab.countries.tabItem
+                    Tab.flags.tabItem
                 }
-                .tag(Tab.countries.rawValue)
+                .tag(Tab.flags)
 
             MapSettingsView()
                 .tabItem {
                     Tab.map.tabItem
                 }
-                .tag(Tab.map.rawValue)
+                .tag(Tab.map)
 
             FlagClassifierView()
                 .tabItem {
                     Tab.classifier.tabItem
                 }
-                .tag(Tab.classifier.rawValue)
+                .tag(Tab.classifier)
 
             LearnView()
                 .tabItem {
                     Tab.learn.tabItem
                 }
-                .tag(Tab.learn.rawValue)
+                .tag(Tab.learn)
         }
     }
 }

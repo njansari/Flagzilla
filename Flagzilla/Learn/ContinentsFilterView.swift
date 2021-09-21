@@ -12,6 +12,32 @@ struct ContinentsFilterView: View {
 
     var body: some View {
         Form {
+            Section {
+                ForEach(Continent.allCases, id: \.self) { continent in
+                    HStack {
+                        Text(continent.rawValue)
+
+                        Spacer()
+
+                        Button {
+                        } label: {
+                            Image(systemName: "checkmark")
+                        }
+                        .font(.body.bold())
+                    }
+                }
+            } header: {
+                HStack {
+                    Text("Continents")
+
+                    Spacer()
+
+                    Button("Select All") {
+
+                    }
+                }
+            }
+
             Button("Next") {
                 withAnimation {
                     settings.section.next()

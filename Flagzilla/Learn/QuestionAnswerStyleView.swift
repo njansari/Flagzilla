@@ -19,6 +19,42 @@ struct QuestionAnswerStyleView: View {
         Image(systemName: "checkmark.circle.fill")
             .foregroundStyle(.tint)
     }
+
+    var flagToNameStyleOption: some View {
+        VStack(spacing: 10) {
+            FlagToNameStyle()
+
+            Text("Flag to Name")
+                .font(.callout)
+
+            switch settings.style {
+                case .flagToName: selectedImage
+                case .nameToFlag: unselectedImage
+            }
+        }
+        .frame(maxWidth: 100)
+        .onTapGesture {
+            settings.style = .flagToName
+        }
+    }
+
+    var nameToFlagStyleOption: some View {
+        VStack(spacing: 10) {
+            NameToFlagStyle()
+
+            Text("Name to Flag")
+                .font(.callout)
+
+            switch settings.style {
+                case .flagToName: unselectedImage
+                case .nameToFlag: selectedImage
+            }
+        }
+        .frame(maxWidth: 100)
+        .onTapGesture {
+            settings.style = .nameToFlag
+        }
+    }
     
     var body: some View {
         Form {
@@ -26,43 +62,17 @@ struct QuestionAnswerStyleView: View {
                 HStack {
                     Spacer()
 
-                    VStack(spacing: 10) {
-                        FlagToTextStyle()
+                    flagToNameStyleOption
 
-                        Text("Flag to Text")
+                    Spacer()
 
-                        switch settings.style {
-                            case .flagQuestion: selectedImage
-                            case .flagAnswer: unselectedImage
-                        }
-                    }
-                    .frame(maxWidth: 100)
-                    .onTapGesture {
-                        settings.style = .flagQuestion
-                    }
-
-                    Spacer(minLength: 40)
-
-                    VStack(spacing: 10) {
-                        TextToFlagStyle()
-
-                        Text("Text to Flag")
-
-                        switch settings.style {
-                            case .flagQuestion: unselectedImage
-                            case .flagAnswer: selectedImage
-                        }
-                    }
-                    .frame(maxWidth: 100)
-                    .onTapGesture {
-                        settings.style = .flagAnswer
-                    }
+                    nameToFlagStyleOption
 
                     Spacer()
                 }
                 .imageScale(.large)
-                .font(.callout)
-                .padding()
+                .padding(.vertical)
+                .listRowInsets(EdgeInsets())
             }
 
             Button("Next") {

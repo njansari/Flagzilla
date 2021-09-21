@@ -5,8 +5,8 @@
 	<key>Continents %lld</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@VARIABLE@</string>
-		<key>VARIABLE</key>
+		<string>%#@Variable@</string>
+		<key>Variable</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
@@ -21,8 +21,8 @@
 	<key>%lld countries</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@VARIABLE@</string>
-		<key>VARIABLE</key>
+		<string>%#@Variable@</string>
+		<key>Variable</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>

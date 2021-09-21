@@ -11,7 +11,10 @@ struct FlagClassifierView: View {
     var body: some View {
         NavigationView {
             Form {
-                Button("Select Image") {}
+                Button("Select Image") {
+
+                }
+                .buttonStyle(.listRow)
             }
             .navigationTitle("Flag Classifier")
         }

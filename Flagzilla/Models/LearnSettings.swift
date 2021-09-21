@@ -19,11 +19,11 @@ import SwiftUI
     }
 
     enum QuestionAnswerStyle: Int {
-        case flagQuestion
-        case flagAnswer
+        case flagToName
+        case nameToFlag
     }
 
-    @AppStorage("qAndAStyle") var style: QuestionAnswerStyle = .flagQuestion
+    @AppStorage("qAndAStyle") var style: QuestionAnswerStyle = .flagToName
 
     @AppStorage("numberOfQuestions") var numberOfQuestions = 10
 

@@ -1,13 +1,13 @@
 //
-//  CountriesView.swift
-//  CountriesView
+//  FlagsGridView.swift
+//  FlagsGridView
 //
 //  Created by Nayan Jansari on 30/08/2021.
 //
 
 import SwiftUI
 
-struct CountriesView: View {
+struct FlagsGridView: View {
     @State private var filterContinent: Continents = .all
     @State private var searchText = ""
 
@@ -82,6 +82,6 @@ struct CountriesView: View {
 
 struct CountriesView_Previews: PreviewProvider {
     static var previews: some View {
-        CountriesView()
+        FlagsGridView()
     }
 }
