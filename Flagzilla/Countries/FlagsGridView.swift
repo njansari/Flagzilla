@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct FlagsGridView: View {
-    @State private var filterContinent: Continents = .all
+    @State private var filterContinent: Continents = {
+        let value = UserDefaults.standard.value(forKey: "filterContinent") as? Int ?? Continents.all.rawValue
+        return Continents(rawValue: value)
+    }()
+
     @State private var searchText = ""
 
     let columns = [GridItem(.adaptive(minimum: 320 / 3))]
@@ -55,6 +59,9 @@ struct FlagsGridView: View {
         } label: {
             Label("Filter countries by continent", systemImage: "line.3.horizontal.decrease.circle")
                 .symbolVariant(filterContinent == .all ? .none : .fill)
+        }
+        .onChange(of: filterContinent) { newfilter in
+            UserDefaults.standard.set(newfilter.rawValue, forKey: "filterContinent")
         }
     }
 

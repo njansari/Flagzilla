@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Option: CaseIterable, Hashable, RawRepresentable {}
+protocol Option: CaseIterable, Hashable {}
 
 enum Continent: String, Decodable, Option {
     case asia = "Asia"
@@ -32,6 +32,20 @@ extension Set where Element == Continent {
 }
 
 extension Set where Element: Option {
+    init(rawValue: Int) {
+        var result: Self = []
+
+        for (index, element) in Element.allCases.enumerated() {
+            let value = rawValue >> index
+
+            if value == 1 | value {
+                result.insert(element)
+            }
+        }
+
+        self = result
+    }
+
     var rawValue: Int {
         var rawValue = 0
 

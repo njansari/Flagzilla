@@ -20,10 +20,17 @@ struct ContinentsFilterView: View {
                         Spacer()
 
                         Button {
+                            if settings.continents.contains(continent) && settings.continents.count > 1 {
+                                settings.continents.remove(continent)
+                            } else {
+                                settings.continents.insert(continent)
+                            }
                         } label: {
-                            Image(systemName: "checkmark")
+                            if settings.continents.contains(continent) {
+                                Image(systemName: "checkmark")
+                                    .font(.body.bold())
+                            }
                         }
-                        .font(.body.bold())
                     }
                 }
             } header: {
@@ -33,8 +40,9 @@ struct ContinentsFilterView: View {
                     Spacer()
 
                     Button("Select All") {
-
+                        settings.continents = .all
                     }
+                    .disabled(settings.continents == .all)
                 }
             }
 
