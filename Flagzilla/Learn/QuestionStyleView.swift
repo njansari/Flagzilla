@@ -1,5 +1,5 @@
 //
-//  QuestionAnswerStyleView.swift
+//  QuestionStyleView.swift
 //  Flagzilla
 //
 //  Created by Nayan Jansari on 18/09/2021.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct QuestionAnswerStyleView: View {
-    @ObservedObject var settings: LearnSettings
+struct QuestionStyleView: View {
+    @EnvironmentObject private var settings: LearnSettings
 
     var unselectedImage: some View {
         Image(systemName: "circle")
@@ -57,36 +57,33 @@ struct QuestionAnswerStyleView: View {
     }
     
     var body: some View {
-        Form {
-            Section("Question and Answer Style") {
-                HStack {
-                    Spacer()
+        Section("Question Style") {
+            HStack {
+                Spacer()
 
-                    flagToNameStyleOption
+                flagToNameStyleOption
 
-                    Spacer()
+                Spacer()
 
-                    nameToFlagStyleOption
+                nameToFlagStyleOption
 
-                    Spacer()
-                }
-                .imageScale(.large)
-                .padding(.vertical)
-                .listRowInsets(EdgeInsets())
+                Spacer()
             }
+            .imageScale(.large)
+            .padding(.vertical)
+            .listRowInsets(EdgeInsets())
 
-            Button("Next") {
-                withAnimation {
-                    settings.section.next()
-                }
-            }
-            .buttonStyle(.listRow)
+            Toggle("Use country's official name", isOn: $settings.useOfficialName)
+                .tint(.accentColor)
         }
     }
 }
 
-struct QuestionAnswerStyleView_Previews: PreviewProvider {
+struct QuestionStyleView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionAnswerStyleView(settings: LearnSettings())
+        List {
+            QuestionStyleView()
+                .environmentObject(LearnSettings())
+        }
     }
 }

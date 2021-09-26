@@ -47,7 +47,7 @@ struct FlagToNameStyle: View {
     }
 }
 
-struct FlagToTextStyle_Previews: PreviewProvider {
+struct FlagToNameStyle_Previews: PreviewProvider {
     static var previews: some View {
         FlagToNameStyle()
             .frame(width: 100)

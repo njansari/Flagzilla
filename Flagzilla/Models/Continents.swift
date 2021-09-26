@@ -9,7 +9,7 @@ import Foundation
 
 protocol Option: CaseIterable, Hashable {}
 
-enum Continent: String, Decodable, Option {
+enum Continent: String, Comparable, Decodable, Option {
     case asia = "Asia"
     case africa = "Africa"
     case northAmerica = "North America"
@@ -17,6 +17,10 @@ enum Continent: String, Decodable, Option {
     case europe = "Europe"
     case oceania = "Oceania"
     case antarctica = "Antarctica"
+
+    static func < (lhs: Continent, rhs: Continent) -> Bool {
+        lhs.rawValue < rhs.rawValue
+    }
 }
 
 typealias Continents = Set<Continent>
@@ -38,7 +42,7 @@ extension Set where Element: Option {
         for (index, element) in Element.allCases.enumerated() {
             let value = rawValue >> index
 
-            if value == 1 | value {
+            if value == value | 1 {
                 result.insert(element)
             }
         }

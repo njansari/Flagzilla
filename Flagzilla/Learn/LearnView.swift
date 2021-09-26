@@ -12,19 +12,19 @@ struct LearnView: View {
 
     var body: some View {
         NavigationView {
-            TabView(selection: $settings.section) {
-                QuestionAnswerStyleView(settings: settings)
-                    .tag(LearnSettings.Section.style)
+            List {
+                QuestionStyleView()
 
-                ContinentsFilterView(settings: settings)
-                    .tag(LearnSettings.Section.continents)
+                ContinentsFilterView()
 
-                Text("Next")
-                    .tag(LearnSettings.Section.next)
+                OtherSettingsView()
+
+                Button("Start") {
+
+                }
+                .buttonStyle(.listRow)
             }
             .navigationTitle("Learn")
-            .tabViewStyle(.page)
-            .background(.groupedBackground)
         }
         .environmentObject(settings)
     }
@@ -33,5 +33,6 @@ struct LearnView: View {
 struct LearnView_Previews: PreviewProvider {
     static var previews: some View {
         LearnView()
+            .environmentObject(LearnSettings())
     }
 }

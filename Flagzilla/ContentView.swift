@@ -29,7 +29,16 @@ struct ContentView: View {
     @SceneStorage("selectedTab") private var selectedTab: Tab = .flags
 
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.tintColor]
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = .systemGroupedBackground
+        navigationBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.tintColor]
+
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.backgroundColor = .systemGroupedBackground
+
+        UITabBar.appearance().standardAppearance = tabBarAppearance
 
         UIPageControl.appearance().currentPageIndicatorTintColor = .tintColor
         UIPageControl.appearance().pageIndicatorTintColor = .tertiaryLabel

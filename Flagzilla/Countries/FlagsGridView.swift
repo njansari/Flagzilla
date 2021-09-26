@@ -87,7 +87,7 @@ struct FlagsGridView: View {
     }
 }
 
-struct CountriesView_Previews: PreviewProvider {
+struct FlagsGridView_Previews: PreviewProvider {
     static var previews: some View {
         FlagsGridView()
     }

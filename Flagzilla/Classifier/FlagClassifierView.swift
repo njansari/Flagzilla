@@ -21,7 +21,7 @@ struct FlagClassifierView: View {
     }
 }
 
-struct ConverterView_Previews: PreviewProvider {
+struct FlagClassifierView_Previews: PreviewProvider {
     static var previews: some View {
         FlagClassifierView()
     }

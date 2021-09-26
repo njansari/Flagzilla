@@ -94,7 +94,7 @@ struct FlagView: View {
     }
 }
 
-struct FlagPole_Previews: PreviewProvider {
+struct FlagView_Previews: PreviewProvider {
     @StateObject static private var flagDelegate: FlagDelegate = {
         let delegate = FlagDelegate()
         delegate.country = .example
