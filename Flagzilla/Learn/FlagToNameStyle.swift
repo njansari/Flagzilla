@@ -14,9 +14,9 @@ struct FlagToNameStyle: View {
             .overlay {
                 Image(systemName: "flag")
                     .symbolVariant(.fill)
-                    .font(.system(size: 30))
+                    .font(.system(size: 25))
             }
-            .frame(height: 60)
+            .frame(height: 50)
     }
 
     var textOption: some View {
@@ -33,12 +33,11 @@ struct FlagToNameStyle: View {
 
             Spacer()
 
-            ForEach(0..<2) { _ in
-                HStack {
+            VStack(spacing: 5) {
+                ForEach(0..<3) { _ in
                     textOption
-                    textOption
+                        .frame(height: 10)
                 }
-                .frame(height: 10)
             }
         }
         .font(.system(size: 15))

@@ -3,6 +3,7 @@
         "id": "af",
         "name": "Afghanistan",
         "officialName": "Islamic Republic of Afghanistan",
+        "capitalCities": ["Kabul"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 33.93911,
@@ -13,6 +14,7 @@
         "id": "al",
         "name": "Albania",
         "officialName": "Republic of Albania",
+        "capitalCities": ["Tirana"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 41.153332,
@@ -23,6 +25,7 @@
         "id": "dz",
         "name": "Algeria",
         "officialName": "People's Democratic Republic of Algeria",
+        "capitalCities": ["Algiers"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 28.033886,
@@ -33,6 +36,7 @@
         "id": "ad",
         "name": "Andorra",
         "officialName": "Principality of Andorra",
+        "capitalCities": ["Andorra la Velle"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 42.546245,
@@ -43,6 +47,7 @@
         "id": "ao",
         "name": "Angola",
         "officialName": "Republic of Angola",
+        "capitalCities": ["Luanda"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -11.202692,
@@ -53,6 +58,7 @@
         "id": "ag",
         "name": "Antigua and Barbuda",
         "officialName": "Antigua and Barbuda",
+        "capitalCities": ["Saint John's"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 17.060816,
@@ -63,6 +69,7 @@
         "id": "ar",
         "name": "Argentina",
         "officialName": "Argentine Republic",
+        "capitalCities": ["Buenos Aires"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": -38.416097,
@@ -73,6 +80,7 @@
         "id": "am",
         "name": "Armenia",
         "officialName": "Republic of Armenia",
+        "capitalCities": ["Yerevan"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 40.069099,
@@ -83,6 +91,7 @@
         "id": "au",
         "name": "Australia",
         "officialName": "Commonwealth of Australia",
+        "capitalCities": ["Canberra"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -25.274398,
@@ -93,6 +102,7 @@
         "id": "at",
         "name": "Austria",
         "officialName": "Republic of Austria",
+        "capitalCities": ["Vienna"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 47.516231,
@@ -103,6 +113,7 @@
         "id": "az",
         "name": "Azerbaijan",
         "officialName": "Republic of Azerbaijan",
+        "capitalCities": ["Baku"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 40.143105,
@@ -113,6 +124,7 @@
         "id": "bs",
         "name": "Bahamas",
         "officialName": "Commonwealth of the Bahamas",
+        "capitalCities": ["Nassau"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 25.03428,
@@ -123,6 +135,7 @@
         "id": "bh",
         "name": "Bahrain",
         "officialName": "Kingdom of Bahrain",
+        "capitalCities": ["Manama"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 25.930414,
@@ -133,6 +146,7 @@
         "id": "bd",
         "name": "Bangladesh",
         "officialName": "People's Republic of Bangladesh",
+        "capitalCities": ["Dhaka"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 23.684994,
@@ -143,6 +157,7 @@
         "id": "bb",
         "name": "Barbados",
         "officialName": "Barbados",
+        "capitalCities": ["Bridgetown"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 13.193887,
@@ -153,6 +168,7 @@
         "id": "by",
         "name": "Belarus",
         "officialName": "Republic of Belarus",
+        "capitalCities": ["Minsk"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 53.709807,
@@ -163,6 +179,7 @@
         "id": "be",
         "name": "Belgium",
         "officialName": "Kingdom of Belgium",
+        "capitalCities": ["Brussels"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 50.503887,
@@ -173,6 +190,7 @@
         "id": "bz",
         "name": "Belize",
         "officialName": "Belize",
+        "capitalCities": ["Belmopan"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 17.189877,
@@ -183,6 +201,7 @@
         "id": "bj",
         "name": "Benin",
         "officialName": "Republic of Benin",
+        "capitalCities": ["Porto-Novo"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 9.30769,
@@ -193,6 +212,7 @@
         "id": "bt",
         "name": "Bhutan",
         "officialName": "Kingdom of Bhutan",
+        "capitalCities": ["Thimphu"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 27.514162,
@@ -203,6 +223,7 @@
         "id": "bo",
         "name": "Bolivia",
         "officialName": "Plurinational State of Bolivia",
+        "capitalCities": ["Sucre"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": -16.290154,
@@ -213,6 +234,7 @@
         "id": "ba",
         "name": "Bosnia and Herzegovina",
         "officialName": "Bosnia and Herzegovina",
+        "capitalCities": ["Sarajevo"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 43.915886,
@@ -223,6 +245,7 @@
         "id": "bw",
         "name": "Botswana",
         "officialName": "Republic of Botswana",
+        "capitalCities": ["Gaborone"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -22.328474,
@@ -233,6 +256,7 @@
         "id": "br",
         "name": "Brazil",
         "officialName": "Federative Republic of Brazil",
+        "capitalCities": ["Brasília"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": -14.235004,
@@ -243,6 +267,7 @@
         "id": "bn",
         "name": "Brunei",
         "officialName": "Nation of Brunei, Abode of Peace",
+        "capitalCities": ["Bandar Seri Begawan"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 4.535277,
@@ -253,6 +278,7 @@
         "id": "bg",
         "name": "Bulgaria",
         "officialName": "Republic of Bulgaria",
+        "capitalCities": ["Sofia"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 42.733883,
@@ -263,6 +289,7 @@
         "id": "bf",
         "name": "Burkina Faso",
         "officialName": "Burkina Faso",
+        "capitalCities": ["Ouagadougou"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 12.238333,
@@ -273,6 +300,7 @@
         "id": "bi",
         "name": "Burundi",
         "officialName": "Republic of Burundi",
+        "capitalCities": ["Gitega"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -3.373056,
@@ -283,6 +311,7 @@
         "id": "kh",
         "name": "Cambodia",
         "officialName": "Kingdom of Cambodia",
+        "capitalCities": ["Phnom Penh"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 12.565679,
@@ -293,6 +322,7 @@
         "id": "cm",
         "name": "Cameroon",
         "officialName": "Republic of Cameroon",
+        "capitalCities": ["Yaoundé"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 7.369722,
@@ -303,6 +333,7 @@
         "id": "ca",
         "name": "Canada",
         "officialName": "Canada",
+        "capitalCities": ["Ottawa"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 56.130366,
@@ -313,6 +344,7 @@
         "id": "cv",
         "name": "Cape Verde",
         "officialName": "Republic of Cabo Verde",
+        "capitalCities": ["Praia"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 16.002082,
@@ -323,6 +355,7 @@
         "id": "cf",
         "name": "Central African Republic",
         "officialName": "Central African Republic",
+        "capitalCities": ["Bangui"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 6.611111,
@@ -333,6 +366,7 @@
         "id": "td",
         "name": "Chad",
         "officialName": "Republic of Chad",
+        "capitalCities": ["N'Djamena"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 15.454166,
@@ -343,6 +377,7 @@
         "id": "cl",
         "name": "Chile",
         "officialName": "Republic of Chile",
+        "capitalCities": ["Santiago"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": -35.675147,
@@ -353,6 +388,7 @@
         "id": "cn",
         "name": "China",
         "officialName": "People's Republic of China",
+        "capitalCities": ["Beijing"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 35.86166,
@@ -363,6 +399,7 @@
         "id": "co",
         "name": "Colombia",
         "officialName": "Republic of Colombia",
+        "capitalCities": ["Bogotá"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": 4.570868,
@@ -373,6 +410,7 @@
         "id": "km",
         "name": "Comoros",
         "officialName": "Union of the Comoros",
+        "capitalCities": ["Moroni"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -11.875001,
@@ -383,6 +421,7 @@
         "id": "cg",
         "name": "Republic of the Congo",
         "officialName": "Republic of the Congo",
+        "capitalCities": ["Brazzaville"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -0.228021,
@@ -393,6 +432,7 @@
         "id": "cd",
         "name": "Democratic Republic of the Congo",
         "officialName": "Democratic Republic of the Congo",
+        "capitalCities": ["Kinshasa"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -4.038333,
@@ -403,6 +443,7 @@
         "id": "cr",
         "name": "Costa Rica",
         "officialName": "Republic of Costa Rica",
+        "capitalCities": ["San José"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 9.748917,
@@ -413,6 +454,7 @@
         "id": "ci",
         "name": "Côte d'Ivoire",
         "officialName": "Republic of Côte d'Ivoire",
+        "capitalCities": ["Yamoussoukro"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 7.539989,
@@ -423,6 +465,7 @@
         "id": "hr",
         "name": "Croatia",
         "officialName": "Republic of Croatia",
+        "capitalCities": ["Zagreb"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 45.1,
@@ -433,6 +476,7 @@
         "id": "cu",
         "name": "Cuba",
         "officialName": "Republic of Cuba",
+        "capitalCities": ["Havana"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 21.521757,
@@ -443,6 +487,7 @@
         "id": "cy",
         "name": "Cyprus",
         "officialName": "Republic of Cyprus",
+        "capitalCities": ["Nicosia"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 35.126413,
@@ -453,6 +498,7 @@
         "id": "cz",
         "name": "Czechia",
         "officialName": "Czech Republic",
+        "capitalCities": ["Prague"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 49.817492,
@@ -463,6 +509,7 @@
         "id": "dk",
         "name": "Denmark",
         "officialName": "Kingdom of Denmark",
+        "capitalCities": ["Copenhagen"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 56.26392,
@@ -473,6 +520,7 @@
         "id": "dj",
         "name": "Djibouti",
         "officialName": "Republic of Djibouti",
+        "capitalCities": ["Djibouti"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 11.825138,
@@ -483,6 +531,7 @@
         "id": "dm",
         "name": "Dominica",
         "officialName": "Commonwealth of Dominica",
+        "capitalCities": ["Roseau"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 15.414999,
@@ -493,6 +542,7 @@
         "id": "do",
         "name": "Dominican Republic",
         "officialName": "Dominican Republic",
+        "capitalCities": ["Santo Domingo"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 18.735693,
@@ -503,6 +553,7 @@
         "id": "ec",
         "name": "Ecuador",
         "officialName": "Republic of Ecuador",
+        "capitalCities": ["Quito"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": -1.831239,
@@ -513,6 +564,7 @@
         "id": "eg",
         "name": "Egypt",
         "officialName": "Arab Republic of Egypt",
+        "capitalCities": ["Cairo"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 26.820553,
@@ -523,6 +575,7 @@
         "id": "sv",
         "name": "El Salvador",
         "officialName": "Republic of El Salvador",
+        "capitalCities": ["San Salvador"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 13.794185,
@@ -533,6 +586,7 @@
         "id": "gq",
         "name": "Equatorial Guinea",
         "officialName": "Republic of Equatorial Guinea",
+        "capitalCities": ["Malabo"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 1.650801,
@@ -543,6 +597,7 @@
         "id": "er",
         "name": "Eritrea",
         "officialName": "State of Eritrea",
+        "capitalCities": ["Asmara"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 15.179384,
@@ -553,6 +608,7 @@
         "id": "ee",
         "name": "Estonia",
         "officialName": "Republic of Estonia",
+        "capitalCities": ["Tallinn"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 58.595272,
@@ -563,6 +619,7 @@
         "id": "sz",
         "name": "Eswatini",
         "officialName": "Kingdom of Eswatini",
+        "capitalCities": ["Lobamba"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -26.522503,
@@ -573,6 +630,7 @@
         "id": "et",
         "name": "Ethiopia",
         "officialName": "Federal Democratic Republic of Ethiopia",
+        "capitalCities": ["Addis Ababa"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 9.145,
@@ -583,6 +641,7 @@
         "id": "fj",
         "name": "Fiji",
         "officialName": "Republic of Fiji",
+        "capitalCities": ["Suva"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -16.578193,
@@ -593,6 +652,7 @@
         "id": "fi",
         "name": "Finland",
         "officialName": "Republic of Finland",
+        "capitalCities": ["Helsinki"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 61.92411,
@@ -603,6 +663,7 @@
         "id": "fr",
         "name": "France",
         "officialName": "French Republic",
+        "capitalCities": ["Paris"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 46.227638,
@@ -613,6 +674,7 @@
         "id": "ga",
         "name": "Gabon",
         "officialName": "Gabonese Republic",
+        "capitalCities": ["Libreville"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -0.803689,
@@ -623,6 +685,7 @@
         "id": "gm",
         "name": "Gambia",
         "officialName": "Republic of the Gambia",
+        "capitalCities": ["Banjul"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 13.443182,
@@ -633,6 +696,7 @@
         "id": "ge",
         "name": "Georgia",
         "officialName": "Georgia",
+        "capitalCities": ["Tbilisi"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 42.315407,
@@ -643,6 +707,7 @@
         "id": "de",
         "name": "Germany",
         "officialName": "Federal Republic of Germany",
+        "capitalCities": ["Berlin"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 51.165691,
@@ -653,6 +718,7 @@
         "id": "gh",
         "name": "Ghana",
         "officialName": "Republic of Ghana",
+        "capitalCities": ["Accra"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 7.946527,
@@ -663,6 +729,7 @@
         "id": "gr",
         "name": "Greece",
         "officialName": "Hellenic Republic",
+        "capitalCities": ["Athens"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 39.074208,
@@ -673,6 +740,7 @@
         "id": "gd",
         "name": "Grenada",
         "officialName": "Grenada",
+        "capitalCities": ["Saint George's"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 12.262776,
@@ -683,6 +751,7 @@
         "id": "gt",
         "name": "Guatemala",
         "officialName": "Republic of Guatemala",
+        "capitalCities": ["Guatemala City"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 15.783471,
@@ -693,6 +762,7 @@
         "id": "gn",
         "name": "Guinea",
         "officialName": "Republic of Guinea",
+        "capitalCities": ["Conakry"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 9.945587,
@@ -703,6 +773,7 @@
         "id": "gw",
         "name": "Guinea-Bissau",
         "officialName": "Republic of Guinea-Bissau",
+        "capitalCities": ["Bissau"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 11.803749,
@@ -713,6 +784,7 @@
         "id": "gy",
         "name": "Guyana",
         "officialName": "Co-operative Republic of Guyana",
+        "capitalCities": ["Georgetown"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": 4.860416,
@@ -723,6 +795,7 @@
         "id": "ht",
         "name": "Haiti",
         "officialName": "Republic of Haiti",
+        "capitalCities": ["Port-au-Prince"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 18.971187,
@@ -733,6 +806,7 @@
         "id": "hn",
         "name": "Honduras",
         "officialName": "Republic of Honduras",
+        "capitalCities": ["Tegucigalpa"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 15.199999,
@@ -743,6 +817,7 @@
         "id": "hu",
         "name": "Hungary",
         "officialName": "Hungary",
+        "capitalCities": ["Budapest"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 47.162494,
@@ -753,6 +828,7 @@
         "id": "is",
         "name": "Iceland",
         "officialName": "Iceland",
+        "capitalCities": ["Reykjavik"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 64.963051,
@@ -763,6 +839,7 @@
         "id": "in",
         "name": "India",
         "officialName": "Republic of India",
+        "capitalCities": ["New Delhi"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 20.593684,
@@ -773,6 +850,7 @@
         "id": "id",
         "name": "Indonesia",
         "officialName": "Republic of Indonesia",
+        "capitalCities": ["Jakarta"],
         "continents": ["Asia", "Oceania"],
         "coordinates": {
             "latitude": -0.789275,
@@ -783,6 +861,7 @@
         "id": "ir",
         "name": "Iran",
         "officialName": "Islamic Republic of Iran",
+        "capitalCities": ["Tehran"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 32.427908,
@@ -793,6 +872,7 @@
         "id": "iq",
         "name": "Iraq",
         "officialName": "Republic of Iraq",
+        "capitalCities": ["Baghdad"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 33.223191,
@@ -803,6 +883,7 @@
         "id": "ie",
         "name": "Ireland",
         "officialName": "Republic of Ireland",
+        "capitalCities": ["Dublin"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 53.41291,
@@ -813,6 +894,7 @@
         "id": "il",
         "name": "Israel",
         "officialName": "State of Israel",
+        "capitalCities": ["Jerusalem"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 31.046051,
@@ -823,6 +905,7 @@
         "id": "it",
         "name": "Italy",
         "officialName": "Italian Republic",
+        "capitalCities": ["Rome"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 41.87194,
@@ -833,6 +916,7 @@
         "id": "jm",
         "name": "Jamaica",
         "officialName": "Jamaica",
+        "capitalCities": ["Kingston"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 18.109581,
@@ -843,6 +927,7 @@
         "id": "jp",
         "name": "Japan",
         "officialName": "Japan",
+        "capitalCities": ["Tokyo"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 36.204824,
@@ -853,6 +938,7 @@
         "id": "jo",
         "name": "Jordan",
         "officialName": "Hashemite Kingdom of Jordan",
+        "capitalCities": ["Amman"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 30.585164,
@@ -863,6 +949,7 @@
         "id": "kz",
         "name": "Kazakhstan",
         "officialName": "Republic of Kazakhstan",
+        "capitalCities": ["Nur-Sultan"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 48.019573,
@@ -873,6 +960,7 @@
         "id": "ke",
         "name": "Kenya",
         "officialName": "Republic of Kenya",
+        "capitalCities": ["Nairobi"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -0.023559,
@@ -883,6 +971,7 @@
         "id": "ki",
         "name": "Kiribati",
         "officialName": "Independent and Sovereign Republic of Kiribati",
+        "capitalCities": ["South Tarawa"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -3.370417,
@@ -893,6 +982,7 @@
         "id": "kp",
         "name": "North Korea",
         "officialName": "Democratic People's Republic of Korea",
+        "capitalCities": ["Pyongyang"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 40.339852,
@@ -903,6 +993,7 @@
         "id": "kr",
         "name": "South Korea",
         "officialName": "Republic of Korea",
+        "capitalCities": ["Seoul"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 35.907757,
@@ -913,6 +1004,7 @@
         "id": "kw",
         "name": "Kuwait",
         "officialName": "State of Kuwait",
+        "capitalCities": ["Kuwait City"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 29.31166,
@@ -923,6 +1015,7 @@
         "id": "kg",
         "name": "Kyrgyzstan",
         "officialName": "Kyrgyz Republic",
+        "capitalCities": ["Bishkek"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 41.20438,
@@ -933,6 +1026,7 @@
         "id": "la",
         "name": "Laos",
         "officialName": "Lao People's Democratic Republic",
+        "capitalCities": ["Vientiane"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 19.85627,
@@ -943,6 +1037,7 @@
         "id": "lv",
         "name": "Latvia",
         "officialName": "Republic of Latvia",
+        "capitalCities": ["Riga"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 56.879635,
@@ -953,6 +1048,7 @@
         "id": "lb",
         "name": "Lebanon",
         "officialName": "Lebanese Republic",
+        "capitalCities": ["Beirut"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 33.854721,
@@ -963,6 +1059,7 @@
         "id": "ls",
         "name": "Lesotho",
         "officialName": "Kingdom of Lesotho",
+        "capitalCities": ["Maseru"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -29.609988,
@@ -973,6 +1070,7 @@
         "id": "lr",
         "name": "Liberia",
         "officialName": "Republic of Liberia",
+        "capitalCities": ["Monrovia"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 6.428055,
@@ -983,6 +1081,7 @@
         "id": "ly",
         "name": "Libya",
         "officialName": "State of Libya",
+        "capitalCities": ["Tripoli"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 26.3351,
@@ -993,6 +1092,7 @@
         "id": "li",
         "name": "Liechtenstein",
         "officialName": "Principality of Liechtenstein",
+        "capitalCities": ["Vaduz"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 47.166,
@@ -1003,6 +1103,7 @@
         "id": "lt",
         "name": "Lithuania",
         "officialName": "Republic of Lithuania",
+        "capitalCities": ["Vilnius"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 55.169438,
@@ -1013,6 +1114,7 @@
         "id": "lu",
         "name": "Luxembourg",
         "officialName": "Grand Duchy of Luxembourg",
+        "capitalCities": ["Luxembourg"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 49.815273,
@@ -1023,6 +1125,7 @@
         "id": "mg",
         "name": "Madagascar",
         "officialName": "Republic of Madagascar",
+        "capitalCities": ["Antananarivo"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -18.766947,
@@ -1033,6 +1136,7 @@
         "id": "mw",
         "name": "Malawi",
         "officialName": "Republic of Malawi",
+        "capitalCities": ["Lilongwe"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -13.254308,
@@ -1043,6 +1147,7 @@
         "id": "my",
         "name": "Malaysia",
         "officialName": "Malaysia",
+        "capitalCities": ["Kuala Lumpur"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 4.210484,
@@ -1053,6 +1158,7 @@
         "id": "mv",
         "name": "Maldives",
         "officialName": "Republic of the Maldives",
+        "capitalCities": ["Malé"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 3.202778,
@@ -1063,6 +1169,7 @@
         "id": "ml",
         "name": "Mali",
         "officialName": "Republic of Mali",
+        "capitalCities": ["Bamako"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 17.570692,
@@ -1073,6 +1180,7 @@
         "id": "mt",
         "name": "Malta",
         "officialName": "Republic of Malta",
+        "capitalCities": ["Valletta"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 35.937496,
@@ -1083,6 +1191,7 @@
         "id": "mh",
         "name": "Marshall Islands",
         "officialName": "Republic of the Marshall Islands",
+        "capitalCities": ["Majuro"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": 7.131474,
@@ -1093,6 +1202,7 @@
         "id": "mr",
         "name": "Mauritania",
         "officialName": "Islamic Republic of Mauritania",
+        "capitalCities": ["Nouakchott"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 21.00789,
@@ -1103,6 +1213,7 @@
         "id": "mu",
         "name": "Mauritius",
         "officialName": "Republic of Mauritius",
+        "capitalCities": ["Port Louis"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -20.348404,
@@ -1113,6 +1224,7 @@
         "id": "mx",
         "name": "Mexico",
         "officialName": "United Mexican States",
+        "capitalCities": ["Mexico City"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 23.634501,
@@ -1123,6 +1235,7 @@
         "id": "fm",
         "name": "Micronesia",
         "officialName": "Federated States of Micronesia",
+        "capitalCities": ["Palikir"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": 7.425554,
@@ -1133,6 +1246,7 @@
         "id": "md",
         "name": "Moldova",
         "officialName": "Republic of Moldova",
+        "capitalCities": ["Chișinău"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 47.411631,
@@ -1143,6 +1257,7 @@
         "id": "mc",
         "name": "Monaco",
         "officialName": "Principality of Monaco",
+        "capitalCities": ["Monaco"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 43.750298,
@@ -1153,6 +1268,7 @@
         "id": "mn",
         "name": "Mongolia",
         "officialName": "Mongolia",
+        "capitalCities": ["Ulan Bator"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 46.862496,
@@ -1163,6 +1279,7 @@
         "id": "me",
         "name": "Montenegro",
         "officialName": "Montenegro",
+        "capitalCities": ["Podgorica"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 42.708678,
@@ -1173,6 +1290,7 @@
         "id": "ma",
         "name": "Morocco",
         "officialName": "Kingdom of Morocco",
+        "capitalCities": ["Rabat"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 31.791702,
@@ -1183,6 +1301,7 @@
         "id": "mz",
         "name": "Mozambique",
         "officialName": "Republic of Mozambique",
+        "capitalCities": ["Maputo"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -18.665695,
@@ -1193,6 +1312,7 @@
         "id": "mm",
         "name": "Myanmar",
         "officialName": "Republic of the Union of Myanmar",
+        "capitalCities": ["Naypyidaw"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 21.913965,
@@ -1203,6 +1323,7 @@
         "id": "na",
         "name": "Namibia",
         "officialName": "Republic of Namibia",
+        "capitalCities": ["Windhoek"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -22.95764,
@@ -1213,6 +1334,7 @@
         "id": "nr",
         "name": "Nauru",
         "officialName": "Republic of Nauru",
+        "capitalCities": ["Yaren"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -0.522778,
@@ -1223,6 +1345,7 @@
         "id": "np",
         "name": "Nepal",
         "officialName": "Federal Democratic Republic of Nepal",
+        "capitalCities": ["Kathmandu"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 28.394857,
@@ -1233,6 +1356,7 @@
         "id": "nl",
         "name": "Netherlands",
         "officialName": "Kingdom of the Netherlands",
+        "capitalCities": ["Amsterdam"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 52.132633,
@@ -1243,6 +1367,7 @@
         "id": "nz",
         "name": "New Zealand",
         "officialName": "New Zealand",
+        "capitalCities": ["Wellington"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -40.900557,
@@ -1253,6 +1378,7 @@
         "id": "ni",
         "name": "Nicaragua",
         "officialName": "Republic of Nicaragua",
+        "capitalCities": ["Managua"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 12.865416,
@@ -1263,6 +1389,7 @@
         "id": "ne",
         "name": "Niger",
         "officialName": "Republic of Niger",
+        "capitalCities": ["Niamey"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 17.607789,
@@ -1273,6 +1400,7 @@
         "id": "ng",
         "name": "Nigeria",
         "officialName": "Federal Republic of Nigeria",
+        "capitalCities": ["Abuja"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 9.081999,
@@ -1283,6 +1411,7 @@
         "id": "mk",
         "name": "North Macedonia",
         "officialName": "Republic of North Macedonia",
+        "capitalCities": ["Skopje"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 41.608635,
@@ -1293,6 +1422,7 @@
         "id": "no",
         "name": "Norway",
         "officialName": "Kingdom of Norway",
+        "capitalCities": ["Oslo"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 60.472024,
@@ -1303,6 +1433,7 @@
         "id": "om",
         "name": "Oman",
         "officialName": "Sultanate of Oman",
+        "capitalCities": ["Muscat"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 21.512583,
@@ -1313,6 +1444,7 @@
         "id": "pk",
         "name": "Pakistan",
         "officialName": "Islamic Republic of Pakistan",
+        "capitalCities": ["Islamabad"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 30.375321,
@@ -1323,6 +1455,7 @@
         "id": "pw",
         "name": "Palau",
         "officialName": "Republic of Palau",
+        "capitalCities": ["Ngerulmud"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": 7.51498,
@@ -1333,6 +1466,7 @@
         "id": "pa",
         "name": "Panama",
         "officialName": "Republic of Panama",
+        "capitalCities": ["Panama City"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 8.537981,
@@ -1343,6 +1477,7 @@
         "id": "pg",
         "name": "Papua New Guinea",
         "officialName": "Independent State of Papua New Guinea",
+        "capitalCities": ["Port Moresby"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -6.314993,
@@ -1353,6 +1488,7 @@
         "id": "py",
         "name": "Paraguay",
         "officialName": "Republic of Paraguay",
+        "capitalCities": ["Asunción"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": -23.442503,
@@ -1363,6 +1499,7 @@
         "id": "pe",
         "name": "Peru",
         "officialName": "Republic of Peru",
+        "capitalCities": ["Lima"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": -9.189967,
@@ -1373,6 +1510,7 @@
         "id": "ph",
         "name": "Philippines",
         "officialName": "Republic of the Philippines",
+        "capitalCities": ["Manila"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 12.879721,
@@ -1383,6 +1521,7 @@
         "id": "pl",
         "name": "Poland",
         "officialName": "Republic of Poland",
+        "capitalCities": ["Warsaw"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 51.919438,
@@ -1393,6 +1532,7 @@
         "id": "pt",
         "name": "Portugal",
         "officialName": "Portuguese Republic",
+        "capitalCities": ["Lisbon"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 39.399872,
@@ -1403,6 +1543,7 @@
         "id": "qa",
         "name": "Qatar",
         "officialName": "State of Qatar",
+        "capitalCities": ["Doha"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 25.354826,
@@ -1413,6 +1554,7 @@
         "id": "ro",
         "name": "Romania",
         "officialName": "Romania",
+        "capitalCities": ["Bucharest"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 45.943161,
@@ -1423,6 +1565,7 @@
         "id": "ru",
         "name": "Russia",
         "officialName": "Russian Federation",
+        "capitalCities": ["Moscow"],
         "continents": ["Asia", "Europe"],
         "coordinates": {
             "latitude": 61.52401,
@@ -1433,6 +1576,7 @@
         "id": "rw",
         "name": "Rwanda",
         "officialName": "Republic of Rwanda",
+        "capitalCities": ["Kigali"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -1.940278,
@@ -1443,6 +1587,7 @@
         "id": "kn",
         "name": "Saint Kitts and Nevis",
         "officialName": "Federation of Saint Christopher and Nevis",
+        "capitalCities": ["Basseterre"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 17.357822,
@@ -1453,6 +1598,7 @@
         "id": "lc",
         "name": "Saint Lucia",
         "officialName": "Saint Lucia",
+        "capitalCities": ["Castries"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 13.909444,
@@ -1463,6 +1609,7 @@
         "id": "vc",
         "name": "Saint Vincent and the Grenadines",
         "officialName": "Saint Vincent and the Grenadines",
+        "capitalCities": ["Kingstown"],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 12.984305,
@@ -1473,6 +1620,7 @@
         "id": "ws",
         "name": "Samoa",
         "officialName": "Independent State of Samoa",
+        "capitalCities": ["Apia"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -13.759029,
@@ -1483,6 +1631,7 @@
         "id": "sm",
         "name": "San Marino",
         "officialName": "Most Serene Republic of San Marino",
+        "capitalCities": ["City of San Marino"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 43.94236,
@@ -1493,6 +1642,7 @@
         "id": "st",
         "name": "São Tomé and Príncipe",
         "officialName": "Democratic Republic of São Tomé and Príncipe",
+        "capitalCities": ["São Tomé"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 0.18636,
@@ -1503,6 +1653,7 @@
         "id": "sa",
         "name": "Saudi Arabia",
         "officialName": "Kingdom of Saudi Arabia",
+        "capitalCities": ["Riyadh"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 23.885942,
@@ -1513,6 +1664,7 @@
         "id": "sn",
         "name": "Senegal",
         "officialName": "Republic of Senegal",
+        "capitalCities": ["Dakar"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 14.497401,
@@ -1523,6 +1675,7 @@
         "id": "rs",
         "name": "Serbia",
         "officialName": "Republic of Serbia",
+        "capitalCities": ["Belgrade"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 44.016521,
@@ -1533,6 +1686,7 @@
         "id": "sc",
         "name": "Seychelles",
         "officialName": "Republic of Seychelles",
+        "capitalCities": ["Victoria"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -4.679574,
@@ -1543,6 +1697,7 @@
         "id": "sl",
         "name": "Sierra Leone",
         "officialName": "Republic of Sierra Leone",
+        "capitalCities": ["Freetown"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 8.460555,
@@ -1553,6 +1708,7 @@
         "id": "sg",
         "name": "Singapore",
         "officialName": "Republic of Singapore",
+        "capitalCities": ["Singapore"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 1.352083,
@@ -1563,6 +1719,7 @@
         "id": "sk",
         "name": "Slovakia",
         "officialName": "Slovak Republic",
+        "capitalCities": ["Bratislava"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 48.669026,
@@ -1573,6 +1730,7 @@
         "id": "si",
         "name": "Slovenia",
         "officialName": "Republic of Slovenia",
+        "capitalCities": ["Ljubljana"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 46.151241,
@@ -1583,6 +1741,7 @@
         "id": "sb",
         "name": "Solomon Islands",
         "officialName": "Solomon Islands",
+        "capitalCities": ["Honiara"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -9.64571,
@@ -1593,6 +1752,7 @@
         "id": "so",
         "name": "Somalia",
         "officialName": "Federal Republic of Somalia",
+        "capitalCities": ["Mogadishu"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 5.152149,
@@ -1603,6 +1763,7 @@
         "id": "za",
         "name": "South Africa",
         "officialName": "Republic of South Africa",
+        "capitalCities": ["Pretoria", "Bloemfontein", "Cape Town"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -30.559482,
@@ -1613,6 +1774,7 @@
         "id": "ss",
         "name": "South Sudan",
         "officialName": "Republic of South Sudan",
+        "capitalCities": ["Juba"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 6.876991,
@@ -1623,6 +1785,7 @@
         "id": "es",
         "name": "Spain",
         "officialName": "Kingdom of Spain",
+        "capitalCities": ["Madrid"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 40.463667,
@@ -1633,6 +1796,7 @@
         "id": "lk",
         "name": "Sri Lanka",
         "officialName": "Democratic Socialist Republic of Sri Lanka",
+        "capitalCities": ["Sri Jayawardenepura Kotte"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 7.873054,
@@ -1643,6 +1807,7 @@
         "id": "sd",
         "name": "Sudan",
         "officialName": "Republic of the Sudan",
+        "capitalCities": ["Khartoum"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 12.862807,
@@ -1653,6 +1818,7 @@
         "id": "sr",
         "name": "Suriname",
         "officialName": "Republic of Suriname",
+        "capitalCities": ["Paramaribo"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": 3.919305,
@@ -1663,6 +1829,7 @@
         "id": "se",
         "name": "Sweden",
         "officialName": "Kingdom of Sweden",
+        "capitalCities": ["Stockholm"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 60.128161,
@@ -1673,6 +1840,7 @@
         "id": "ch",
         "name": "Switzerland",
         "officialName": "Swiss Confederation",
+        "capitalCities": ["Bern"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 46.818188,
@@ -1683,6 +1851,7 @@
         "id": "sy",
         "name": "Syria",
         "officialName": "Syrian Arab Republic",
+        "capitalCities": ["Damascus"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 34.802075,
@@ -1693,6 +1862,7 @@
         "id": "tj",
         "name": "Tajikistan",
         "officialName": "Republic of Tajikistan",
+        "capitalCities": ["Dushanbe"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 38.861034,
@@ -1703,6 +1873,7 @@
         "id": "tz",
         "name": "Tanzania",
         "officialName": "United Republic of Tanzania",
+        "capitalCities": ["Dodoma"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -6.369028,
@@ -1713,6 +1884,7 @@
         "id": "th",
         "name": "Thailand",
         "officialName": "Kingdom of Thailand",
+        "capitalCities": ["Bangkok"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 15.870032,
@@ -1723,6 +1895,7 @@
         "id": "tl",
         "name": "Timor-Leste",
         "officialName": "Democratic Republic of Timor-Leste",
+        "capitalCities": ["Dili"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": -8.874217,
@@ -1733,6 +1906,7 @@
         "id": "tg",
         "name": "Togo",
         "officialName": "Togolese Republic",
+        "capitalCities": ["Lomé"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 8.619543,
@@ -1743,6 +1917,7 @@
         "id": "to",
         "name": "Tonga",
         "officialName": "Kingdom of Tonga",
+        "capitalCities": ["Nuku'alofa"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -21.178986,
@@ -1753,6 +1928,7 @@
         "id": "tt",
         "name": "Trinidad and Tobago",
         "officialName": "Republic of Trinidad and Tobago",
+        "capitalCities": ["Port of Spain"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": 10.691803,
@@ -1763,6 +1939,7 @@
         "id": "tn",
         "name": "Tunisia",
         "officialName": "Tunisian Republic",
+        "capitalCities": ["Tunis"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 33.886917,
@@ -1773,6 +1950,7 @@
         "id": "tr",
         "name": "Turkey",
         "officialName": "Republic of Turkey",
+        "capitalCities": ["Ankara"],
         "continents": ["Asia", "Europe"],
         "coordinates": {
             "latitude": 38.963745,
@@ -1783,6 +1961,7 @@
         "id": "tm",
         "name": "Turkmenistan",
         "officialName": "Turkmenistan",
+        "capitalCities": ["Ashgabat"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 38.969719,
@@ -1793,6 +1972,7 @@
         "id": "tv",
         "name": "Tuvalu",
         "officialName": "Tuvalu",
+        "capitalCities": ["Funafuti"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -7.109535,
@@ -1803,6 +1983,7 @@
         "id": "ug",
         "name": "Uganda",
         "officialName": "Republic of Uganda",
+        "capitalCities": ["Kampala"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": 1.373333,
@@ -1813,6 +1994,7 @@
         "id": "ua",
         "name": "Ukraine",
         "officialName": "Ukraine",
+        "capitalCities": ["Kyiv"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 48.379433,
@@ -1823,6 +2005,7 @@
         "id": "ae",
         "name": "United Arab Emirates",
         "officialName": "United Arab Emirates",
+        "capitalCities": ["Abu Dhabi"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 23.424076,
@@ -1833,6 +2016,7 @@
         "id": "gb",
         "name": "United Kingdom",
         "officialName": "United Kingdom of Great Britain and Northern Ireland",
+        "capitalCities": ["London"],
         "continents": ["Europe"],
         "coordinates": {
             "latitude": 55.378051,
@@ -1843,6 +2027,7 @@
         "id": "us",
         "name": "United States",
         "officialName": "United States of America",
+        "capitalCities": ["Washington D.C."],
         "continents": ["North America"],
         "coordinates": {
             "latitude": 37.09024,
@@ -1853,6 +2038,7 @@
         "id": "uy",
         "name": "Uruguay",
         "officialName": "Oriental Republic of Uruguay",
+        "capitalCities": ["Montevideo"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": -32.522779,
@@ -1863,6 +2049,7 @@
         "id": "uz",
         "name": "Uzbekistan",
         "officialName": "Republic of Uzbekistan",
+        "capitalCities": ["Tashkent"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 41.377491,
@@ -1873,6 +2060,7 @@
         "id": "vu",
         "name": "Vanuatu",
         "officialName": "Republic of Vanuatu",
+        "capitalCities": ["Port Vila"],
         "continents": ["Oceania"],
         "coordinates": {
             "latitude": -15.376706,
@@ -1883,6 +2071,7 @@
         "id": "ve",
         "name": "Venezuela",
         "officialName": "Bolivarian Republic of Venezuela",
+        "capitalCities": ["Caracas"],
         "continents": ["South America"],
         "coordinates": {
             "latitude": 6.42375,
@@ -1893,6 +2082,7 @@
         "id": "vn",
         "name": "Vietnam",
         "officialName": "Socialist Republic of Vietnam",
+        "capitalCities": ["Hanoi"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 14.058324,
@@ -1903,6 +2093,7 @@
         "id": "ye",
         "name": "Yemen",
         "officialName": "Republic of Yemen",
+        "capitalCities": ["Sana'a"],
         "continents": ["Asia"],
         "coordinates": {
             "latitude": 15.552727,
@@ -1913,6 +2104,7 @@
         "id": "zm",
         "name": "Zambia",
         "officialName": "Republic of Zambia",
+        "capitalCities": ["Lusaka"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -13.133897,
@@ -1923,6 +2115,7 @@
         "id": "zw",
         "name": "Zimbabwe",
         "officialName": "Republic of Zimbabwe",
+        "capitalCities": ["Harare"],
         "continents": ["Africa"],
         "coordinates": {
             "latitude": -19.015438,

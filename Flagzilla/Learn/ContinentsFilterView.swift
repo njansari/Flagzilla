@@ -28,8 +28,7 @@ struct ContinentsFilterView: View {
                         }
                     } label: {
                         if settings.continents.contains(continent) {
-                            Image(systemName: "checkmark")
-                                .font(.body.bold())
+                            Image.checkmark
                         }
                     }
                 }
@@ -57,7 +56,7 @@ struct ContinentsFilterView_Previews: PreviewProvider {
     static var previews: some View {
         List {
             ContinentsFilterView()
-                .environmentObject(LearnSettings())
         }
+        .environmentObject(LearnSettings())
     }
 }

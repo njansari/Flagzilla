@@ -21,11 +21,13 @@ struct FlagsGridView: View {
         countries.filter { country in
             var shouldInclude = true
 
-            if !searchText.isEmpty {
+            let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+
+            if !trimmedSearchText.isEmpty {
                 let searchParameters: [KeyPath<Country, String>] = [\.name, \.officialName, \.id]
 
                 let containsSearch = searchParameters.map {
-                    country[keyPath: $0].localizedCaseInsensitiveContains(searchText)
+                    country[keyPath: $0].localizedCaseInsensitiveContains(trimmedSearchText)
                 }
 
                 shouldInclude = containsSearch.contains(true)

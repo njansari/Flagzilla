@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-extension Comparable {
-    mutating func clamp(to limits: ClosedRange<Self>) {
-        self = min(max(self, limits.lowerBound), limits.upperBound)
-    }
-}
-
 @MainActor class LearnSettings: ObservableObject {
     enum QuestionAnswerStyle: Int {
         case flagToName
@@ -20,18 +14,15 @@ extension Comparable {
     }
 
     @AppStorage("qAndAStyle") var style: QuestionAnswerStyle = .flagToName
-
-    @AppStorage("numberOfQuestions") var numberOfQuestions = 10
-
     @AppStorage("useOfficialName") var useOfficialName = false
 
-    @AppStorage("useTimer") var useTimer = true
-
-    @AppStorage("timerDuration") var timerDuration = 60
-
+    @AppStorage("numberOfQuestions") var numberOfQuestions = 10
     @AppStorage("showsAnswer") var showsAnswerAfterQuestion = true
 
-    let durations = [1, 2, 5, 10]
+    @AppStorage("useTimer") var useTimer = true
+    @AppStorage("timerDuration") var timerDuration = 1
+
+    let timerDurations = [1, 2, 5, 10]
 
     @Published var continents: Continents {
         didSet {

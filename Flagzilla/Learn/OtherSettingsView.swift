@@ -13,7 +13,7 @@ struct OtherSettingsView: View {
     @FocusState private var numberOfQuestionsFocused: Bool
 
     var body: some View {
-        Section("Questions") {
+        Section {
             HStack {
                 Text("Number of questions")
 
@@ -36,7 +36,13 @@ struct OtherSettingsView: View {
 
             Toggle("Show answer after each question", isOn: $settings.showsAnswerAfterQuestion)
                 .tint(.accentColor)
+        } header: {
+            Text("Questions")
+        } footer: {
+            Text("When this is off, the current score is not displayed.")
+        }
 
+        Section {
             NavigationLink(destination: TimerView.init) {
                 Text("Timer")
                     .badge(settings.useTimer ? "On" : "Off")
@@ -50,8 +56,8 @@ struct OtherSettingsView_Previews: PreviewProvider {
         NavigationView {
             List {
                 OtherSettingsView()
-                    .environmentObject(LearnSettings())
             }
         }
+        .environmentObject(LearnSettings())
     }
 }

@@ -17,9 +17,9 @@ enum Tab: String {
 
     var tabItem: some View {
         switch self {
-            case .flags: return Label("Flags", systemImage: "flag.filled.and.flag.crossed")
+            case .flags: return Label("Flags", systemImage: "flag.2.crossed")
             case .map: return Label("Map", systemImage: "map")
-            case .classifier: return Label("Classifier", systemImage: "viewfinder")
+            case .classifier: return Label("Classifier", image: "flag.viewfinder")
             case .learn: return Label("Learn", systemImage: "brain")
         }
     }
@@ -27,6 +27,8 @@ enum Tab: String {
 
 struct ContentView: View {
     @SceneStorage("selectedTab") private var selectedTab: Tab = .flags
+
+    @State private var showingMap = false
 
     init() {
         let navigationBarAppearance = UINavigationBarAppearance()
@@ -39,9 +41,6 @@ struct ContentView: View {
         tabBarAppearance.backgroundColor = .systemGroupedBackground
 
         UITabBar.appearance().standardAppearance = tabBarAppearance
-
-        UIPageControl.appearance().currentPageIndicatorTintColor = .tintColor
-        UIPageControl.appearance().pageIndicatorTintColor = .tertiaryLabel
     }
 
     var body: some View {
@@ -52,11 +51,12 @@ struct ContentView: View {
                 }
                 .tag(Tab.flags)
 
-            MapSettingsView()
+            Text("")
                 .tabItem {
                     Tab.map.tabItem
                 }
                 .tag(Tab.map)
+                .fullScreenCover(isPresented: $showingMap, content: FlagsMapView.init)
 
             FlagClassifierView()
                 .tabItem {
@@ -70,9 +70,14 @@ struct ContentView: View {
                 }
                 .tag(Tab.learn)
         }
+        .onChange(of: selectedTab) { [selectedTab] newTab in
+            if newTab == .map {
+                self.selectedTab = selectedTab
+                showingMap = true
+            }
+        }
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

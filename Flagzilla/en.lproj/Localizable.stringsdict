@@ -2,11 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Capitals %lld</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Captial %#@capitalsCount@</string>
+		<key>capitalsCount</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>one</key>
+			<string>City</string>
+			<key>other</key>
+			<string>Cities</string>
+		</dict>
+	</dict>
 	<key>Continents %lld</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@Variable@</string>
-		<key>Variable</key>
+		<string>%#@continentsCount@</string>
+		<key>continentsCount</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
@@ -21,8 +37,8 @@
 	<key>%lld countries</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@Variable@</string>
-		<key>Variable</key>
+		<string>%#@countriesCount@</string>
+		<key>countriesCount</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>

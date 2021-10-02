@@ -10,9 +10,9 @@ import SwiftUI
 struct CountryView: View {
     let country: Country
 
-    var countryImage: some View {
+    var flagImage: some View {
         AsyncImage(url: country.detailFlag, scale: 3, transaction: Transaction(animation: .easeOut)) { phase in
-            if case .success(let image) = phase {
+            if let image = phase.image {
                 image
                     .resizable()
                     .scaledToFit()
@@ -27,10 +27,11 @@ struct CountryView: View {
 
     var countryHeader: some View {
         VStack(spacing: 15) {
-            countryImage
+            flagImage
 
             Text(country.officialName)
                 .multilineTextAlignment(.center)
+                .animation(nil) // TODO: find alternative
         }
         .frame(maxWidth: .infinity)
     }
@@ -38,7 +39,9 @@ struct CountryView: View {
     var body: some View {
         Form {
             Section {
-                InformationRowView(label: LocalizedStringKey("Continents \(country.continents.count)"), content: country.continents.map(\.rawValue).formatted())
+                InformationRowView(label: "Capitals \(country.capitalCities.count)", content: country.capitalCities.formatted())
+
+                InformationRowView(label: "Continents \(country.continents.count)", content: country.continents.map(\.rawValue).formatted())
 
                 InformationRowView(label: "Country Code", content: country.id.uppercased())
 

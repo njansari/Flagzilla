@@ -10,16 +10,6 @@ import SwiftUI
 struct QuestionStyleView: View {
     @EnvironmentObject private var settings: LearnSettings
 
-    var unselectedImage: some View {
-        Image(systemName: "circle")
-            .foregroundStyle(.quaternary)
-    }
-
-    var selectedImage: some View {
-        Image(systemName: "checkmark.circle.fill")
-            .foregroundStyle(.tint)
-    }
-
     var flagToNameStyleOption: some View {
         VStack(spacing: 10) {
             FlagToNameStyle()
@@ -28,8 +18,8 @@ struct QuestionStyleView: View {
                 .font(.callout)
 
             switch settings.style {
-                case .flagToName: selectedImage
-                case .nameToFlag: unselectedImage
+                case .flagToName: Image.selectedCheckmark
+                case .nameToFlag: Image.unselectedCheckmark
             }
         }
         .frame(maxWidth: 100)
@@ -46,8 +36,8 @@ struct QuestionStyleView: View {
                 .font(.callout)
 
             switch settings.style {
-                case .flagToName: unselectedImage
-                case .nameToFlag: selectedImage
+                case .flagToName: Image.unselectedCheckmark
+                case .nameToFlag: Image.selectedCheckmark
             }
         }
         .frame(maxWidth: 100)
@@ -73,7 +63,9 @@ struct QuestionStyleView: View {
             .padding(.vertical)
             .listRowInsets(EdgeInsets())
 
-            Toggle("Use country's official name", isOn: $settings.useOfficialName)
+            // TODO: Option for captial cities
+            // Picker?
+            Toggle("Use countries' official name", isOn: $settings.useOfficialName)
                 .tint(.accentColor)
         }
     }

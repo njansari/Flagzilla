@@ -17,7 +17,7 @@ struct TimerView: View {
 
             if settings.useTimer {
                 Picker("Duration", selection: $settings.timerDuration) {
-                    ForEach(settings.durations, id: \.self) { duration in
+                    ForEach(settings.timerDurations, id: \.self) { duration in
                         Text("\(duration) min")
                     }
                 }

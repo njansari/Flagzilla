@@ -10,6 +10,8 @@ import SwiftUI
 struct LearnView: View {
     @StateObject private var settings = LearnSettings()
 
+    @State private var showingLearn = false
+
     var body: some View {
         NavigationView {
             List {
@@ -20,9 +22,12 @@ struct LearnView: View {
                 OtherSettingsView()
 
                 Button("Start") {
-
+                    showingLearn = true
                 }
                 .buttonStyle(.listRow)
+                .fullScreenCover(isPresented: $showingLearn) {
+
+                }
             }
             .navigationTitle("Learn")
         }
