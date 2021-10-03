@@ -8,7 +8,7 @@
 import MapKit
 import SwiftUI
 
-class FlagClusterAnnotationView: MKAnnotationView {
+@MainActor class FlagClusterAnnotationView: MKAnnotationView {
     private let flagDelegate: FlagDelegate
 
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {

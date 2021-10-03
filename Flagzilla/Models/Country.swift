@@ -7,7 +7,9 @@
 
 import MapKit
 
-struct Country: Decodable, Equatable, Identifiable {
+let countries: Set<Country> = Bundle.main.decodeJSON(from: "countries")
+
+struct Country: Decodable, Hashable, Identifiable {
     let id: String
     let name: String
     let officialName: String
@@ -27,9 +29,13 @@ struct Country: Decodable, Equatable, Identifiable {
         URL(string: "https://flagcdn.com/144x108/\(id).png")
     }
 
-    static let example = countries[183]
+    static let example = countries.randomElement()!
 
     static func == (lhs: Country, rhs: Country) -> Bool {
         lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

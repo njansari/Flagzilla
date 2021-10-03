@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-let countries: [Country] = Bundle.main.decodeJSON(from: "countries")
-
 enum Tab: String {
     case flags
     case map
@@ -61,6 +59,8 @@ struct ContentView: View {
             FlagClassifierView()
                 .tabItem {
                     Tab.classifier.tabItem
+                        .imageScale(.large)
+                        .font(.system(size: 18).weight(.medium))
                 }
                 .tag(Tab.classifier)
 

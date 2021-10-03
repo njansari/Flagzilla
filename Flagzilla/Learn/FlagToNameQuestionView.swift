@@ -1,4 +1,4 @@
-//
+  //
 //  FlagToNameQuestionView.swift
 //  Flagzilla
 //
@@ -22,7 +22,7 @@ struct FlagToNameQuestionView: View {
     let answerCountries: [Country]
 
     var body: some View {
-        VStack(spacing: 50) {
+        VStack(spacing: 80) {
             AsyncImage(url: questionCountry.detailFlag, scale: 3, transaction: Transaction(animation: .easeIn(duration: 0.2))) { phase in
                 if let image = phase.image {
                     image
@@ -36,15 +36,14 @@ struct FlagToNameQuestionView: View {
                         .cornerRadius(10)
                 }
             }
-            .frame(height: 200)
-            .padding()
+            .frame(maxHeight: 200)
 
             VStack(spacing: 20) {
                 ForEach(answerCountries) { country in
                     Button {
                         selectedAnswer = country
                     } label: {
-                        Text(country.name)
+                        Text(settings.useOfficialName ? country.officialName : country.name)
                             .font(.title3.weight(.medium))
                             .frame(maxWidth: .infinity)
                     }
@@ -53,7 +52,6 @@ struct FlagToNameQuestionView: View {
                     .allowsHitTesting(selectedAnswer == nil || !settings.showsAnswerAfterQuestion)
                 }
             }
-            .padding()
         }
     }
 

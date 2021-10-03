@@ -27,7 +27,7 @@ extension Coordinate: Decodable {
 extension Coordinate {
     func formatted() -> String {
         let formattedLatitude: String = {
-            if latitude.isLess(than: .zero) {
+            if latitude.isLess(than: 0) {
                 return "\(latitude.magnitude)º S"
             } else {
                 return "\(latitude)º N"
@@ -35,7 +35,7 @@ extension Coordinate {
         }()
 
         let formattedLongitude: String = {
-            if longitude.isLess(than: .zero) {
+            if longitude.isLess(than: 0) {
                 return "\(longitude.magnitude)º W"
             } else {
                 return "\(longitude)º E"

@@ -25,9 +25,7 @@ struct LearnView: View {
                     showingLearn = true
                 }
                 .buttonStyle(.listRow)
-                .fullScreenCover(isPresented: $showingLearn) {
-
-                }
+                .fullScreenCover(isPresented: $showingLearn, content: LearnQuestionsView.init)
             }
             .navigationTitle("Learn")
         }
