@@ -43,7 +43,7 @@ struct CountryView: View {
 
                 InformationRowView(label: "Continents \(country.continents.count)", content: country.continents.map(\.rawValue).formatted())
 
-                InformationRowView(label: "Country Code", content: country.id.uppercased())
+                InformationRowView(label: "Country code", content: country.id.uppercased())
 
                 InformationRowView(label: "Coordinates", content: country.coordinates.formatted())
             } header: {

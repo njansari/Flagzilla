@@ -12,6 +12,12 @@ struct OtherSettingsView: View {
 
     @FocusState private var numberOfQuestionsFocused: Bool
 
+    var maxCountries: Int {
+        countries.filter {
+            $0.continents.isSuperset(of: settings.continents) || $0.continents.isSubset(of: settings.continents)
+        }.count
+    }
+
     var body: some View {
         Section {
             HStack {
@@ -19,17 +25,27 @@ struct OtherSettingsView: View {
 
                 Spacer()
 
-                TextField("Number of questions", value: $settings.numberOfQuestions, format: .number, prompt: Text("10-\(countries.count)"))
+                TextField("Number of questions", value: $settings.numberOfQuestions, format: .number, prompt: Text("max \(maxCountries)"))
                     .foregroundColor(numberOfQuestionsFocused ? .primary : .accentColor)
                     .multilineTextAlignment(.trailing)
                     .frame(maxWidth: 100)
+                    .keyboardType(.numberPad)
                     .focused($numberOfQuestionsFocused)
-                    .submitLabel(.done)
                     .onSubmit {
-                        let range = 10...countries.count
+                        let range = 1...countries.count
 
                         if !range.contains(settings.numberOfQuestions) {
                             settings.numberOfQuestions.clamp(to: range)
+                        }
+                    }
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+
+                            Button("Done") {
+                                numberOfQuestionsFocused = false
+                            }
+                            .font(.body.bold())
                         }
                     }
             }

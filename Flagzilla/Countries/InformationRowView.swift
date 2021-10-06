@@ -14,7 +14,7 @@ struct InformationRowView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(label)
-                .font(.caption)
+                .font(.callout)
                 .foregroundStyle(.secondary)
 
             Text(content)

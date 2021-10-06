@@ -1,39 +1,22 @@
-//  FlagToNameQuestionView.swift
+//  NameToFlagQuestionView.swift
 //  Flagzilla
 //
-//  Created by Nayan Jansari on 28/09/2021.
+//  Created by Nayan Jansari on 05/10/2021.
 //
 
 import SwiftUI
 
-enum AnswerState {
-    case none
-    case unselected(isCorrect: Bool)
-    case selected(isCorrect: Bool)
-}
-
-struct FlagToNameQuestionView: View {
+struct NameToFlagQuestionView: View {
     @EnvironmentObject private var settings: LearnSettings
     @EnvironmentObject private var progress: LearnProgress
 
     var body: some View {
         VStack(spacing: 80) {
-            AsyncImage(url: progress.currentQuestion.answer.detailFlag, scale: 3, transaction: Transaction(animation: .easeIn(duration: 0.2))) { phase in
-                if let image = phase.image {
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(10)
-                        .shadow(color: .primary.opacity(0.4), radius: 5)
-                } else {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(.quaternary)
-                }
-            }
-            .frame(maxHeight: 200)
+            Text(settings.useOfficialName ? progress.currentQuestion.answer.officialName : progress.currentQuestion.answer.name)
+                .font(.title.bold())
 
-            VStack(spacing: 20) {
-                ForEach(progress.currentQuestion.answers.prefix(3).shuffled()) { country in
+            LazyVGrid(columns: [GridItem(.flexible(minimum: 150), spacing: 20), GridItem(.flexible(minimum: 150), spacing: 20)], spacing: 10) {
+                ForEach(progress.currentQuestion.answers.shuffled()) { country in
                     Button {
                         progress.currentQuestion.selectedAnswer = country
 
@@ -41,9 +24,19 @@ struct FlagToNameQuestionView: View {
                             progress.score += 1
                         }
                     } label: {
-                        Text(settings.useOfficialName ? country.officialName : country.name)
-                            .font(.title3.weight(.medium))
-                            .frame(maxWidth: .infinity)
+                        AsyncImage(url: country.gridFlag, scale: 3, transaction: Transaction(animation: .easeIn(duration: 0.2))) { phase in
+                            if let image = phase.image {
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(5)
+                                    .shadow(color: .primary.opacity(0.4), radius: 5)
+                            } else {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .fill(.quaternary)
+                            }
+                        }
+                        .frame(width: 150, height: 75)
                     }
                     .buttonStyle(.answerOption(state: stateForAnswer(country: country)))
                     .controlSize(.large)
@@ -76,7 +69,7 @@ struct FlagToNameQuestionView: View {
     }
 }
 
-struct FlagToNameQuestionView_Previews: PreviewProvider {
+struct NameToFlagQuestionView_Previes: PreviewProvider {
     static let questionCountry: Country = countries.randomElement()!
 
     static var answerCountries: [Country] {
@@ -87,7 +80,7 @@ struct FlagToNameQuestionView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        FlagToNameQuestionView()
+        NameToFlagQuestionView()
             .environmentObject(LearnSettings())
             .environmentObject(LearnProgress())
             .padding()

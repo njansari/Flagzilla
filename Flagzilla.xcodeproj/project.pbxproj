@@ -31,6 +31,8 @@
 		BD5A210A26D8FABB0025CCF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5A210926D8FABB0025CCF3 /* Assets.xcassets */; };
 		BD5A210D26D8FABB0025CCF3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD5A210C26D8FABB0025CCF3 /* Preview Assets.xcassets */; };
 		BD62FC0426DE13C10058EEE6 /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD62FC0326DE13C10058EEE6 /* FlagView.swift */; };
+		BD6EDA7B270CAA3C00E36998 /* LearnQuestionsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EDA7A270CAA3C00E36998 /* LearnQuestionsSummary.swift */; };
+		BD6EDA7D270CD15E00E36998 /* NameToFlagQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EDA7C270CD15E00E36998 /* NameToFlagQuestionView.swift */; };
 		BD7B196526DB8449004F3643 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196426DB8449004F3643 /* MapView.swift */; };
 		BD7B196726DD4F92004F3643 /* FlagsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196626DD4F92004F3643 /* FlagsGridView.swift */; };
 		BD9CE41626EE72FA00BEA927 /* View+SizeChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41526EE72FA00BEA927 /* View+SizeChange.swift */; };
@@ -38,6 +40,7 @@
 		BD9CE41A26EE786300BEA927 /* FlagAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41926EE786300BEA927 /* FlagAnnotationView.swift */; };
 		BD9CE41C26EE789000BEA927 /* FlagClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41B26EE789000BEA927 /* FlagClusterAnnotationView.swift */; };
 		BD9CE41E26EE78BD00BEA927 /* FlagsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41D26EE78BD00BEA927 /* FlagsMapView.swift */; };
+		BDAC7AC4270B746C00EFE49D /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAC7AC3270B746C00EFE49D /* Question.swift */; };
 		BDCF63C826D93BBA00E4E4E6 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCF63C726D93BBA00E4E4E6 /* Country.swift */; };
 		BDCF63CA26DA6BD000E4E4E6 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = BDCF63C926DA6BD000E4E4E6 /* countries.json */; };
 		BDEAE3A026ECF65B00A77183 /* FlagClassifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEAE39F26ECF65B00A77183 /* FlagClassifierView.swift */; };
@@ -73,6 +76,8 @@
 		BD5A210926D8FABB0025CCF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD5A210C26D8FABB0025CCF3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BD62FC0326DE13C10058EEE6 /* FlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagView.swift; sourceTree = "<group>"; };
+		BD6EDA7A270CAA3C00E36998 /* LearnQuestionsSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnQuestionsSummary.swift; sourceTree = "<group>"; };
+		BD6EDA7C270CD15E00E36998 /* NameToFlagQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameToFlagQuestionView.swift; sourceTree = "<group>"; };
 		BD7B196426DB8449004F3643 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BD7B196626DD4F92004F3643 /* FlagsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsGridView.swift; sourceTree = "<group>"; };
 		BD9CE41526EE72FA00BEA927 /* View+SizeChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+SizeChange.swift"; sourceTree = "<group>"; };
@@ -80,6 +85,7 @@
 		BD9CE41926EE786300BEA927 /* FlagAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagAnnotationView.swift; sourceTree = "<group>"; };
 		BD9CE41B26EE789000BEA927 /* FlagClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagClusterAnnotationView.swift; sourceTree = "<group>"; };
 		BD9CE41D26EE78BD00BEA927 /* FlagsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsMapView.swift; sourceTree = "<group>"; };
+		BDAC7AC3270B746C00EFE49D /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		BDCF63C726D93BBA00E4E4E6 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		BDCF63C926DA6BD000E4E4E6 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		BDEAE39F26ECF65B00A77183 /* FlagClassifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagClassifierView.swift; sourceTree = "<group>"; };
@@ -125,14 +131,16 @@
 			isa = PBXGroup;
 			children = (
 				BD1AB90326E3A61C00C38D33 /* LearnView.swift */,
-				BD25B3DF27039048006D157E /* FlagToNameQuestionView.swift */,
-				BD2169A42709C8F70041BE71 /* LearnQuestionsView.swift */,
+				BD07A9AA26F63E5200F7BAD0 /* QuestionStyleView.swift */,
+				BD07A9B326F7BCC200F7BAD0 /* ContinentsFilterView.swift */,
 				BD58C0072700BF710002407C /* OtherSettingsView.swift */,
 				BD58C0092700DDCE0002407C /* TimerView.swift */,
-				BD07A9AA26F63E5200F7BAD0 /* QuestionStyleView.swift */,
+				BD2169A42709C8F70041BE71 /* LearnQuestionsView.swift */,
 				BD07A9AC26F7364000F7BAD0 /* FlagToNameStyle.swift */,
 				BD07A9B026F738A800F7BAD0 /* NameToFlagStyle.swift */,
-				BD07A9B326F7BCC200F7BAD0 /* ContinentsFilterView.swift */,
+				BD25B3DF27039048006D157E /* FlagToNameQuestionView.swift */,
+				BD6EDA7C270CD15E00E36998 /* NameToFlagQuestionView.swift */,
+				BD6EDA7A270CAA3C00E36998 /* LearnQuestionsSummary.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -220,6 +228,7 @@
 			children = (
 				BD07A9A626F4DE1000F7BAD0 /* LearnSettings.swift */,
 				BD2169A22708E2D20041BE71 /* LearnProgress.swift */,
+				BDAC7AC3270B746C00EFE49D /* Question.swift */,
 				BDCF63C726D93BBA00E4E4E6 /* Country.swift */,
 				BD07A9A826F62C4B00F7BAD0 /* Continents.swift */,
 				BD9CE41726EE735200BEA927 /* FlagAnnotation.swift */,
@@ -300,10 +309,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD58C0082700BF710002407C /* OtherSettingsView.swift in Sources */,
+				BD6EDA7B270CAA3C00E36998 /* LearnQuestionsSummary.swift in Sources */,
 				BDF43C9226EE55B800D21B9F /* ShapeStyle+GroupedBackground.swift in Sources */,
 				BD9CE41E26EE78BD00BEA927 /* FlagsMapView.swift in Sources */,
 				BDF43C9426EE629900D21B9F /* InformationRowView.swift in Sources */,
 				BD5A210826D8FABA0025CCF3 /* ContentView.swift in Sources */,
+				BD6EDA7D270CD15E00E36998 /* NameToFlagQuestionView.swift in Sources */,
+				BDAC7AC4270B746C00EFE49D /* Question.swift in Sources */,
 				BD07A9AB26F63E5200F7BAD0 /* QuestionStyleView.swift in Sources */,
 				BD7B196526DB8449004F3643 /* MapView.swift in Sources */,
 				BDCF63C826D93BBA00E4E4E6 /* Country.swift in Sources */,
