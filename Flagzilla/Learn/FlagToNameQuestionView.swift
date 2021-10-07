@@ -33,7 +33,7 @@ struct FlagToNameQuestionView: View {
             .frame(maxHeight: 200)
 
             VStack(spacing: 20) {
-                ForEach(progress.currentQuestion.answers.prefix(3).shuffled()) { country in
+                ForEach(progress.currentQuestion.answers) { country in
                     Button {
                         progress.currentQuestion.selectedAnswer = country
 

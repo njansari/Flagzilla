@@ -16,7 +16,7 @@ struct NameToFlagQuestionView: View {
                 .font(.title.bold())
 
             LazyVGrid(columns: [GridItem(.flexible(minimum: 150), spacing: 20), GridItem(.flexible(minimum: 150), spacing: 20)], spacing: 10) {
-                ForEach(progress.currentQuestion.answers.shuffled()) { country in
+                ForEach(progress.currentQuestion.answers) { country in
                     Button {
                         progress.currentQuestion.selectedAnswer = country
 

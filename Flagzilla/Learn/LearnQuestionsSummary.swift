@@ -13,35 +13,110 @@ struct LearnQuestionsSummary: View {
     @EnvironmentObject private var settings: LearnSettings
     @EnvironmentObject private var progress: LearnProgress
 
-    var body: some View {
-        Form {
-            Section {
-                InformationRowView(label: "Score", content: progress.score.formatted())
-                InformationRowView(label: "Number of questions", content: settings.numberOfQuestions.formatted())
-            } header: {
-                Text(Double(progress.score) / Double(settings.numberOfQuestions), format: .percent)
-                    .font(.largeTitle.bold())
-                    .frame(maxWidth: .infinity)
+    @State private var questionsSelection: Questions = .correct
+
+    let dismissAction: DismissAction
+
+    var percentage: Double {
+        let percent = Double(progress.score) / Double(settings.numberOfQuestions)
+        return (percent * 100).rounded(.down) / 100
+    }
+
+    var correctQuestions: [(offset: Int, _: Question)] {
+        progress.questions.enumerated().filter { $0.element.isCorrect }
+    }
+
+    var incorrectQuestions: [(offset: Int, _: Question)] {
+        progress.questions.enumerated().filter { !$0.element.isCorrect }
+    }
+
+    var scoreHeader: some View {
+        VStack {
+            ZStack {
+                ZStack {
+                    Circle()
+                        .trim(from: 0, to: CGFloat(percentage))
+                        .stroke(.green, lineWidth: questionsSelection == .correct ? 40 : 35)
+
+                    Circle()
+                        .trim(from: CGFloat(percentage), to: 1)
+                        .stroke(.red, lineWidth: questionsSelection == .incorrect ? 40 : 35)
+                }
+                .rotationEffect(.radians(.pi / -2))
+                .frame(width: 150, height: 150)
+                .animation(.easeInOut, value: questionsSelection)
+
+                VStack {
+                    Text(percentage, format: .percent)
+                        .font(.largeTitle.bold())
+
+                    Text("\(progress.score)/\(settings.numberOfQuestions)")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
-            .headerProminence(.increased)
+            .frame(height: 220)
+
+            QuestionsSummarySegmentedControl(questionSelection: $questionsSelection)
         }
-        .navigationTitle("Summary")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Done") {
-                    dismiss()
+        .padding(.horizontal)
+    }
+
+    var body: some View {
+        VStack {
+            scoreHeader
+
+            Spacer()
+
+            Form {
+                switch questionsSelection {
+                    case .correct:
+                        if correctQuestions.isEmpty {
+                            Text("You didn't answer any questions correctly")
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity)
+                        } else {
+                            ForEach(correctQuestions, id: \.offset) { question in
+                                Text("Question \(question.offset + 1)")
+                                    .font(.headline)
+                            }
+                        }
+                    case .incorrect:
+                        if incorrectQuestions.isEmpty {
+                            Text("You didn't answer any questions incorrectly")
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity)
+                        } else {
+                            ForEach(incorrectQuestions, id: \.offset) { question in
+                                Text("Question \(question.offset + 1)")
+                                    .font(.headline)
+                            }
+                        }
+                }
+            }
+            .navigationTitle("Summary")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        dismissAction()
+                    }
                 }
             }
         }
+        .background(.groupedBackground)
     }
 }
 
 struct LearnQuestionsSummary_Previews: PreviewProvider {
+    @Environment(\.dismiss) static private var dismiss
+
     static var previews: some View {
         NavigationView {
-            LearnQuestionsSummary()
+            LearnQuestionsSummary(dismissAction: dismiss)
         }
         .environmentObject(LearnSettings())
         .environmentObject(LearnProgress())

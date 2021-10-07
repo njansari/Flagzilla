@@ -13,20 +13,29 @@ struct Question {
 
     var selectedAnswer: Country?
 
-    init(country: Country) {
+    init(country: Country, style: LearnSettings.QuestionAnswerStyle, answerContinents: Continents) {
         answer = country
 
         var allAnswers = [answer]
 
-        while allAnswers.count < 4 {
-            let newCountry = countries.filter { $0.continents.contains(.oceania) }.randomElement()!
+        let numberOfAnswers: Int = {
+            switch style {
+                case .flagToName: return 3
+                case .nameToFlag: return 4
+            }
+        }()
+
+        while allAnswers.count < numberOfAnswers {
+            let newCountry = countries.filter { country in
+                country.continents.isSuperset(of: answerContinents) || country.continents.isSubset(of: answerContinents)
+            }.randomElement()!
 
             if !allAnswers.contains(newCountry) {
                 allAnswers.append(newCountry)
             }
         }
 
-        answers = allAnswers
+        answers = allAnswers.shuffled()
     }
 
     var isCorrect: Bool {

@@ -13,8 +13,8 @@ struct OtherSettingsView: View {
     @FocusState private var numberOfQuestionsFocused: Bool
 
     var maxCountries: Int {
-        countries.filter {
-            $0.continents.isSuperset(of: settings.continents) || $0.continents.isSubset(of: settings.continents)
+        countries.filter { country in
+            country.continents.isSuperset(of: settings.continents) || country.continents.isSubset(of: settings.continents)
         }.count
     }
 
@@ -32,7 +32,7 @@ struct OtherSettingsView: View {
                     .keyboardType(.numberPad)
                     .focused($numberOfQuestionsFocused)
                     .onSubmit {
-                        let range = 1...countries.count
+                        let range = 1...maxCountries
 
                         if !range.contains(settings.numberOfQuestions) {
                             settings.numberOfQuestions.clamp(to: range)

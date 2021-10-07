@@ -30,7 +30,9 @@ import SwiftUI
 
         let allQuestions = allCountries.prefix(settings.numberOfQuestions)
 
-        return allQuestions.map(Question.init).shuffled()
+        return allQuestions.map { country in
+            Question(country: country, style: settings.style, answerContinents: settings.continents)
+        }.shuffled()
     }()
 
     init() {

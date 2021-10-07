@@ -69,7 +69,7 @@ struct LearnQuestionsView: View {
 
     var finishButton: some View {
         NavigationLink {
-            LearnQuestionsSummary()
+            LearnQuestionsSummary(dismissAction: dismiss)
         } label: {
             Text("Finish")
                 .frame(alignment: .trailing)
