@@ -74,7 +74,7 @@ struct FlagsGridView: View {
                     .font(.callout.weight(.medium))
                     .animation(nil, value: filterContinent)
 
-                LazyVGrid(columns: columns, spacing: 12, pinnedViews: .sectionHeaders) {
+                LazyVGrid(columns: columns, spacing: 12) {
                     ForEach(filteredCountries, content: FlagGridItem.init)
                 }
                 .padding(.horizontal)

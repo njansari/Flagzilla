@@ -7,22 +7,6 @@
 
 import SwiftUI
 
-enum Tab: String {
-    case flags
-    case map
-    case classifier
-    case learn
-
-    var tabItem: some View {
-        switch self {
-            case .flags: return Label("Flags", systemImage: "flag.2.crossed")
-            case .map: return Label("Map", systemImage: "map")
-            case .classifier: return Label("Classifier", image: "flag.viewfinder")
-            case .learn: return Label("Learn", systemImage: "brain")
-        }
-    }
-}
-
 struct ContentView: View {
     @SceneStorage("selectedTab") private var selectedTab: Tab = .flags
 
@@ -71,10 +55,14 @@ struct ContentView: View {
                 .tag(Tab.learn)
         }
         .onChange(of: selectedTab) { [selectedTab] newTab in
-            if newTab == .map {
-                self.selectedTab = selectedTab
-                showingMap = true
-            }
+            tabChanged(from: selectedTab, to: newTab)
+        }
+    }
+
+    func tabChanged(from oldTab: Tab, to newTab: Tab) {
+        if newTab == .map {
+            self.selectedTab = oldTab
+            showingMap = true
         }
     }
 }

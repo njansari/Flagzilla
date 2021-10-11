@@ -27,7 +27,7 @@ struct Question {
 
         while allAnswers.count < numberOfAnswers {
             let newCountry = countries.filter { country in
-                country.continents.isSuperset(of: answerContinents) || country.continents.isSubset(of: answerContinents)
+                country.continents.isSupersetOrSubset(of: answerContinents)
             }.randomElement()!
 
             if !allAnswers.contains(newCountry) {

@@ -42,88 +42,81 @@ struct FlagsMapView: View {
         return countries.map(FlagAnnotation.init)
     }
 
-    var statusBarHeight: CGFloat {
-        let window = UIApplication.shared.connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .flatMap { $0.windows }
-            .first { $0.isKeyWindow }
-
-        return window?.safeAreaInsets.top ?? 0
-    }
-
     var body: some View {
         NavigationView {
-            ZStack(alignment: .topTrailing) {
-                ZStack(alignment: .top) {
-                    MapView(mapType: mapType.mapType, annotations: annotations)
+            GeometryReader { geometry in
+                ZStack(alignment: .topTrailing) {
+                    ZStack(alignment: .top) {
+                        MapView(mapType: mapType.mapType, annotations: annotations)
 
-                    Rectangle()
-                        .fill(.ultraThinMaterial)
-                        .frame(height: statusBarHeight)
+                        Rectangle()
+                            .fill(.ultraThinMaterial)
+                            .frame(height: geometry.safeAreaInsets.top)
 
-                }
-                .navigationTitle("Map")
-                .navigationBarHidden(true)
-                .ignoresSafeArea()
-
-                HStack(alignment: .top) {
-                    Button(action: dismiss.callAsFunction) {
-                        Text("Done")
-                            .frame(minWidth: 44, minHeight: 28)
                     }
-                    .buttonBorderShape(.roundedRectangle(radius: 10))
-                    .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 10))
+                    .navigationTitle("Map")
+                    .navigationBarHidden(true)
+                    .ignoresSafeArea()
 
-                    Spacer()
+                    HStack(alignment: .top) {
+                        Button(action: dismiss.callAsFunction) {
+                            Text("Done")
+                                .frame(minWidth: 44, minHeight: 28)
+                        }
+                        .buttonBorderShape(.roundedRectangle(radius: 10))
+                        .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 10))
 
-                    VStack(spacing: 0) {
-                        Menu {
-                            Picker("Map Type", selection: $mapType) {
-                                ForEach(MapType.allCases, id: \.self) { type in
-                                    Text(type.rawValue)
+                        Spacer()
+
+                        VStack(spacing: 0) {
+                            Menu {
+                                Picker("Map Type", selection: $mapType) {
+                                    ForEach(MapType.allCases, id: \.self) { type in
+                                        Text(type.rawValue)
+                                    }
+                                }
+                            } label: {
+                                Button(action: {}) {
+                                    Label("Change continent", systemImage: "globe")
+                                        .imageScale(.large)
                                 }
                             }
-                        } label: {
-                            Button(action: {}) {
-                                Label("Change continent", systemImage: "globe")
-                                    .imageScale(.large)
-                            }
-                        }
 
-                        Divider()
-                            .frame(width: 51)
+                            Divider()
+                                .frame(width: 51)
 
-                        Menu {
-                            Picker("Filter Continents", selection: $filterContinent.animation()) {
-                                Text("All")
-                                    .tag(Continents.all)
+                            Menu {
+                                Picker("Filter Continents", selection: $filterContinent.animation()) {
+                                    Text("All")
+                                        .tag(Continents.all)
 
-                                Divider()
+                                    Divider()
 
-                                ForEach(Continent.allCases, id: \.self) { continent in
-                                    Text(continent.rawValue)
-                                        .tag(Continents([continent]))
+                                    ForEach(Continent.allCases, id: \.self) { continent in
+                                        Text(continent.rawValue)
+                                            .tag(Continents([continent]))
+                                    }
+                                }
+                            } label: {
+                                Button(action: {}) {
+                                    Label("Filter countries by continent", systemImage: "line.3.horizontal.decrease.circle")
+                                        .imageScale(.large)
+                                        .symbolVariant(filterContinent == .all ? .none : .fill)
                                 }
                             }
-                        } label: {
-                            Button(action: {}) {
-                                Label("Filter countries by continent", systemImage: "line.3.horizontal.decrease.circle")
-                                    .imageScale(.large)
-                                    .symbolVariant(filterContinent == .all ? .none : .fill)
+                            .onChange(of: filterContinent) { newFilter in
+                                UserDefaults.standard.set(newFilter.rawValue, forKey: "mapFilterContinent")
                             }
                         }
-                        .onChange(of: filterContinent) { newFilter in
-                            UserDefaults.standard.set(newFilter.rawValue, forKey: "mapFilterContinent")
-                        }
+                        .buttonBorderShape(.roundedRectangle(radius: 0))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 10))
                     }
-                    .buttonBorderShape(.roundedRectangle(radius: 0))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 10))
+                    .font(.headline)
+                    .labelStyle(.iconOnly)
+                    .buttonStyle(.bordered)
+                    .padding(10)
                 }
-                .font(.headline)
-                .labelStyle(.iconOnly)
-                .buttonStyle(.bordered)
-                .padding(10)
             }
         }
     }

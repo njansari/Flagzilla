@@ -10,7 +10,12 @@ import SwiftUI
 @MainActor class LearnProgress: ObservableObject {
     @EnvironmentObject private var settings: LearnSettings
 
-    @Published var questionNumber = 1
+    @Published var questionNumber = 1 {
+        didSet {
+            currentQuestion = questions[questionNumber - 1]
+        }
+    }
+
     @Published var score = 0
 
     @Published var currentQuestion: Question {
@@ -25,7 +30,7 @@ import SwiftUI
         let settings = LearnSettings()
 
         let allCountries = countries.filter { country in
-            settings.continents.isSuperset(of: country.continents)
+            country.continents.isSupersetOrSubset(of: settings.continents)
         }
 
         let allQuestions = allCountries.prefix(settings.numberOfQuestions)
@@ -37,21 +42,18 @@ import SwiftUI
 
     init() {
         _settings = EnvironmentObject<LearnSettings>()
-
-        currentQuestion = questions[questions.startIndex]
+        currentQuestion = questions[0]
     }
 
     func back() {
-        guard questionNumber > 1 else { return }
-
-        questionNumber -= 1
-        currentQuestion = questions[questions.index(questions.startIndex, offsetBy: questionNumber - 1)]
+        if questionNumber > 1 {
+            questionNumber -= 1
+        }
     }
 
     func next() {
-        guard questionNumber < questions.count else { return }
-
-        questionNumber += 1
-        currentQuestion = questions[questions.index(questions.startIndex, offsetBy: questionNumber - 1)]
+        if questionNumber < questions.count {
+            questionNumber += 1
+        }
     }
 }

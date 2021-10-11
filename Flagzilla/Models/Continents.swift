@@ -37,7 +37,7 @@ extension Set where Element == Continent {
 
 extension Set where Element: Option {
     init(rawValue: Int) {
-        var result: Self = []
+        var result: Set<Element> = []
 
         for (index, element) in Element.allCases.enumerated() {
             let value = rawValue >> index
@@ -58,5 +58,9 @@ extension Set where Element: Option {
         }
 
         return rawValue
+    }
+
+    func isSupersetOrSubset(of other: Set<Element>) -> Bool {
+        isSuperset(of: other) || isSubset(of: other)
     }
 }

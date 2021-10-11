@@ -26,7 +26,7 @@ struct CountryView: View {
     }
 
     var countryHeader: some View {
-        VStack(spacing: 15) {
+        VStack(spacing: 18) {
             flagImage
 
             Text(country.officialName)

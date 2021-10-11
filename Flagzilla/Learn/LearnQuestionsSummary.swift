@@ -13,7 +13,8 @@ struct LearnQuestionsSummary: View {
     @EnvironmentObject private var settings: LearnSettings
     @EnvironmentObject private var progress: LearnProgress
 
-    @State private var questionsSelection: Questions = .correct
+    @State private var selectedQuestionCategory: QuestionSummaryCategory = .correct
+    @State private var expandedQuestion = -1
 
     let dismissAction: DismissAction
 
@@ -22,11 +23,11 @@ struct LearnQuestionsSummary: View {
         return (percent * 100).rounded(.down) / 100
     }
 
-    var correctQuestions: [(offset: Int, _: Question)] {
+    var correctQuestions: [(offset: Int, Question)] {
         progress.questions.enumerated().filter { $0.element.isCorrect }
     }
 
-    var incorrectQuestions: [(offset: Int, _: Question)] {
+    var incorrectQuestions: [(offset: Int, Question)] {
         progress.questions.enumerated().filter { !$0.element.isCorrect }
     }
 
@@ -35,16 +36,22 @@ struct LearnQuestionsSummary: View {
             ZStack {
                 ZStack {
                     Circle()
-                        .trim(from: 0, to: CGFloat(percentage))
-                        .stroke(.green, lineWidth: questionsSelection == .correct ? 40 : 35)
+                        .trim(from: 0, to: percentage)
+                        .stroke(.green, lineWidth: selectedQuestionCategory == .correct ? 40 : 35)
+                        .onTapGesture {
+                            selectedQuestionCategory = .correct
+                        }
 
                     Circle()
-                        .trim(from: CGFloat(percentage), to: 1)
-                        .stroke(.red, lineWidth: questionsSelection == .incorrect ? 40 : 35)
+                        .trim(from: percentage, to: 1)
+                        .stroke(.red, lineWidth: selectedQuestionCategory == .incorrect ? 40 : 35)
+                        .onTapGesture {
+                            selectedQuestionCategory = .incorrect
+                        }
                 }
                 .rotationEffect(.radians(.pi / -2))
                 .frame(width: 150, height: 150)
-                .animation(.easeInOut, value: questionsSelection)
+                .animation(.easeInOut, value: selectedQuestionCategory)
 
                 VStack {
                     Text(percentage, format: .percent)
@@ -57,7 +64,7 @@ struct LearnQuestionsSummary: View {
             }
             .frame(height: 220)
 
-            QuestionsSummarySegmentedControl(questionSelection: $questionsSelection)
+            QuestionsSummarySegmentedControl(questionCategory: $selectedQuestionCategory)
         }
         .padding(.horizontal)
     }
@@ -68,8 +75,8 @@ struct LearnQuestionsSummary: View {
 
             Spacer()
 
-            Form {
-                switch questionsSelection {
+            List {
+                switch selectedQuestionCategory {
                     case .correct:
                         if correctQuestions.isEmpty {
                             Text("You didn't answer any questions correctly")
@@ -78,8 +85,10 @@ struct LearnQuestionsSummary: View {
                                 .frame(maxWidth: .infinity)
                         } else {
                             ForEach(correctQuestions, id: \.offset) { question in
-                                Text("Question \(question.offset + 1)")
-                                    .font(.headline)
+                                NavigationLink("Question \(question.offset + 1)") {
+
+                                }
+                                .font(.headline)
                             }
                         }
                     case .incorrect:
@@ -90,12 +99,29 @@ struct LearnQuestionsSummary: View {
                                 .frame(maxWidth: .infinity)
                         } else {
                             ForEach(incorrectQuestions, id: \.offset) { question in
-                                Text("Question \(question.offset + 1)")
-                                    .font(.headline)
+                                DisclosureGroup("Question \(question.offset + 1)", isExpanded: questionExpandedBinding(for: question.offset)) {
+                                    HStack {
+                                        AsyncImage(url: progress.currentQuestion.answer.detailFlag, scale: 3, transaction: Transaction(animation: .easeIn(duration: 0.2))) { phase in
+                                            if let image = phase.image {
+                                                image
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .cornerRadius(2)
+                                                    .shadow(color: .primary.opacity(0.4), radius: 2)
+                                            } else {
+                                                RoundedRectangle(cornerRadius: 2)
+                                                    .fill(.quaternary)
+                                            }
+                                        }
+                                        .frame(maxHeight: 40)
+                                    }
+                                }
+                                .font(.headline)
                             }
                         }
                 }
             }
+            .listStyle(.insetGrouped)
             .navigationTitle("Summary")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
@@ -108,6 +134,18 @@ struct LearnQuestionsSummary: View {
             }
         }
         .background(.groupedBackground)
+    }
+
+    func questionExpandedBinding(for question: Int) -> Binding<Bool> {
+        Binding {
+            expandedQuestion == question
+        } set: {
+            if $0 {
+                expandedQuestion = question
+            } else {
+                expandedQuestion = -1
+            }
+        }
     }
 }
 

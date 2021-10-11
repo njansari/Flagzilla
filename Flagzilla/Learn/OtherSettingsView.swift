@@ -14,7 +14,7 @@ struct OtherSettingsView: View {
 
     var maxCountries: Int {
         countries.filter { country in
-            country.continents.isSuperset(of: settings.continents) || country.continents.isSubset(of: settings.continents)
+            country.continents.isSupersetOrSubset(of: settings.continents)
         }.count
     }
 
@@ -31,19 +31,18 @@ struct OtherSettingsView: View {
                     .frame(maxWidth: 100)
                     .keyboardType(.numberPad)
                     .focused($numberOfQuestionsFocused)
-                    .onSubmit {
-                        let range = 1...maxCountries
-
-                        if !range.contains(settings.numberOfQuestions) {
-                            settings.numberOfQuestions.clamp(to: range)
-                        }
-                    }
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
                             Spacer()
 
                             Button("Done") {
                                 numberOfQuestionsFocused = false
+
+                                let range = 1...maxCountries
+
+                                if !range.contains(settings.numberOfQuestions) {
+                                    settings.numberOfQuestions.clamp(to: range)
+                                }
                             }
                             .font(.body.bold())
                         }

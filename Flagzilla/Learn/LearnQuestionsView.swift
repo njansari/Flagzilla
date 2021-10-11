@@ -81,7 +81,7 @@ struct LearnQuestionsView: View {
     var toolbar: some View {
         HStack {
             backButton
-                .opacity(settings.showsAnswerAfterQuestion ? 0 : progress.questionNumber == 1 ? 0 : 1)
+                .opacity(settings.showsAnswerAfterQuestion || progress.questionNumber == 1 ? 0 : 1)
 
             Spacer()
 
