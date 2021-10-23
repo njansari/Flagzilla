@@ -42,7 +42,8 @@ struct FlagGridItem: View {
                     .scaledToFit()
                     .overlay {
                         shape
-                            .strokeBorder(.thickMaterial, lineWidth: 1)
+                            .strokeBorder(.ultraThinMaterial, lineWidth: 1)
+                            .blur(radius: 0.5)
                     }
                     .transition(.opacity.combined(with: .scale))
 

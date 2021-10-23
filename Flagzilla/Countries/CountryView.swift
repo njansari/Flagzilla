@@ -40,11 +40,8 @@ struct CountryView: View {
         Form {
             Section {
                 InformationRowView(label: "Capitals \(country.capitalCities.count)", content: country.capitalCities.formatted())
-
-                InformationRowView(label: "Continents \(country.continents.count)", content: country.continents.map(\.rawValue).formatted())
-
+                InformationRowView(label: "Continents \(country.continents.count)", content: country.continents.formatted())
                 InformationRowView(label: "Country code", content: country.id.uppercased())
-
                 InformationRowView(label: "Coordinates", content: country.coordinates.formatted())
             } header: {
                 countryHeader

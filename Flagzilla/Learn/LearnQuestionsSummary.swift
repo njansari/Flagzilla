@@ -18,16 +18,16 @@ struct LearnQuestionsSummary: View {
 
     let dismissAction: DismissAction
 
-    var percentage: Double {
+    var percentageScore: Double {
         let percent = Double(progress.score) / Double(settings.numberOfQuestions)
         return (percent * 100).rounded(.down) / 100
     }
 
-    var correctQuestions: [(offset: Int, Question)] {
+    var correctQuestions: [(offset: Int, element: Question)] {
         progress.questions.enumerated().filter { $0.element.isCorrect }
     }
 
-    var incorrectQuestions: [(offset: Int, Question)] {
+    var incorrectQuestions: [(offset: Int, element: Question)] {
         progress.questions.enumerated().filter { !$0.element.isCorrect }
     }
 
@@ -36,14 +36,14 @@ struct LearnQuestionsSummary: View {
             ZStack {
                 ZStack {
                     Circle()
-                        .trim(from: 0, to: percentage)
+                        .trim(from: 0, to: percentageScore)
                         .stroke(.green, lineWidth: selectedQuestionCategory == .correct ? 40 : 35)
                         .onTapGesture {
                             selectedQuestionCategory = .correct
                         }
 
                     Circle()
-                        .trim(from: percentage, to: 1)
+                        .trim(from: percentageScore, to: 1)
                         .stroke(.red, lineWidth: selectedQuestionCategory == .incorrect ? 40 : 35)
                         .onTapGesture {
                             selectedQuestionCategory = .incorrect
@@ -54,7 +54,7 @@ struct LearnQuestionsSummary: View {
                 .animation(.easeInOut, value: selectedQuestionCategory)
 
                 VStack {
-                    Text(percentage, format: .percent)
+                    Text(percentageScore, format: .percent)
                         .font(.largeTitle.bold())
 
                     Text("\(progress.score)/\(settings.numberOfQuestions)")
@@ -98,10 +98,11 @@ struct LearnQuestionsSummary: View {
                                 .multilineTextAlignment(.center)
                                 .frame(maxWidth: .infinity)
                         } else {
+                            // TODO: Add to own view for both correct and incorrect
                             ForEach(incorrectQuestions, id: \.offset) { question in
                                 DisclosureGroup("Question \(question.offset + 1)", isExpanded: questionExpandedBinding(for: question.offset)) {
                                     HStack {
-                                        AsyncImage(url: progress.currentQuestion.answer.detailFlag, scale: 3, transaction: Transaction(animation: .easeIn(duration: 0.2))) { phase in
+                                        AsyncImage(url: question.element.answer.detailFlag, scale: 3, transaction: Transaction(animation: .easeIn(duration: 0.2))) { phase in
                                             if let image = phase.image {
                                                 image
                                                     .resizable()
@@ -127,13 +128,19 @@ struct LearnQuestionsSummary: View {
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
-                        dismissAction()
-                    }
+                    Button("Done", action: dismissAction.callAsFunction)
                 }
             }
         }
         .background(.groupedBackground)
+        .task {
+            var loadedProgress = SavedProgress.loadSavedProgress()
+            let newProgress = SavedProgress(date: Date(), score: progress.score, numberOfQuestions: settings.numberOfQuestions, continents: settings.continents)
+
+            loadedProgress.append(newProgress)
+
+            SavedProgress.saveProgress(loadedProgress)
+        }
     }
 
     func questionExpandedBinding(for question: Int) -> Binding<Bool> {

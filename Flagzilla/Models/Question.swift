@@ -41,4 +41,6 @@ struct Question {
     var isCorrect: Bool {
         selectedAnswer == answer
     }
+
+    static let example = Question(country: .example, style: .flagToName, answerContinents: .all)
 }

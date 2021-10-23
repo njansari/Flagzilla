@@ -16,16 +16,52 @@ struct LearnQuestionsView: View {
 
     @State private var showingDismissConfirmation = false
 
-    var progressValue: Double {
-        let questionsCompleted = Double(progress.questionNumber) - 1
+    var progressInfo: some View {
+        ProgressView(value: progress.value, total: Double(settings.numberOfQuestions)) {
+            Text("Question \(progress.questionNumber)")
+                .fontWeight(.medium)
+        } currentValueLabel: {
+            if settings.showsAnswerAfterQuestion {
+                Text("Score: **\(progress.score)**")
+            }
+        }
+        .animation(.default, value: progress.value)
+    }
 
-        if progress.currentQuestion.selectedAnswer == nil {
-            return questionsCompleted + 0.5
-        } else {
-            return questionsCompleted + 1
+    @ViewBuilder var question: some View {
+        switch settings.style {
+            case .flagToName:
+                FlagToNameQuestionView()
+            case .nameToFlag:
+                NameToFlagQuestionView()
         }
     }
 
+    var body: some View {
+        NavigationView {
+            VStack {
+                progressInfo
+
+                Spacer()
+
+                question
+
+                Spacer()
+
+                toolbar
+            }
+            .multilineTextAlignment(.center)
+            .navigationBarHidden(true)
+            .padding()
+        }
+        .environmentObject(progress)
+        .onAppear {
+            progress.setup(settings: settings)
+        }
+    }
+}
+
+extension LearnQuestionsView {
     var backButton: some View {
         Button {
             progress.back()
@@ -101,39 +137,6 @@ struct LearnQuestionsView: View {
         .font(.title3.weight(.medium))
         .buttonStyle(.bordered)
         .tint(Color(uiColor: .systemBackground))
-    }
-
-    var body: some View {
-        NavigationView {
-            VStack {
-                ProgressView(value: progressValue, total: Double(settings.numberOfQuestions)) {
-                    Text("Question \(progress.questionNumber)")
-                } currentValueLabel: {
-                    if settings.showsAnswerAfterQuestion {
-                        Text("Score: \(progress.score)")
-                    }
-                }
-                .animation(.default, value: progressValue)
-
-                Spacer()
-
-                switch settings.style {
-                    case .flagToName:
-                        FlagToNameQuestionView()
-                    case .nameToFlag:
-                        NameToFlagQuestionView()
-                }
-
-                Spacer()
-            }
-            .multilineTextAlignment(.center)
-            .navigationBarHidden(true)
-            .safeAreaInset(edge: .bottom) {
-                toolbar
-            }
-            .padding()
-        }
-        .environmentObject(progress)
     }
 }
 

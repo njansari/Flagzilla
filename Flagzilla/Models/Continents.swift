@@ -9,7 +9,7 @@ import Foundation
 
 protocol Option: CaseIterable, Hashable {}
 
-enum Continent: String, Comparable, Decodable, Option {
+enum Continent: String, Codable, Comparable, Option {
     case asia = "Asia"
     case africa = "Africa"
     case northAmerica = "North America"

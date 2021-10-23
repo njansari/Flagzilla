@@ -10,6 +10,7 @@ import SwiftUI
 struct LearnView: View {
     @StateObject private var settings = LearnSettings()
 
+    @State private var showingStats = false
     @State private var showingLearn = false
 
     var body: some View {
@@ -28,6 +29,14 @@ struct LearnView: View {
                 .fullScreenCover(isPresented: $showingLearn, content: LearnQuestionsView.init)
             }
             .navigationTitle("Learn")
+            .toolbar {
+                Button {
+                    showingStats = true
+                } label: {
+                    Label("Statistics", systemImage: "chart.xyaxis.line")
+                }
+                .fullScreenCover(isPresented: $showingStats, content: ChartView.init)
+            }
         }
         .environmentObject(settings)
     }

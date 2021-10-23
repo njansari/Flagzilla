@@ -10,7 +10,7 @@ import SwiftUI
 struct OtherSettingsView: View {
     @EnvironmentObject private var settings: LearnSettings
 
-    @FocusState private var numberOfQuestionsFocused: Bool
+    @FocusState var numberOfQuestionsFocused: Bool
 
     var maxCountries: Int {
         countries.filter { country in
