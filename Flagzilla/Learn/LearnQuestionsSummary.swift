@@ -14,7 +14,6 @@ struct LearnQuestionsSummary: View {
     @EnvironmentObject private var progress: LearnProgress
 
     @State private var selectedQuestionCategory: QuestionSummaryCategory = .correct
-    @State private var expandedQuestion = -1
 
     let dismissAction: DismissAction
 
@@ -78,48 +77,9 @@ struct LearnQuestionsSummary: View {
             List {
                 switch selectedQuestionCategory {
                     case .correct:
-                        if correctQuestions.isEmpty {
-                            Text("You didn't answer any questions correctly")
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: .infinity)
-                        } else {
-                            ForEach(correctQuestions, id: \.offset) { question in
-                                NavigationLink("Question \(question.offset + 1)") {
-
-                                }
-                                .font(.headline)
-                            }
-                        }
+                        QuestionSummaryList(for: .correct, questions: correctQuestions)
                     case .incorrect:
-                        if incorrectQuestions.isEmpty {
-                            Text("You didn't answer any questions incorrectly")
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: .infinity)
-                        } else {
-                            // TODO: Add to own view for both correct and incorrect
-                            ForEach(incorrectQuestions, id: \.offset) { question in
-                                DisclosureGroup("Question \(question.offset + 1)", isExpanded: questionExpandedBinding(for: question.offset)) {
-                                    HStack {
-                                        AsyncImage(url: question.element.answer.detailFlag, scale: 3, transaction: Transaction(animation: .easeIn(duration: 0.2))) { phase in
-                                            if let image = phase.image {
-                                                image
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .cornerRadius(2)
-                                                    .shadow(color: .primary.opacity(0.4), radius: 2)
-                                            } else {
-                                                RoundedRectangle(cornerRadius: 2)
-                                                    .fill(.quaternary)
-                                            }
-                                        }
-                                        .frame(maxHeight: 40)
-                                    }
-                                }
-                                .font(.headline)
-                            }
-                        }
+                        QuestionSummaryList(for: .incorrect, questions: incorrectQuestions)
                 }
             }
             .listStyle(.insetGrouped)
@@ -140,18 +100,6 @@ struct LearnQuestionsSummary: View {
             loadedProgress.append(newProgress)
 
             SavedProgress.saveProgress(loadedProgress)
-        }
-    }
-
-    func questionExpandedBinding(for question: Int) -> Binding<Bool> {
-        Binding {
-            expandedQuestion == question
-        } set: {
-            if $0 {
-                expandedQuestion = question
-            } else {
-                expandedQuestion = -1
-            }
         }
     }
 }

@@ -16,7 +16,7 @@
 		BD10FECD27160D2400E9AB79 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10FECC27160D2400E9AB79 /* ChartView.swift */; };
 		BD10FECF27172F2E00E9AB79 /* BorderedButtonToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10FECE27172F2E00E9AB79 /* BorderedButtonToggleStyle.swift */; };
 		BD10FED12717591500E9AB79 /* SavedProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10FED02717591500E9AB79 /* SavedProgress.swift */; };
-		BD10FED32719544200E9AB79 /* LineGraphShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10FED22719544200E9AB79 /* LineGraphShape.swift */; };
+		BD10FED32719544200E9AB79 /* LineChartShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD10FED22719544200E9AB79 /* LineChartShape.swift */; };
 		BD1AB90226E3A30B00C38D33 /* Bundle+DecodeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90126E3A30B00C38D33 /* Bundle+DecodeJSON.swift */; };
 		BD1AB90426E3A61C00C38D33 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB90326E3A61C00C38D33 /* LearnView.swift */; };
 		BD2169A12708DC980041BE71 /* AnswerOptionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2169A02708DC980041BE71 /* AnswerOptionButtonStyle.swift */; };
@@ -45,6 +45,7 @@
 		BD9CE41C26EE789000BEA927 /* FlagClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41B26EE789000BEA927 /* FlagClusterAnnotationView.swift */; };
 		BD9CE41E26EE78BD00BEA927 /* FlagsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41D26EE78BD00BEA927 /* FlagsMapView.swift */; };
 		BDAC7AC4270B746C00EFE49D /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAC7AC3270B746C00EFE49D /* Question.swift */; };
+		BDB29C44273C3D5E0093092A /* QuestionSummaryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB29C43273C3D5E0093092A /* QuestionSummaryList.swift */; };
 		BDCE689C270ECD55004D414A /* QuestionsSummarySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCE689B270ECD55004D414A /* QuestionsSummarySegmentedControl.swift */; };
 		BDCF63C826D93BBA00E4E4E6 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCF63C726D93BBA00E4E4E6 /* Country.swift */; };
 		BDCF63CA26DA6BD000E4E4E6 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = BDCF63C926DA6BD000E4E4E6 /* countries.json */; };
@@ -68,7 +69,7 @@
 		BD10FECC27160D2400E9AB79 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		BD10FECE27172F2E00E9AB79 /* BorderedButtonToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButtonToggleStyle.swift; sourceTree = "<group>"; };
 		BD10FED02717591500E9AB79 /* SavedProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedProgress.swift; sourceTree = "<group>"; };
-		BD10FED22719544200E9AB79 /* LineGraphShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphShape.swift; sourceTree = "<group>"; };
+		BD10FED22719544200E9AB79 /* LineChartShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartShape.swift; sourceTree = "<group>"; };
 		BD1AB90126E3A30B00C38D33 /* Bundle+DecodeJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+DecodeJSON.swift"; sourceTree = "<group>"; };
 		BD1AB90326E3A61C00C38D33 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		BD2169A02708DC980041BE71 /* AnswerOptionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerOptionButtonStyle.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		BD9CE41B26EE789000BEA927 /* FlagClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagClusterAnnotationView.swift; sourceTree = "<group>"; };
 		BD9CE41D26EE78BD00BEA927 /* FlagsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsMapView.swift; sourceTree = "<group>"; };
 		BDAC7AC3270B746C00EFE49D /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		BDB29C43273C3D5E0093092A /* QuestionSummaryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSummaryList.swift; sourceTree = "<group>"; };
 		BDCE689B270ECD55004D414A /* QuestionsSummarySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsSummarySegmentedControl.swift; sourceTree = "<group>"; };
 		BDCF63C726D93BBA00E4E4E6 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		BDCF63C926DA6BD000E4E4E6 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
@@ -153,13 +155,14 @@
 				BD58C0092700DDCE0002407C /* TimerView.swift */,
 				BD10FECC27160D2400E9AB79 /* ChartView.swift */,
 				BD5E285E271B478F0004D32E /* FlowLayoutView.swift */,
-				BD10FED22719544200E9AB79 /* LineGraphShape.swift */,
+				BD10FED22719544200E9AB79 /* LineChartShape.swift */,
 				BD2169A42709C8F70041BE71 /* LearnQuestionsView.swift */,
 				BD07A9AC26F7364000F7BAD0 /* FlagToNameStyle.swift */,
 				BD07A9B026F738A800F7BAD0 /* NameToFlagStyle.swift */,
 				BD25B3DF27039048006D157E /* FlagToNameQuestionView.swift */,
 				BD6EDA7C270CD15E00E36998 /* NameToFlagQuestionView.swift */,
 				BD6EDA7A270CAA3C00E36998 /* LearnQuestionsSummary.swift */,
+				BDB29C43273C3D5E0093092A /* QuestionSummaryList.swift */,
 				BDCE689B270ECD55004D414A /* QuestionsSummarySegmentedControl.swift */,
 				BDE3CF1F2711F1F200067105 /* QuestionSummaryCategory.swift */,
 			);
@@ -342,7 +345,7 @@
 				BD6EDA7D270CD15E00E36998 /* NameToFlagQuestionView.swift in Sources */,
 				BDAC7AC4270B746C00EFE49D /* Question.swift in Sources */,
 				BD07A9AB26F63E5200F7BAD0 /* QuestionStyleView.swift in Sources */,
-				BD10FED32719544200E9AB79 /* LineGraphShape.swift in Sources */,
+				BD10FED32719544200E9AB79 /* LineChartShape.swift in Sources */,
 				BD10FECF27172F2E00E9AB79 /* BorderedButtonToggleStyle.swift in Sources */,
 				BD10FED12717591500E9AB79 /* SavedProgress.swift in Sources */,
 				BD7B196526DB8449004F3643 /* MapView.swift in Sources */,
@@ -370,6 +373,7 @@
 				BD3D196B26E51E3300400886 /* CountryView.swift in Sources */,
 				BD46D68726E7D8CB0073FCF2 /* ListRowButtonStyle.swift in Sources */,
 				BD58C00A2700DDCE0002407C /* TimerView.swift in Sources */,
+				BDB29C44273C3D5E0093092A /* QuestionSummaryList.swift in Sources */,
 				BD07A9B126F738A800F7BAD0 /* NameToFlagStyle.swift in Sources */,
 				BD2169A52709C8F70041BE71 /* LearnQuestionsView.swift in Sources */,
 				BD07A9A926F62C4B00F7BAD0 /* Continents.swift in Sources */,

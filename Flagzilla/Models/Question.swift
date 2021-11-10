@@ -42,5 +42,9 @@ struct Question {
         selectedAnswer == answer
     }
 
-    static let example = Question(country: .example, style: .flagToName, answerContinents: .all)
+    static var example: Question {
+        var question = Question(country: .example, style: .flagToName, answerContinents: .all)
+        question.selectedAnswer = .example
+        return question
+    }
 }

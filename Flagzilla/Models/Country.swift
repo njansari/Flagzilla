@@ -29,7 +29,13 @@ struct Country: Decodable, Hashable, Identifiable {
         URL(string: "https://flagcdn.com/144x108/\(id).png")
     }
 
-    static let example = countries.randomElement()!
+    var summmaryFlag: URL? {
+        URL(string: "https://flagcdn.com/h240/\(id).png")
+    }
+
+    static var example: Country {
+        countries.randomElement()!
+    }
 
     static func == (lhs: Country, rhs: Country) -> Bool {
         lhs.id == rhs.id

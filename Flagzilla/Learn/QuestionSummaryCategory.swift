@@ -17,4 +17,14 @@ enum QuestionSummaryCategory: String, CaseIterable {
             case .incorrect: return .systemRed
         }
     }
+
+
+    var noAnswersLabel: String {
+        switch self {
+            case .correct:
+                return "You didn't answer any questions correctly"
+            case .incorrect:
+                return "You didn't answer any questions incorrectly"
+        }
+    }
 }

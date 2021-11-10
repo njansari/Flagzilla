@@ -39,15 +39,12 @@ struct ChartView: View {
     var body: some View {
         NavigationView {
             VStack {
-                FlowLayoutView(continentFilters, spacing: 4) { continent in
-                    Toggle(continent?.rawValue ?? "All", isOn: toggleBinding(for: continent))
-                        .toggleStyle(.borderedButton)
-                        .font(.callout.weight(continent == nil ? .semibold : .regular))
-                }
-                .frame(height: filtersHeight)
-//                .onSizeChange { newSize in
-//                    filtersHeight = newSize.height / 2
+//                FlowLayoutView(continentFilters, spacing: 4) { continent in
+//                    Toggle(continent?.rawValue ?? "All", isOn: toggleBinding(for: continent))
+//                        .toggleStyle(.borderedButton)
+//                        .font(.callout.weight(continent == nil ? .semibold : .regular))
 //                }
+//                .frame(height: filtersHeight)
 
                 ZStack {
                     VStack {
