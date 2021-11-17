@@ -59,7 +59,7 @@ struct ContentView: View {
 
     func tabChanged(from oldTab: Tab, to newTab: Tab) {
         if newTab == .map {
-            self.selectedTab = oldTab
+            selectedTab = oldTab
             showingMap = true
         }
     }

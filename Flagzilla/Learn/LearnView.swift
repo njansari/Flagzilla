@@ -10,7 +10,9 @@ import SwiftUI
 struct LearnView: View {
     @StateObject private var settings = LearnSettings()
 
-    @State private var showingStats = false
+    @Environment(\.scenePhase) private var scenePhase
+
+    @State private var showingProgress = false
     @State private var showingLearn = false
 
     var body: some View {
@@ -26,16 +28,19 @@ struct LearnView: View {
                     showingLearn = true
                 }
                 .buttonStyle(.listRow)
-                .fullScreenCover(isPresented: $showingLearn, content: LearnQuestionsView.init)
+                .fullScreenCover(isPresented: $showingLearn) {
+                    LearnQuestionsView()
+                        .environment(\.scenePhase, scenePhase)
+                }
             }
             .navigationTitle("Learn")
             .toolbar {
                 Button {
-                    showingStats = true
+                    showingProgress = true
                 } label: {
-                    Label("Statistics", systemImage: "chart.xyaxis.line")
+                    Label("Progress", systemImage: "chart.xyaxis.line")
                 }
-                .fullScreenCover(isPresented: $showingStats, content: ChartView.init)
+                .fullScreenCover(isPresented: $showingProgress, content: ChartView.init)
             }
         }
         .environmentObject(settings)

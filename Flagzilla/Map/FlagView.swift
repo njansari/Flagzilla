@@ -42,12 +42,10 @@ struct FlagView: View {
                 .fill(.conicGradient(colors: [.yellow, .brown, .yellow], center: .center, angle: .radians(.pi / -2)))
                 .frame(width: 10, height: 10)
                 .zIndex(1)
-                .shadow(radius: 0.5, y: 1)
 
             RoundedRectangle(cornerRadius: 2, style: .continuous)
-                .fill(.linearGradient(colors: [.gray, .white, .gray], startPoint: .leading, endPoint: .trailing))
+                .fill(.ellipticalGradient(colors: [.white, .gray], endRadiusFraction: 0.6))
                 .frame(width: 5, height: 50)
-                .shadow(radius: 0.5, y: 2)
         }
     }
 
@@ -89,8 +87,9 @@ struct FlagView: View {
                         .zIndex(-1)
                 }
             }
-            .shadow(radius: 20, y: 40)
         }
+        .padding(5)
+        .drawingGroup()
     }
 }
 
@@ -106,6 +105,6 @@ struct FlagView_Previews: PreviewProvider {
     static var previews: some View {
         FlagView(delegate: flagDelegate)
             .frame(minWidth: 56, minHeight: 40, alignment: .leading)
-            .previewLayout(.fixed(width: 50, height: 40))
+//            .previewLayout(.sizeThatFits)
     }
 }

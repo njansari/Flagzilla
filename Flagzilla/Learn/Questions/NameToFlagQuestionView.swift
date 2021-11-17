@@ -10,13 +10,15 @@ struct NameToFlagQuestionView: View {
     @EnvironmentObject private var settings: LearnSettings
     @EnvironmentObject private var progress: LearnProgress
 
+    let columns = [GridItem(.flexible(minimum: 150), spacing: 20), GridItem(.flexible(minimum: 150), spacing: 20)]
+
     var body: some View {
         VStack(spacing: 80) {
             Text(settings.useOfficialName ? progress.currentQuestion.answer.officialName : progress.currentQuestion.answer.name)
                 .font(.title.bold())
 
-            LazyVGrid(columns: [GridItem(.flexible(minimum: 150), spacing: 20), GridItem(.flexible(minimum: 150), spacing: 20)], spacing: 10) {
-                ForEach(progress.currentQuestion.answers) { country in
+            LazyVGrid(columns: columns, spacing: 10) {
+                ForEach(progress.currentQuestion.answerOptions) { country in
                     Button {
                         progress.currentQuestion.selectedAnswer = country
 
@@ -70,15 +72,6 @@ struct NameToFlagQuestionView: View {
 }
 
 struct NameToFlagQuestionView_Previes: PreviewProvider {
-    static let questionCountry: Country = countries.randomElement()!
-
-    static var answerCountries: [Country] {
-        let country1 = countries.randomElement()!
-        let country2 = countries.randomElement()!
-
-        return [questionCountry, country1, country2].shuffled()
-    }
-
     static var previews: some View {
         NameToFlagQuestionView()
             .environmentObject(LearnSettings())

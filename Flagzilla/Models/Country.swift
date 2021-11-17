@@ -30,7 +30,7 @@ struct Country: Decodable, Hashable, Identifiable {
     }
 
     var summmaryFlag: URL? {
-        URL(string: "https://flagcdn.com/h240/\(id).png")
+        URL(string: "https://flagcdn.com/h160/\(id).png")
     }
 
     static var example: Country {

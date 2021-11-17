@@ -68,10 +68,8 @@ struct OtherSettingsView: View {
 
 struct OtherSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            List {
-                OtherSettingsView()
-            }
+        List {
+            OtherSettingsView()
         }
         .environmentObject(LearnSettings())
     }

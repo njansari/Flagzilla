@@ -1,4 +1,4 @@
-//
+ //
 //  QuestionSummaryCategory.swift
 //  Flagzilla
 //
@@ -10,14 +10,15 @@ import UIKit
 enum QuestionSummaryCategory: String, CaseIterable {
     case correct
     case incorrect
+    case unanswered
 
     var color: UIColor {
         switch self {
             case .correct: return .systemGreen
             case .incorrect: return .systemRed
+            case .unanswered: return .systemGray
         }
     }
-
 
     var noAnswersLabel: String {
         switch self {
@@ -25,6 +26,8 @@ enum QuestionSummaryCategory: String, CaseIterable {
                 return "You didn't answer any questions correctly"
             case .incorrect:
                 return "You didn't answer any questions incorrectly"
+            case .unanswered:
+                return "You answered all the questions"
         }
     }
 }

@@ -33,7 +33,7 @@ struct FlagToNameQuestionView: View {
             .frame(maxHeight: 200)
 
             VStack(spacing: 20) {
-                ForEach(progress.currentQuestion.answers) { country in
+                ForEach(progress.currentQuestion.answerOptions) { country in
                     Button {
                         progress.currentQuestion.selectedAnswer = country
 
@@ -77,15 +77,6 @@ struct FlagToNameQuestionView: View {
 }
 
 struct FlagToNameQuestionView_Previews: PreviewProvider {
-    static let questionCountry: Country = countries.randomElement()!
-
-    static var answerCountries: [Country] {
-        let country1 = countries.randomElement()!
-        let country2 = countries.randomElement()!
-
-        return [questionCountry, country1, country2].shuffled()
-    }
-
     static var previews: some View {
         FlagToNameQuestionView()
             .environmentObject(LearnSettings())

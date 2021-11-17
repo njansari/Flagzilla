@@ -9,7 +9,7 @@ import Foundation
 
 struct Question {
     let answer: Country
-    let answers: [Country]
+    let answerOptions: [Country]
 
     var selectedAnswer: Country?
 
@@ -28,18 +28,22 @@ struct Question {
         while allAnswers.count < numberOfAnswers {
             let newCountry = countries.filter { country in
                 country.continents.isSupersetOrSubset(of: answerContinents)
-            }.randomElement()!
+            }.randomElement() ?? .example
 
             if !allAnswers.contains(newCountry) {
                 allAnswers.append(newCountry)
             }
         }
 
-        answers = allAnswers.shuffled()
+        answerOptions = allAnswers.shuffled()
     }
 
     var isCorrect: Bool {
         selectedAnswer == answer
+    }
+
+    var isAnswered: Bool {
+        selectedAnswer != nil
     }
 
     static var example: Question {

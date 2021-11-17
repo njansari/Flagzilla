@@ -8,16 +8,22 @@
 import SwiftUI
 
 struct LineChartShape: Shape {
+    enum Style {
+        case line
+        case points
+    }
+
     let dataPoints: [DataPoint]
     let pointSize: Double
-    let drawPoints: Bool
+    let style: Style
 
-    init(dataPoints: [DataPoint], pointSize: Double, drawPoints: Bool) {
+    init(for style: Style, dataPoints: [DataPoint], pointSize: Double) {
+        self.style = style
+
         let startPoint = [DataPoint(value: 0)]
         self.dataPoints = [startPoint, dataPoints].flatMap { $0 }
 
         self.pointSize = pointSize
-        self.drawPoints = drawPoints
     }
 
     func path(in rect: CGRect) -> Path {
@@ -37,19 +43,20 @@ struct LineChartShape: Shape {
 //            x += drawRect.minX
             y += drawRect.minY
 
-            if drawPoints {
-                x -= pointSize / 2
-                y -= pointSize / 2
+            switch style {
+                case .points:
+                    x -= pointSize / 2
+                    y -= pointSize / 2
 
-                if index != 0 {
-                    path.addEllipse(in: CGRect(x: x, y: y, width: pointSize, height: pointSize))
-                }
-            } else {
-                if index == 0 {
-                    path.move(to: CGPoint(x: x, y: y))
-                } else {
-                    path.addLine(to: CGPoint(x: x, y: y))
-                }
+                    if index != 0 {
+                        path.addEllipse(in: CGRect(x: x, y: y, width: pointSize, height: pointSize))
+                    }
+                case .line:
+                    if index == 0 {
+                        path.move(to: CGPoint(x: x, y: y))
+                    } else {
+                        path.addLine(to: CGPoint(x: x, y: y))
+                    }
             }
         }
 

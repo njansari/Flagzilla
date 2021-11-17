@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+extension View {
+    @ViewBuilder func redacted(if condition: Bool) -> some View {
+        if condition {
+            redacted(reason: .placeholder)
+        } else {
+            unredacted()
+        }
+    }
+}
+
 struct LearnQuestionsView: View {
     @Environment(\.dismiss) private var dismiss
 
@@ -14,18 +24,49 @@ struct LearnQuestionsView: View {
 
     @EnvironmentObject private var settings: LearnSettings
 
+    @Environment(\.scenePhase) private var scenePhase
+
     @State private var showingDismissConfirmation = false
+    @State private var timeRemaining = 0
+    @State private var isFinished: Bool?
+
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    var timerText: some View {
+        Text(timeRemaining.formatted(.countdownTimer))
+            .foregroundColor(timeRemaining <= 10 ? .red : .primary)
+            .onReceive(timer) { _ in
+                guard scenePhase == .active else { return }
+
+                if timeRemaining > 0 {
+                    timeRemaining -= 1
+                } else {
+                    isFinished = true
+                    timer.upstream.connect().cancel()
+                }
+            }
+    }
 
     var progressInfo: some View {
-        ProgressView(value: progress.value, total: Double(settings.numberOfQuestions)) {
-            Text("Question \(progress.questionNumber)")
-                .fontWeight(.medium)
-        } currentValueLabel: {
-            if settings.showsAnswerAfterQuestion {
-                Text("Score: **\(progress.score)**")
+        ZStack(alignment: .topTrailing) {
+            ProgressView(value: progress.value, total: Double(settings.numberOfQuestions)) {
+                HStack {
+                    Text("Question \(progress.questionNumber)")
+                        .fontWeight(.medium)
+
+                    Spacer()
+
+                    if settings.useTimer {
+                        timerText
+                    }
+                }
+            } currentValueLabel: {
+                if settings.showsAnswerAfterQuestion {
+                    Text("Score: **\(progress.score)**")
+                }
             }
+            .animation(.default, value: progress.value)
         }
-        .animation(.default, value: progress.value)
     }
 
     @ViewBuilder var question: some View {
@@ -45,6 +86,7 @@ struct LearnQuestionsView: View {
                 Spacer()
 
                 question
+                    .redacted(if: scenePhase != .active)
 
                 Spacer()
 
@@ -57,6 +99,7 @@ struct LearnQuestionsView: View {
         .environmentObject(progress)
         .onAppear {
             progress.setup(settings: settings)
+            timeRemaining = settings.timerDuration * 60
         }
     }
 }
@@ -104,7 +147,7 @@ extension LearnQuestionsView {
     }
 
     var finishButton: some View {
-        NavigationLink {
+        NavigationLink(tag: true, selection: $isFinished) {
             LearnQuestionsSummary(dismissAction: dismiss)
         } label: {
             Text("Finish")

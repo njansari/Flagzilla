@@ -6,8 +6,6 @@
 	<string>Choose photo for flag detection.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Take photo for flag detection.</string>
-	<key>NSDocumentsFolderUsageDescription</key>
-	<string>Choose photo for flag detection.</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIToolbar</key>

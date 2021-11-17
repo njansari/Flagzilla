@@ -15,7 +15,13 @@ struct ChartView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var filterContinents: Continents = .all
-    @State private var filtersHeight: Double = .zero
+
+    let savedProgress: [SavedProgress] = {
+        var progress: [SavedProgress] = []
+        progress.loadSaved()
+
+        return progress
+    }()
 
     var continentFilters: [Continent?] {
         var allContinents: [Continent?] = [nil]
@@ -25,26 +31,33 @@ struct ChartView: View {
     }
 
     var dataPoints: [DataPoint] {
-        let savedProgress = SavedProgress.loadSavedProgress()
+        let values = savedProgress.map { progress -> Double in
+            let filteredContinents = progress.progressPerContinent.filter { progress in
+                filterContinents.contains(progress.continent)
+            }
 
-        let filteredProgress = savedProgress.filter { progress in
-            progress.continents == filterContinents
+            let score = filteredContinents.map(\.score).reduce(0, +)
+            let numQuestions = filteredContinents.map(\.numberOfQuestions).reduce(0, +)
+
+            return Double(score) / Double(numQuestions)
         }
 
-        return filteredProgress.map { progress in
-            DataPoint(value: progress.percentageScore)
-        }
+        return values.filter(\.isFinite).map(DataPoint.init)
     }
 
     var body: some View {
         NavigationView {
             VStack {
 //                FlowLayoutView(continentFilters, spacing: 4) { continent in
-//                    Toggle(continent?.rawValue ?? "All", isOn: toggleBinding(for: continent))
-//                        .toggleStyle(.borderedButton)
-//                        .font(.callout.weight(continent == nil ? .semibold : .regular))
-//                }
-//                .frame(height: filtersHeight)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(continentFilters, id: \.self) { continent in
+                            Toggle(continent?.rawValue ?? "All", isOn: toggleBinding(for: continent))
+                                .toggleStyle(.borderedButton)
+                                .font(.callout.weight(continent == nil ? .semibold : .regular))
+                        }
+                    }
+                }
 
                 ZStack {
                     VStack {
@@ -61,9 +74,9 @@ struct ChartView: View {
 
                     HStack(spacing: 0) {
                         VStack(alignment: .trailing) {
-                            ForEach((1...10).reversed(), id: \.self) { i in
-                                Text(Double(i) / 10, format: .percent)
-                                    .font(.caption)
+                            ForEach((1...10).reversed(), id: \.self) { step in
+                                Text(Double(step) / 10, format: .percent)
+                                    .font(.caption2)
                                     .foregroundStyle(.secondary)
                                     .padding(.trailing, 5)
 
@@ -76,15 +89,23 @@ struct ChartView: View {
 
                         ZStack {
                             if dataPoints.isEmpty {
-                                Text("No Data")
-                                    .font(.title.weight(.semibold))
-                                    .padding()
-                                    .background()
+                                VStack {
+                                    Text("No Data")
+                                        .font(.title.weight(.semibold))
+
+                                    Text("Start learning your flags to see your progress here")
+                                        .font(.subheadline)
+                                        .foregroundStyle(.secondary)
+                                }
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: 200)
+                                .padding()
+                                .background()
                             } else {
-                                LineChartShape(dataPoints: dataPoints, pointSize: 10, drawPoints: false)
+                                LineChartShape(for: .line, dataPoints: dataPoints, pointSize: 10)
                                     .stroke(.tint, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
 
-                                LineChartShape(dataPoints: dataPoints, pointSize: 10, drawPoints: true)
+                                LineChartShape(for: .points, dataPoints: dataPoints, pointSize: 10)
                                     .fill(.primary)
                             }
                         }
@@ -98,7 +119,7 @@ struct ChartView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Delete All", role: .destructive) {
-                        SavedProgress.saveProgress([])
+                        ([] as [SavedProgress]).save()
                     }
                     .foregroundStyle(.red)
                 }

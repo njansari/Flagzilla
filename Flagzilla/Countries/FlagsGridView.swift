@@ -24,7 +24,7 @@ struct FlagsGridView: View {
             let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
 
             if !trimmedSearchText.isEmpty {
-                let searchParameters: [KeyPath<Country, String>] = [\.name, \.officialName, \.id]
+                let searchParameters = [\Country.name, \Country.officialName, \Country.id]
 
                 let containsSearch = searchParameters.map {
                     country[keyPath: $0].localizedCaseInsensitiveContains(trimmedSearchText)
@@ -77,7 +77,7 @@ struct FlagsGridView: View {
                 LazyVGrid(columns: columns, spacing: 12) {
                     ForEach(filteredCountries, content: FlagGridItem.init)
                 }
-                .padding(.horizontal)
+                .padding([.horizontal, .bottom])
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             }
             .navigationTitle(navigationTitle)

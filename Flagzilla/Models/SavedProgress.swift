@@ -8,46 +8,45 @@
 import Foundation
 
 struct SavedProgress: Codable, Identifiable {
-    let date: Date
-    let score: Int
-    let numberOfQuestions: Int
-    let continents: Continents
-
-    var id: Date {
-        date
+    struct ProgressPerContinent: Codable {
+        let continent: Continent
+        let score: Int
+        let numberOfQuestions: Int
     }
 
-    var dateLabel: String {
-        date.formatted(date: .abbreviated, time: .omitted)
+    var id = UUID()
+
+    let progressPerContinent: [ProgressPerContinent]
+
+    var continents: Continents {
+        Set(progressPerContinent.map(\.continent))
     }
 
-    var percentageScore: Double {
-        let percent = Double(score) / Double(numberOfQuestions)
-        return (percent * 100).rounded(.down) / 100
+    var score: Int {
+        progressPerContinent.map(\.score).reduce(0, +)
+    }
+
+    var numberOfQuestions: Int {
+        progressPerContinent.map(\.numberOfQuestions).reduce(0, +)
     }
 }
 
-extension SavedProgress {
+extension Array where Element == SavedProgress {
     static private var fileUrl: URL {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         return documentsDirectory.appendingPathComponent("LearnProgress").appendingPathExtension(for: .data)
     }
 
-    static func loadSavedProgress() -> [SavedProgress] {
-        guard let data = try? Data(contentsOf: fileUrl),
-              let savedProgress = try? JSONDecoder().decode([SavedProgress].self, from: data)
-        else {
-            return []
+    mutating func loadSaved() {
+        if let data = try? Data(contentsOf: Self.fileUrl),
+           let savedProgress = try? JSONDecoder().decode(Self.self, from: data) {
+            self = savedProgress
         }
-
-        return savedProgress
     }
 
-    static func saveProgress(_ progress: [SavedProgress]) {
-        guard let data = try? JSONEncoder().encode(progress) else {
-            return
+    func save() {
+        if let data = try? JSONEncoder().encode(self) {
+            try? data.write(to: Self.fileUrl, options: .atomic)
         }
-
-        try? data.write(to: fileUrl)
     }
 }

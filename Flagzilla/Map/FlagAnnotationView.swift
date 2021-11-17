@@ -18,8 +18,8 @@ import SwiftUI
 
         let flagView = FlagView(delegate: flagDelegate).onSizeChange { size in
             self.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-            self.centerOffset = CGPoint(x: size.width - 5, y: 0)
-            self.calloutOffset = CGPoint(x: -size.width / 2 + 5, y: -size.height / 3)
+            self.centerOffset.x = size.width - 10
+            self.calloutOffset = CGPoint(x: -size.width / 2, y: -size.height / 3)
         }
 
         let flagViewController = UIHostingController(rootView: flagView)
