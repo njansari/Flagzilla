@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DataPoint {
+struct DataPoint: Equatable {
     let value: Double
 }
 
@@ -15,6 +15,9 @@ struct ChartView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var filterContinents: Continents = .all
+    @State private var showingDeleteConfirmation = false
+
+    @ScaledMetric private var spacing = 16
 
     let savedProgress: [SavedProgress] = {
         var progress: [SavedProgress] = []
@@ -45,71 +48,86 @@ struct ChartView: View {
         return values.filter(\.isFinite).map(DataPoint.init)
     }
 
+    var continentsFilterButtons: some View {
+        FlowLayoutView(continentFilters, spacing: 4) { continent in
+            Toggle(continent?.rawValue ?? "All", isOn: toggleBinding(for: continent))
+                .toggleStyle(.borderedButton)
+                .font(.callout.weight(continent == nil ? .semibold : .regular))
+        }
+    }
+
+    var horizontalAxisLines: some View {
+        VStack {
+            ForEach(1...10, id: \.self) { _ in
+                Divider()
+
+                Spacer()
+            }
+        }
+        .overlay(alignment: .bottom) {
+            Divider()
+                .background(.tint)
+        }
+    }
+
+    var axisLabels: some View {
+        VStack(alignment: .trailing) {
+            ForEach((1...10).reversed(), id: \.self) { step in
+                Text(Double(step) / 10, format: .percent)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .padding(.trailing, 5)
+
+                Spacer()
+            }
+        }
+    }
+
+    var lineGraph: some View {
+        ZStack {
+            if dataPoints.isEmpty {
+                VStack {
+                    Text("No Data")
+                        .font(.title.weight(.semibold))
+
+                    Text("Start learning your flags to see your progress here")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 200)
+                .padding()
+                .background {
+                    Capsule()
+                        .stroke(.tint, lineWidth: 2)
+                        .background()
+                }
+            } else {
+                LineChartShape(for: .line, dataPoints: dataPoints, pointSize: 10)
+                    .stroke(.tint, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
+
+                LineChartShape(for: .points, dataPoints: dataPoints, pointSize: 10)
+                    .fill(.primary)
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+
     var body: some View {
         NavigationView {
-            VStack {
-//                FlowLayoutView(continentFilters, spacing: 4) { continent in
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(continentFilters, id: \.self) { continent in
-                            Toggle(continent?.rawValue ?? "All", isOn: toggleBinding(for: continent))
-                                .toggleStyle(.borderedButton)
-                                .font(.callout.weight(continent == nil ? .semibold : .regular))
-                        }
-                    }
-                }
+            VStack(spacing: spacing) {
+                continentsFilterButtons
 
                 ZStack {
-                    VStack {
-                        ForEach(1...10, id: \.self) { _ in
-                            Divider()
-
-                            Spacer()
-                        }
-                    }
-                    .overlay(alignment: .bottom) {
-                        Divider()
-                            .background(.tint)
-                    }
+                    horizontalAxisLines
 
                     HStack(spacing: 0) {
-                        VStack(alignment: .trailing) {
-                            ForEach((1...10).reversed(), id: \.self) { step in
-                                Text(Double(step) / 10, format: .percent)
-                                    .font(.caption2)
-                                    .foregroundStyle(.secondary)
-                                    .padding(.trailing, 5)
-
-                                Spacer()
-                            }
-                        }
+                        axisLabels
 
                         Divider()
                             .background(.tint)
 
-                        ZStack {
-                            if dataPoints.isEmpty {
-                                VStack {
-                                    Text("No Data")
-                                        .font(.title.weight(.semibold))
-
-                                    Text("Start learning your flags to see your progress here")
-                                        .font(.subheadline)
-                                        .foregroundStyle(.secondary)
-                                }
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: 200)
-                                .padding()
-                                .background()
-                            } else {
-                                LineChartShape(for: .line, dataPoints: dataPoints, pointSize: 10)
-                                    .stroke(.tint, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
-
-                                LineChartShape(for: .points, dataPoints: dataPoints, pointSize: 10)
-                                    .fill(.primary)
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
+                        lineGraph
                     }
                 }
             }
@@ -119,9 +137,16 @@ struct ChartView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Delete All", role: .destructive) {
-                        ([] as [SavedProgress]).save()
+                        showingDeleteConfirmation = true
                     }
                     .foregroundStyle(.red)
+                    .confirmationDialog("Are you sure?", isPresented: $showingDeleteConfirmation, titleVisibility: .visible) {
+                        Button("Delete All Progress", role: .destructive) {
+                            ([] as [SavedProgress]).save()
+                        }
+                    } message: {
+                        Text("All your progress will be deleted.")
+                    }
                 }
 
                 ToolbarItem(placement: .confirmationAction) {

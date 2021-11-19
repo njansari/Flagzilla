@@ -28,7 +28,7 @@ struct LearnQuestionsView: View {
 
     @State private var showingDismissConfirmation = false
     @State private var timeRemaining = 0
-    @State private var isFinished: Bool?
+    @State private var isFinished = false
 
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -147,7 +147,7 @@ extension LearnQuestionsView {
     }
 
     var finishButton: some View {
-        NavigationLink(tag: true, selection: $isFinished) {
+        NavigationLink(isActive: $isFinished) {
             LearnQuestionsSummary(dismissAction: dismiss)
         } label: {
             Text("Finish")
@@ -168,12 +168,13 @@ extension LearnQuestionsView {
 
             Spacer()
 
-            Group {
+            ZStack {
                 if progress.questionNumber < progress.questions.count {
                     nextButton
-                } else {
-                    finishButton
                 }
+
+                finishButton
+                    .opacity(progress.questionNumber >= progress.questions.count ? 1 : 0)
             }
             .opacity(progress.currentQuestion.selectedAnswer == nil ? 0 : 1)
         }

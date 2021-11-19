@@ -38,10 +38,7 @@ struct LineChartShape: Shape {
             var x = Double(index) * xMultiplier
             var y = dataPoint.value * yMultiplier
 
-            y = drawRect.height - y
-
-//            x += drawRect.minX
-            y += drawRect.minY
+            y = drawRect.height - y + drawRect.minY
 
             switch style {
                 case .points:
