@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+enum AnswerState {
+    case none
+    case unselected(isCorrect: Bool)
+    case selected(isCorrect: Bool)
+}
+
 struct AnswerOptionButtonStyle: PrimitiveButtonStyle {
     @EnvironmentObject private var settings: LearnSettings
 

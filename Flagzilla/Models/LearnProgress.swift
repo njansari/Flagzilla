@@ -14,8 +14,6 @@ import SwiftUI
         }
     }
 
-    @Published var score = 0
-
     @Published var currentQuestion: Question = .example {
         didSet {
             if let index = questions.firstIndex(where: { $0.answer == currentQuestion.answer }) {
@@ -24,9 +22,14 @@ import SwiftUI
         }
     }
 
+    @Published var score = 0
+    @Published var timeRemaining = 0
+
+    private var settings = LearnSettings()
+
     var questions: [Question] = []
 
-    var value: Double {
+    var progressValue: Double {
         let questionsCompleted = Double(questionNumber) - 1
 
         if currentQuestion.selectedAnswer == nil {
@@ -36,7 +39,17 @@ import SwiftUI
         }
     }
 
+    var questionRateLabel: String {
+        let timeElapsed = Double(settings.timerDuration * 60 - timeRemaining)
+        let rate = timeElapsed / Double(questionNumber)
+        let formattedRate = rate.formatted(.number.precision(.significantDigits(2)))
+
+        return "\(formattedRate) sec"
+    }
+
     func setup(settings: LearnSettings) {
+        self.settings = settings
+
         let allCountries = countries.filter { country in
             country.continents.isSupersetOrSubset(of: settings.continents)
         }

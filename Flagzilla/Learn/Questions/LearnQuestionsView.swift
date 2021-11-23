@@ -27,29 +27,27 @@ struct LearnQuestionsView: View {
     @Environment(\.scenePhase) private var scenePhase
 
     @State private var showingDismissConfirmation = false
-    @State private var timeRemaining = 0
     @State private var isFinished = false
 
-    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1, on: .main, in: .common)
 
     var timerText: some View {
-        Text(timeRemaining.formatted(.countdownTimer))
-            .foregroundColor(timeRemaining <= 10 ? .red : .primary)
+        Text(progress.timeRemaining.formatted(.countdownTimer))
+            .foregroundColor(progress.timeRemaining <= 10 ? .red : .primary)
             .onReceive(timer) { _ in
                 guard scenePhase == .active else { return }
 
-                if timeRemaining > 0 {
-                    timeRemaining -= 1
+                if progress.timeRemaining > 0 {
+                    progress.timeRemaining -= 1
                 } else {
                     isFinished = true
-                    timer.upstream.connect().cancel()
                 }
             }
     }
 
     var progressInfo: some View {
         ZStack(alignment: .topTrailing) {
-            ProgressView(value: progress.value, total: Double(settings.numberOfQuestions)) {
+            ProgressView(value: progress.progressValue, total: Double(settings.numberOfQuestions)) {
                 HStack {
                     Text("Question \(progress.questionNumber)")
                         .fontWeight(.medium)
@@ -65,7 +63,7 @@ struct LearnQuestionsView: View {
                     Text("Score: **\(progress.score)**")
                 }
             }
-            .animation(.default, value: progress.value)
+            .animation(.default, value: progress.progressValue)
         }
     }
 
@@ -86,20 +84,29 @@ struct LearnQuestionsView: View {
                 Spacer()
 
                 question
+                    .multilineTextAlignment(.center)
                     .redacted(if: scenePhase != .active)
 
                 Spacer()
 
                 toolbar
             }
-            .multilineTextAlignment(.center)
             .navigationBarHidden(true)
             .padding()
         }
         .environmentObject(progress)
         .onAppear {
             progress.setup(settings: settings)
-            timeRemaining = settings.timerDuration * 60
+
+            if settings.useTimer {
+                progress.timeRemaining = settings.timerDuration * 60
+                _ = timer.connect()
+            }
+        }
+        .onChange(of: isFinished) {
+            if $0 {
+                timer.connect().cancel()
+            }
         }
     }
 }

@@ -26,6 +26,7 @@ struct FlagGridItem: View {
                 .clipShape(shape)
                 .frame(width: 110, height: 80)
         }
+        .drawingGroup()
     }
 
     @ViewBuilder func imageContent(phase: AsyncImagePhase) -> some View {

@@ -6,12 +6,6 @@
 
 import SwiftUI
 
-enum AnswerState {
-    case none
-    case unselected(isCorrect: Bool)
-    case selected(isCorrect: Bool)
-}
-
 struct FlagToNameQuestionView: View {
     @EnvironmentObject private var settings: LearnSettings
     @EnvironmentObject private var progress: LearnProgress

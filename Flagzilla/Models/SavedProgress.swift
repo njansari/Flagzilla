@@ -18,6 +18,8 @@ struct SavedProgress: Codable, Identifiable {
 
     let progressPerContinent: [ProgressPerContinent]
 
+    static let empty: [SavedProgress] = []
+
     var continents: Continents {
         Set(progressPerContinent.map(\.continent))
     }

@@ -17,8 +17,6 @@ struct ChartView: View {
     @State private var filterContinents: Continents = .all
     @State private var showingDeleteConfirmation = false
 
-    @ScaledMetric private var spacing = 16
-
     let savedProgress: [SavedProgress] = {
         var progress: [SavedProgress] = []
         progress.loadSaved()
@@ -115,7 +113,7 @@ struct ChartView: View {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: spacing) {
+            VStack(spacing: 16) {
                 continentsFilterButtons
 
                 ZStack {
@@ -139,14 +137,13 @@ struct ChartView: View {
                     Button("Delete All", role: .destructive) {
                         showingDeleteConfirmation = true
                     }
-                    .foregroundStyle(.red)
+                    .foregroundStyle(.red, disabled: savedProgress.isEmpty)
                     .confirmationDialog("Are you sure?", isPresented: $showingDeleteConfirmation, titleVisibility: .visible) {
-                        Button("Delete All Progress", role: .destructive) {
-                            ([] as [SavedProgress]).save()
-                        }
+                        Button("Delete All Progress", role: .destructive, action: SavedProgress.empty.save)
                     } message: {
                         Text("All your progress will be deleted.")
                     }
+                    .disabled(savedProgress.isEmpty)
                 }
 
                 ToolbarItem(placement: .confirmationAction) {
@@ -169,6 +166,16 @@ struct ChartView: View {
             } else {
                 filterContinents = .all
             }
+        }
+    }
+}
+
+extension View {
+    @ViewBuilder func foregroundStyle<S: ShapeStyle>(_ style: S, disabled: Bool) -> some View {
+        if disabled {
+            foregroundStyle(.tertiary)
+        } else {
+            foregroundStyle(style)
         }
     }
 }

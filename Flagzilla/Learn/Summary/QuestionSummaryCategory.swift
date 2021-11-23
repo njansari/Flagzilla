@@ -25,9 +25,9 @@ enum QuestionSummaryCategory: String, CaseIterable {
             case .correct:
                 return "You didn't answer any questions correctly"
             case .incorrect:
-                return "You didn't answer any questions incorrectly"
+                return "You answered every question correctly"
             case .unanswered:
-                return "You answered all the questions"
+                return "You answered every question"
         }
     }
 }

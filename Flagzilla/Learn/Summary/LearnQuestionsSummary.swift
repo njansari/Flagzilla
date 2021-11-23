@@ -16,6 +16,7 @@ struct LearnQuestionsSummary: View {
     @EnvironmentObject private var settings: LearnSettings
     @EnvironmentObject private var progress: LearnProgress
 
+    @State private var showingStats = false
     @State private var selectedQuestionCategory: QuestionSummaryCategory = .correct
 
     let dismissAction: DismissAction
@@ -81,7 +82,24 @@ struct LearnQuestionsSummary: View {
     var scoreHeader: some View {
         VStack {
             ZStack {
-                ZStack {
+                TabView {
+                    scoreText
+
+                    if settings.useTimer {
+                        VStack {
+                            Text(progress.questionRateLabel)
+                                .fontWeight(.medium)
+
+                            Text("per question")
+                                .font(.caption)
+                        }
+                        .frame(maxWidth: 100)
+                    }
+                }
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                .frame(width: 120, height: 120)
+
+                Group {
                     correctCircle
                     incorrectCircle
                     unansweredCircle
@@ -89,9 +107,8 @@ struct LearnQuestionsSummary: View {
                 .rotationEffect(.radians(.pi / -2))
                 .frame(width: 150, height: 150)
                 .animation(.easeInOut, value: selectedQuestionCategory)
-
-                scoreText
             }
+            .multilineTextAlignment(.center)
             .frame(maxHeight: 220)
 
             QuestionsSummarySegmentedControl(questionCategory: $selectedQuestionCategory)
@@ -127,21 +144,25 @@ struct LearnQuestionsSummary: View {
         }
         .background(.groupedBackground)
         .task {
-            var loadedProgress: [SavedProgress] = []
-            loadedProgress.loadSaved()
-
-            let progressPerContinent = settings.continents.map { continent -> SavedProgress.ProgressPerContinent in
-                let score = correctQuestions.filter { $0.element.answer.continents.contains(continent) }.count
-                let numberOfQuestions = progress.questions.filter { $0.answer.continents.contains(continent) }.count
-
-                return SavedProgress.ProgressPerContinent(continent: continent, score: score, numberOfQuestions: numberOfQuestions)
-            }
-
-            let newProgress = SavedProgress(progressPerContinent: progressPerContinent)
-
-            loadedProgress.append(newProgress)
-            loadedProgress.save()
+            loadAndSaveProgress()
         }
+    }
+
+    func loadAndSaveProgress() {
+        var loadedProgress: [SavedProgress] = []
+        loadedProgress.loadSaved()
+
+        let progressPerContinent = settings.continents.map { continent -> SavedProgress.ProgressPerContinent in
+            let score = correctQuestions.filter { $0.element.answer.continents.contains(continent) }.count
+            let numberOfQuestions = progress.questions.filter { $0.answer.continents.contains(continent) }.count
+
+            return SavedProgress.ProgressPerContinent(continent: continent, score: score, numberOfQuestions: numberOfQuestions)
+        }
+
+        let newProgress = SavedProgress(progressPerContinent: progressPerContinent)
+
+        loadedProgress.append(newProgress)
+        loadedProgress.save()
     }
 }
 
