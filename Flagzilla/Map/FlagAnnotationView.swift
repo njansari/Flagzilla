@@ -9,7 +9,7 @@ import MapKit
 import SwiftUI
 
 @MainActor class FlagAnnotationView: MKAnnotationView {
-    let flagDelegate: FlagDelegate
+    private let flagDelegate: FlagDelegate
 
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         flagDelegate = FlagDelegate()
@@ -17,16 +17,13 @@ import SwiftUI
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
 
         let flagView = FlagView(delegate: flagDelegate).onSizeChange { size in
-            self.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-            self.centerOffset.x = size.width - 10
-            self.calloutOffset = CGPoint(x: -size.width / 2, y: -size.height / 3)
+            self.centerOffset = CGPoint(x: size.width / 2 - 5, y: -size.height / 2)
+            self.calloutOffset.y = -size.height / 3
         }
 
         let flagViewController = UIHostingController(rootView: flagView)
 
         addSubview(flagViewController.view)
-
-        rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
 
         backgroundColor = .clear
         clusteringIdentifier = "flag"

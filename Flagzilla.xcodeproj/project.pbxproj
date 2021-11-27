@@ -23,6 +23,7 @@
 		BD2169A12708DC980041BE71 /* AnswerOptionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2169A02708DC980041BE71 /* AnswerOptionButtonStyle.swift */; };
 		BD2169A32708E2D20041BE71 /* LearnProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2169A22708E2D20041BE71 /* LearnProgress.swift */; };
 		BD2169A52709C8F70041BE71 /* LearnQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2169A42709C8F70041BE71 /* LearnQuestionsView.swift */; };
+		BD221CBE27516B94000CF063 /* RoundedCornerRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD221CBD27516B94000CF063 /* RoundedCornerRectangle.swift */; };
 		BD25B3DE27038661006D157E /* Image+Checkmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25B3DD27038661006D157E /* Image+Checkmarks.swift */; };
 		BD25B3E027039048006D157E /* FlagToNameQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25B3DF27039048006D157E /* FlagToNameQuestionView.swift */; };
 		BD25B3E2270875E3006D157E /* Comparable+Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25B3E1270875E3006D157E /* Comparable+Clamp.swift */; };
@@ -79,6 +80,7 @@
 		BD2169A02708DC980041BE71 /* AnswerOptionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerOptionButtonStyle.swift; sourceTree = "<group>"; };
 		BD2169A22708E2D20041BE71 /* LearnProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnProgress.swift; sourceTree = "<group>"; };
 		BD2169A42709C8F70041BE71 /* LearnQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnQuestionsView.swift; sourceTree = "<group>"; };
+		BD221CBD27516B94000CF063 /* RoundedCornerRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerRectangle.swift; sourceTree = "<group>"; };
 		BD25B3DD27038661006D157E /* Image+Checkmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Checkmarks.swift"; sourceTree = "<group>"; };
 		BD25B3DF27039048006D157E /* FlagToNameQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagToNameQuestionView.swift; sourceTree = "<group>"; };
 		BD25B3E1270875E3006D157E /* Comparable+Clamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamp.swift"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */,
 				BD2169A02708DC980041BE71 /* AnswerOptionButtonStyle.swift */,
 				BD10FECE27172F2E00E9AB79 /* BorderedButtonToggleStyle.swift */,
+				BD221CBD27516B94000CF063 /* RoundedCornerRectangle.swift */,
 				BD5B97A327419D1F0022484A /* CountdownTimerFormatStyle.swift */,
 			);
 			path = Custom;
@@ -386,6 +389,7 @@
 				BDCE689C270ECD55004D414A /* QuestionsSummarySegmentedControl.swift in Sources */,
 				BD6EDA7D270CD15E00E36998 /* NameToFlagQuestionView.swift in Sources */,
 				BDAC7AC4270B746C00EFE49D /* Question.swift in Sources */,
+				BD221CBE27516B94000CF063 /* RoundedCornerRectangle.swift in Sources */,
 				BD07A9AB26F63E5200F7BAD0 /* QuestionStyleView.swift in Sources */,
 				BD10FED32719544200E9AB79 /* LineChartShape.swift in Sources */,
 				BD10FECF27172F2E00E9AB79 /* BorderedButtonToggleStyle.swift in Sources */,

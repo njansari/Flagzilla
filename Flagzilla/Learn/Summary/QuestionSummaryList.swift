@@ -51,7 +51,7 @@ struct QuestionSummaryList: View {
             }
             .padding(.vertical)
         }
-        .listRowSeparatorTint(Color(uiColor: category.color))
+        .listRowSeparatorTint(category.color)
     }
 
     var body: some View {

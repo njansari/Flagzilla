@@ -5,18 +5,18 @@
 //  Created by Nayan Jansari on 09/10/2021.
 //
 
-import UIKit
+import SwiftUI
 
 enum QuestionSummaryCategory: String, CaseIterable {
     case correct
     case incorrect
     case unanswered
 
-    var color: UIColor {
+    var color: Color {
         switch self {
-            case .correct: return .systemGreen
-            case .incorrect: return .systemRed
-            case .unanswered: return .systemGray
+            case .correct: return .green
+            case .incorrect: return .red
+            case .unanswered: return .gray
         }
     }
 

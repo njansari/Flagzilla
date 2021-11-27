@@ -11,4 +11,8 @@ extension ShapeStyle where Self == Color {
     static var groupedBackground: Color {
         Color(uiColor: .systemGroupedBackground)
     }
+
+    static var tertiaryGroupedBackground: Color {
+        Color(uiColor: .tertiarySystemGroupedBackground)
+    }
 }

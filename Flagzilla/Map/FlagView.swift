@@ -10,7 +10,6 @@ import SwiftUI
 @MainActor class FlagDelegate: ObservableObject {
     @Published var country: Country?
     @Published var clusterCount = 0
-    @Published var isSelected: Bool? = false
 }
 
 struct FlagView: View {
@@ -43,7 +42,7 @@ struct FlagView: View {
                 .frame(width: 10, height: 10)
                 .zIndex(1)
 
-            RoundedRectangle(cornerRadius: 2, style: .continuous)
+            RoundedCornerRectangle([.bottomLeft, .bottomRight], cornerRadius: 2.5)
                 .fill(.ellipticalGradient(colors: [.white, .gray], endRadiusFraction: 0.6))
                 .frame(width: 5, height: 50)
         }
@@ -73,22 +72,17 @@ struct FlagView: View {
     }
 
     var body: some View {
-        NavigationLink(tag: true, selection: $delegate.isSelected) {
-            CountryView(country: delegate.country ?? .example)
-        } label: {
-            HStack(alignment: .top, spacing: -4) {
-                if !isCluster {
-                    pole
-                }
+        HStack(alignment: .top, spacing: -4) {
+            if !isCluster {
+                pole
+            }
 
-                if delegate.country != nil {
-                    flag
-                        .offset(y: 5)
-                        .zIndex(-1)
-                }
+            if delegate.country != nil {
+                flag
+                    .offset(y: isCluster ? 0 : 5)
+                    .zIndex(-1)
             }
         }
-        .padding(5)
         .drawingGroup()
     }
 }
@@ -104,7 +98,7 @@ struct FlagView_Previews: PreviewProvider {
 
     static var previews: some View {
         FlagView(delegate: flagDelegate)
-            .frame(minWidth: 56, minHeight: 40, alignment: .leading)
-//            .previewLayout(.sizeThatFits)
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }

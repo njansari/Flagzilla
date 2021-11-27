@@ -16,7 +16,6 @@ struct LearnQuestionsSummary: View {
     @EnvironmentObject private var settings: LearnSettings
     @EnvironmentObject private var progress: LearnProgress
 
-    @State private var showingStats = false
     @State private var selectedQuestionCategory: QuestionSummaryCategory = .correct
 
     let dismissAction: DismissAction
@@ -44,7 +43,7 @@ struct LearnQuestionsSummary: View {
     var correctCircle: some View {
         Circle()
             .trim(from: 0, to: percentageBreakdown.correct)
-            .stroke(Color(uiColor: QuestionSummaryCategory.correct.color), lineWidth: selectedQuestionCategory == .correct ? 40 : 35)
+            .stroke(QuestionSummaryCategory.correct.color, lineWidth: selectedQuestionCategory == .correct ? 40 : 35)
             .onTapGesture {
                 selectedQuestionCategory = .correct
             }
@@ -53,7 +52,7 @@ struct LearnQuestionsSummary: View {
     var incorrectCircle: some View {
         Circle()
             .trim(from: percentageBreakdown.correct, to: percentageBreakdown.correct + percentageBreakdown.incorrect)
-            .stroke(Color(uiColor: QuestionSummaryCategory.incorrect.color), lineWidth: selectedQuestionCategory == .incorrect ? 40 : 35)
+            .stroke(QuestionSummaryCategory.incorrect.color, lineWidth: selectedQuestionCategory == .incorrect ? 40 : 35)
             .onTapGesture {
                 selectedQuestionCategory = .incorrect
             }
@@ -62,7 +61,7 @@ struct LearnQuestionsSummary: View {
     var unansweredCircle: some View {
         Circle()
             .trim(from: percentageBreakdown.correct + percentageBreakdown.incorrect, to: 1)
-            .stroke(Color(uiColor: QuestionSummaryCategory.unanswered.color), lineWidth: selectedQuestionCategory == .unanswered ? 40 : 35)
+            .stroke(QuestionSummaryCategory.unanswered.color, lineWidth: selectedQuestionCategory == .unanswered ? 40 : 35)
             .onTapGesture {
                 selectedQuestionCategory = .unanswered
             }
@@ -79,6 +78,11 @@ struct LearnQuestionsSummary: View {
         }
     }
 
+    var questionRateLabel: String {
+        let formattedRate = progress.questionRate.formatted(.number.precision(.significantDigits(2)))
+        return "\(formattedRate) sec"
+    }
+
     var scoreHeader: some View {
         VStack {
             ZStack {
@@ -87,7 +91,7 @@ struct LearnQuestionsSummary: View {
 
                     if settings.useTimer {
                         VStack {
-                            Text(progress.questionRateLabel)
+                            Text(questionRateLabel)
                                 .fontWeight(.medium)
 
                             Text("per question")
@@ -144,13 +148,13 @@ struct LearnQuestionsSummary: View {
         }
         .background(.groupedBackground)
         .task {
-            loadAndSaveProgress()
+            await loadAndSaveProgress()
         }
     }
 
-    func loadAndSaveProgress() {
+    func loadAndSaveProgress() async {
         var loadedProgress: [SavedProgress] = []
-        loadedProgress.loadSaved()
+        await loadedProgress.loadSaved()
 
         let progressPerContinent = settings.continents.map { continent -> SavedProgress.ProgressPerContinent in
             let score = correctQuestions.filter { $0.element.answer.continents.contains(continent) }.count
@@ -159,7 +163,15 @@ struct LearnQuestionsSummary: View {
             return SavedProgress.ProgressPerContinent(continent: continent, score: score, numberOfQuestions: numberOfQuestions)
         }
 
-        let newProgress = SavedProgress(progressPerContinent: progressPerContinent)
+        let timing: SavedProgress.Timing?
+
+        if settings.useTimer {
+            timing = .init(timeElapased: progress.timeElapsed, totalTime: settings.timerDuration * 60, questionRate: progress.questionRate)
+        } else {
+            timing = nil
+        }
+
+        let newProgress = SavedProgress(progressPerContinent: progressPerContinent, timing: timing)
 
         loadedProgress.append(newProgress)
         loadedProgress.save()

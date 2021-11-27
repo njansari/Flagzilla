@@ -16,7 +16,7 @@ struct QuestionsSummarySegmentedControl: UIViewRepresentable {
                 questionCategory = questionType
 
                 if let sender = action.sender as? UISegmentedControl {
-                    sender.selectedSegmentTintColor = questionType.color
+                    sender.selectedSegmentTintColor = UIColor(questionType.color)
                 }
             }
         }
@@ -31,12 +31,14 @@ struct QuestionsSummarySegmentedControl: UIViewRepresentable {
         uiView.selectedSegmentIndex = QuestionSummaryCategory.allCases.firstIndex(of: questionCategory) ?? 0
 
         let questionType = QuestionSummaryCategory.allCases[uiView.selectedSegmentIndex]
-        uiView.selectedSegmentTintColor = questionType.color
+        uiView.selectedSegmentTintColor = UIColor(questionType.color)
     }
 }
 
 struct SegmentedControl_Previews: PreviewProvider {
     static var previews: some View {
         QuestionsSummarySegmentedControl(questionCategory: .constant(.correct))
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }

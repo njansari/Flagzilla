@@ -18,8 +18,15 @@ class FlagAnnotation: NSObject, MKAnnotation {
         country.coordinates
     }
 
-    // FIXME: Remove to not have automatic callouts.
     var title: String? {
         country.name
+    }
+
+    var subtitle: String? {
+        if title == country.officialName {
+            return nil
+        } else {
+            return country.officialName
+        }
     }
 }

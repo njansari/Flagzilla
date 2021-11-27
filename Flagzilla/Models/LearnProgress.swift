@@ -39,12 +39,12 @@ import SwiftUI
         }
     }
 
-    var questionRateLabel: String {
-        let timeElapsed = Double(settings.timerDuration * 60 - timeRemaining)
-        let rate = timeElapsed / Double(questionNumber)
-        let formattedRate = rate.formatted(.number.precision(.significantDigits(2)))
+    var timeElapsed: Int {
+       settings.timerDuration * 60 - timeRemaining
+    }
 
-        return "\(formattedRate) sec"
+    var questionRate: Double {
+        Double(timeElapsed) / Double(questionNumber)
     }
 
     func setup(settings: LearnSettings) {

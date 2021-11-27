@@ -14,9 +14,16 @@ struct SavedProgress: Codable, Identifiable {
         let numberOfQuestions: Int
     }
 
+    struct Timing: Codable {
+        let timeElapased: Int
+        let totalTime: Int
+        let questionRate: Double
+    }
+
     var id = UUID()
 
     let progressPerContinent: [ProgressPerContinent]
+    let timing: Timing?
 
     static let empty: [SavedProgress] = []
 
@@ -24,11 +31,11 @@ struct SavedProgress: Codable, Identifiable {
         Set(progressPerContinent.map(\.continent))
     }
 
-    var score: Int {
+    var totalScore: Int {
         progressPerContinent.map(\.score).reduce(0, +)
     }
 
-    var numberOfQuestions: Int {
+    var totalNumberOfQuestions: Int {
         progressPerContinent.map(\.numberOfQuestions).reduce(0, +)
     }
 }
@@ -39,16 +46,23 @@ extension Array where Element == SavedProgress {
         return documentsDirectory.appendingPathComponent("LearnProgress").appendingPathExtension(for: .data)
     }
 
-    mutating func loadSaved() {
-        if let data = try? Data(contentsOf: Self.fileUrl),
-           let savedProgress = try? JSONDecoder().decode(Self.self, from: data) {
-            self = savedProgress
+    mutating func loadSaved() async {
+        let savedProgress = Task { () -> Self in
+            guard let data = try? Data(contentsOf: Self.fileUrl),
+                  let savedProgress = try? JSONDecoder().decode(Self.self, from: data)
+            else { return [] }
+
+            return savedProgress
         }
+
+        self = await savedProgress.value
     }
 
     func save() {
-        if let data = try? JSONEncoder().encode(self) {
-            try? data.write(to: Self.fileUrl, options: .atomic)
+        Task {
+            if let data = try? JSONEncoder().encode(self) {
+                try? data.write(to: Self.fileUrl, options: .atomic)
+            }
         }
     }
 }
