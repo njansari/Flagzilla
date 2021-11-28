@@ -96,11 +96,11 @@ struct ChartView: View {
     var yAxisValues: StrideThrough<Int> {
         if dataType == .time && filterQuestionRate == .rate {
             let times = savedProgress.compactMap(\.timing?.questionRate)
-
             guard !times.isEmpty else { return stride(from: 1, through: 10, by: 1) }
 
-            let highestValue = (times.max() ?? 1).rounded(.up)
-            return stride(from: Int(highestValue), through: Int(highestValue * 10), by: Int.Stride(highestValue))
+            let highestValue = Int(times.max()?.rounded(.up) ?? 1)
+
+            return stride(from: highestValue, through: highestValue * 10, by: highestValue)
         } else {
             return stride(from: 1, through: 10, by: 1)
         }
@@ -179,7 +179,10 @@ struct ChartView: View {
             }
             .foregroundStyle(.red, disabled: savedProgress.isEmpty)
             .confirmationDialog("Are you sure?", isPresented: $showingDeleteConfirmation, titleVisibility: .visible) {
-                Button("Delete All Progress", role: .destructive, action: SavedProgress.empty.save)
+                Button("Delete All Progress", role: .destructive) {
+                    dismiss()
+                    SavedProgress.empty.save()
+                }
             } message: {
                 Text("All your progress will be deleted.")
             }

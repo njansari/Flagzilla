@@ -67,12 +67,16 @@ struct FlagsGridView: View {
         }
     }
 
+    var countriesCountText: some View {
+        Text("\(filteredCountries.count) countries")
+            .font(.callout.weight(.medium))
+            .animation(nil, value: filterContinent)
+    }
+
     var body: some View {
         NavigationView {
             ScrollView {
-                Text("\(filteredCountries.count) countries")
-                    .font(.callout.weight(.medium))
-                    .animation(nil, value: filterContinent)
+                countriesCountText
 
                 LazyVGrid(columns: columns, spacing: 12) {
                     ForEach(filteredCountries, content: FlagGridItem.init)

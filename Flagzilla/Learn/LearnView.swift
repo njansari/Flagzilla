@@ -15,32 +15,38 @@ struct LearnView: View {
     @State private var showingProgress = false
     @State private var showingLearn = false
 
+    var startButton: some View {
+        Button("Start") {
+            showingLearn = true
+        }
+        .buttonStyle(.listRow)
+        .fullScreenCover(isPresented: $showingLearn) {
+            LearnQuestionsView()
+                .environment(\.scenePhase, scenePhase)
+        }
+    }
+
+    var progressToolbarButton: some View {
+        Button {
+            showingProgress = true
+        } label: {
+            Label("Progress", systemImage: "chart.xyaxis.line")
+        }
+        .fullScreenCover(isPresented: $showingProgress, content: ChartView.init)
+    }
+
     var body: some View {
         NavigationView {
             List {
                 QuestionStyleView()
-
                 ContinentsFilterView()
-
                 OtherSettingsView()
 
-                Button("Start") {
-                    showingLearn = true
-                }
-                .buttonStyle(.listRow)
-                .fullScreenCover(isPresented: $showingLearn) {
-                    LearnQuestionsView()
-                        .environment(\.scenePhase, scenePhase)
-                }
+                startButton
             }
             .navigationTitle("Learn")
             .toolbar {
-                Button {
-                    showingProgress = true
-                } label: {
-                    Label("Progress", systemImage: "chart.xyaxis.line")
-                }
-                .fullScreenCover(isPresented: $showingProgress, content: ChartView.init)
+                progressToolbarButton
             }
         }
         .environmentObject(settings)

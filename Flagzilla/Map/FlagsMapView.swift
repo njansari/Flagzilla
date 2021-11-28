@@ -100,35 +100,38 @@ struct FlagsMapView: View {
         .background(.tertiaryGroupedBackground, in: RoundedRectangle(cornerRadius: 10))
     }
 
+    var overlayButtons: some View {
+        HStack(alignment: .top) {
+            doneButton
+
+            Spacer()
+
+            flagFilters
+        }
+        .font(.headline)
+        .foregroundStyle(.secondary)
+        .labelStyle(.iconOnly)
+        .shadow(color: Color(white: 0, opacity: 0.15), radius: 8)
+        .padding(10)
+    }
+
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 ZStack(alignment: .top) {
-                    Group {
-                        MapView(mapType: mapType.mkType, annotations: annotations)
+                    MapView(mapType: mapType.mkType, annotations: annotations)
 
-                        Rectangle()
-                            .fill(.ultraThinMaterial)
-                            .frame(height: geometry.safeAreaInsets.top)
-                    }
-                    .ignoresSafeArea()
-
-                    HStack(alignment: .top) {
-                        doneButton
-
-                        Spacer()
-
-                        flagFilters
-                    }
-                    .font(.headline)
-                    .foregroundStyle(.secondary)
-                    .labelStyle(.iconOnly)
-                    .shadow(color: Color(white: 0, opacity: 0.15), radius: 8)
-                    .padding(10)
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                        .frame(height: geometry.safeAreaInsets.top)
                 }
+                .ignoresSafeArea()
             }
             .navigationTitle("Map")
             .navigationBarHidden(true)
+            .overlay(alignment: .top) {
+                overlayButtons
+            }
         }
     }
 }

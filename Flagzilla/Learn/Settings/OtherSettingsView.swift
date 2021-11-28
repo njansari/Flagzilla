@@ -18,6 +18,30 @@ struct OtherSettingsView: View {
         }.count
     }
 
+    var numberOfQuestionsTextField: some View {
+        TextField("Number of questions", value: $settings.numberOfQuestions, format: .number, prompt: Text("max \(maxCountries)"))
+            .foregroundColor(numberOfQuestionsFocused ? .primary : .accentColor)
+            .multilineTextAlignment(.trailing)
+            .frame(maxWidth: 100)
+            .keyboardType(.numberPad)
+            .focused($numberOfQuestionsFocused)
+            .toolbar {
+                keyboardDoneToolbarButton
+            }
+    }
+
+    var keyboardDoneToolbarButton: some ToolbarContent {
+        ToolbarItemGroup(placement: .keyboard) {
+            Spacer()
+
+            Button("Done") {
+                numberOfQuestionsFocused = false
+                validateNumberOfQuestions()
+            }
+            .font(.body.bold())
+        }
+    }
+
     var body: some View {
         Section {
             HStack {
@@ -25,28 +49,7 @@ struct OtherSettingsView: View {
 
                 Spacer()
 
-                TextField("Number of questions", value: $settings.numberOfQuestions, format: .number, prompt: Text("max \(maxCountries)"))
-                    .foregroundColor(numberOfQuestionsFocused ? .primary : .accentColor)
-                    .multilineTextAlignment(.trailing)
-                    .frame(maxWidth: 100)
-                    .keyboardType(.numberPad)
-                    .focused($numberOfQuestionsFocused)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-
-                            Button("Done") {
-                                numberOfQuestionsFocused = false
-
-                                let range = 1...maxCountries
-
-                                if !range.contains(settings.numberOfQuestions) {
-                                    settings.numberOfQuestions.clamp(to: range)
-                                }
-                            }
-                            .font(.body.bold())
-                        }
-                    }
+                numberOfQuestionsTextField
             }
 
             Toggle("Show answer after each question", isOn: $settings.showsAnswerAfterQuestion)
@@ -62,6 +65,14 @@ struct OtherSettingsView: View {
                 Text("Timer")
                     .badge(settings.useTimer ? "On" : "Off")
             }
+        }
+    }
+
+    func validateNumberOfQuestions() {
+        let range = 2...maxCountries
+
+        if !range.contains(settings.numberOfQuestions) {
+            settings.numberOfQuestions.clamp(to: range)
         }
     }
 }

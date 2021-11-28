@@ -33,7 +33,7 @@ struct ContentView: View {
                 }
                 .tag(Tab.flags)
 
-            Text("")
+            ProgressView()
                 .tabItem {
                     Tab.map.tabItem
                 }

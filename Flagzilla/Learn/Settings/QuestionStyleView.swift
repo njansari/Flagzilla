@@ -63,8 +63,6 @@ struct QuestionStyleView: View {
             .padding(.vertical)
             .listRowInsets(EdgeInsets())
 
-            // TODO: Option for captial cities
-            // Picker?
             Toggle("Use countries' official name", isOn: $settings.useOfficialName)
                 .tint(.accentColor)
         }

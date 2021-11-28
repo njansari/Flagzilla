@@ -12,40 +12,51 @@ struct NameToFlagQuestionView: View {
 
     let columns = [GridItem(.flexible(minimum: 150), spacing: 20), GridItem(.flexible(minimum: 150), spacing: 20)]
 
-    var body: some View {
-        VStack(spacing: 80) {
-            Text(settings.useOfficialName ? progress.currentQuestion.answer.officialName : progress.currentQuestion.answer.name)
-                .font(.title.bold())
+    var questionText: some View {
+        Text(settings.useOfficialName ? progress.currentQuestion.answer.officialName : progress.currentQuestion.answer.name)
+            .font(.title.bold())
+    }
 
-            LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(progress.currentQuestion.answerOptions) { country in
-                    Button {
-                        progress.currentQuestion.selectedAnswer = country
+    var answerOptions: some View {
+        LazyVGrid(columns: columns, spacing: 10) {
+            ForEach(progress.currentQuestion.answerOptions) { country in
+                Button {
+                    progress.currentQuestion.selectedAnswer = country
 
-                        if progress.currentQuestion.isCorrect {
-                            progress.score += 1
-                        }
-                    } label: {
-                        AsyncImage(url: country.gridFlag, scale: 3, transaction: Transaction(animation: .easeIn(duration: 0.2))) { phase in
-                            if let image = phase.image {
-                                image
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(5)
-                                    .shadow(color: .primary.opacity(0.4), radius: 5)
-                            } else {
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(.quaternary)
-                            }
-                        }
-                        .frame(width: 150, height: 75)
+                    if progress.currentQuestion.isCorrect {
+                        progress.score += 1
                     }
-                    .buttonStyle(.answerOption(state: stateForAnswer(country: country)))
-                    .controlSize(.large)
-                    .allowsHitTesting(buttonAllowsHitTesting(country: country))
+                } label: {
+                    image(for: country)
                 }
+                .buttonStyle(.answerOption(state: stateForAnswer(country: country)))
+                .controlSize(.large)
+                .allowsHitTesting(buttonAllowsHitTesting(country: country))
             }
         }
+    }
+
+    var body: some View {
+        VStack(spacing: 80) {
+            questionText
+            answerOptions
+        }
+    }
+
+    func image(for country: Country) -> some View {
+        AsyncImage(url: country.gridFlag, scale: 3, transaction: Transaction(animation: .easeIn(duration: 0.2))) { phase in
+            if let image = phase.image {
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(5)
+                    .shadow(color: .primary.opacity(0.4), radius: 5)
+            } else {
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(.quaternary)
+            }
+        }
+        .frame(width: 150, height: 75)
     }
 
     func stateForAnswer(country: Country) -> AnswerState {

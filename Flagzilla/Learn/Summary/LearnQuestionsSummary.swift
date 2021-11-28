@@ -83,25 +83,29 @@ struct LearnQuestionsSummary: View {
         return "\(formattedRate) sec"
     }
 
+    var statsPagingView: some View {
+        TabView {
+            scoreText
+
+            if settings.useTimer {
+                VStack {
+                    Text(questionRateLabel)
+                        .fontWeight(.medium)
+
+                    Text("per question")
+                        .font(.caption)
+                }
+                .frame(maxWidth: 100)
+            }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .frame(width: 120, height: 120)
+    }
+
     var scoreHeader: some View {
         VStack {
             ZStack {
-                TabView {
-                    scoreText
-
-                    if settings.useTimer {
-                        VStack {
-                            Text(questionRateLabel)
-                                .fontWeight(.medium)
-
-                            Text("per question")
-                                .font(.caption)
-                        }
-                        .frame(maxWidth: 100)
-                    }
-                }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .frame(width: 120, height: 120)
+                statsPagingView
 
                 Group {
                     correctCircle
@@ -120,6 +124,17 @@ struct LearnQuestionsSummary: View {
         .padding(.horizontal)
     }
 
+    var questionsSummaryList: some View {
+        switch selectedQuestionCategory {
+            case .correct:
+                return QuestionSummaryList(category: .correct, questionsStyle: settings.style, questions: correctQuestions)
+            case .incorrect:
+                return QuestionSummaryList(category: .incorrect, questionsStyle: settings.style, questions: incorrectQuestions)
+            case .unanswered:
+                return QuestionSummaryList(category: .unanswered, questionsStyle: settings.style, questions: unansweredQuestions)
+        }
+    }
+
     var body: some View {
         VStack {
             scoreHeader
@@ -127,14 +142,7 @@ struct LearnQuestionsSummary: View {
             Spacer()
 
             List {
-                switch selectedQuestionCategory {
-                    case .correct:
-                        QuestionSummaryList(category: .correct, questionsStyle: settings.style, questions: correctQuestions)
-                    case .incorrect:
-                        QuestionSummaryList(category: .incorrect, questionsStyle: settings.style, questions: incorrectQuestions)
-                    case .unanswered:
-                        QuestionSummaryList(category: .unanswered, questionsStyle: settings.style, questions: unansweredQuestions)
-                }
+                questionsSummaryList
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Summary")

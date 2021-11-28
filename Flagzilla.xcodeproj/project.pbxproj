@@ -27,6 +27,7 @@
 		BD25B3DE27038661006D157E /* Image+Checkmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25B3DD27038661006D157E /* Image+Checkmarks.swift */; };
 		BD25B3E027039048006D157E /* FlagToNameQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25B3DF27039048006D157E /* FlagToNameQuestionView.swift */; };
 		BD25B3E2270875E3006D157E /* Comparable+Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25B3E1270875E3006D157E /* Comparable+Clamp.swift */; };
+		BD3871572753A99D00690BB2 /* FlagClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BD3871562753A99D00690BB2 /* FlagClassifier.mlmodel */; };
 		BD3D196926E5165F00400886 /* Coordinate+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196826E5165F00400886 /* Coordinate+Decodable.swift */; };
 		BD3D196B26E51E3300400886 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196A26E51E3300400886 /* CountryView.swift */; };
 		BD46D68726E7D8CB0073FCF2 /* ListRowButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */; };
@@ -84,6 +85,7 @@
 		BD25B3DD27038661006D157E /* Image+Checkmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Checkmarks.swift"; sourceTree = "<group>"; };
 		BD25B3DF27039048006D157E /* FlagToNameQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagToNameQuestionView.swift; sourceTree = "<group>"; };
 		BD25B3E1270875E3006D157E /* Comparable+Clamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamp.swift"; sourceTree = "<group>"; };
+		BD3871562753A99D00690BB2 /* FlagClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlagClassifier.mlmodel; sourceTree = "<group>"; };
 		BD3D196826E5165F00400886 /* Coordinate+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinate+Decodable.swift"; sourceTree = "<group>"; };
 		BD3D196A26E51E3300400886 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowButtonStyle.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				BD3D196726E50E8000400886 /* Extensions */,
 				BDB1964626E676E1001DC31F /* Models */,
 				BD5A210926D8FABB0025CCF3 /* Assets.xcassets */,
+				BD3871562753A99D00690BB2 /* FlagClassifier.mlmodel */,
 				BDCF63C926DA6BD000E4E4E6 /* countries.json */,
 				BDF43C8E26EE43AF00D21B9F /* Localizable.stringsdict */,
 				BDF43C9626EE64BB00D21B9F /* Info.plist */,
@@ -414,6 +417,7 @@
 				BD9CE41826EE735200BEA927 /* FlagAnnotation.swift in Sources */,
 				BD9CE41626EE72FA00BEA927 /* View+SizeChange.swift in Sources */,
 				BDE3CF202711F1F200067105 /* QuestionSummaryCategory.swift in Sources */,
+				BD3871572753A99D00690BB2 /* FlagClassifier.mlmodel in Sources */,
 				BDE3CF222712116400067105 /* Tab.swift in Sources */,
 				BDEAE3A026ECF65B00A77183 /* FlagClassifierView.swift in Sources */,
 				BD2169A32708E2D20041BE71 /* LearnProgress.swift in Sources */,
