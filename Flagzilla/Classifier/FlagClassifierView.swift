@@ -22,15 +22,15 @@ struct FlagClassifierView: View {
     @State private var classificationResults: [VNClassificationObservation]?
     @State private var resultsExpanded = false
 
-    var imagePreviewBackground: some View {
+    var imagePreviewBorder: some View {
         RoundedRectangle(cornerRadius: 10)
             .strokeBorder(.tertiary, lineWidth: 2)
     }
 
     var photoLibraryButton: some View {
         Button {
-            classificationResults = nil
             showingPhotoPicker = true
+            resetResults()
         } label: {
             Label("Photo Library", systemImage: "photo.on.rectangle")
         }
@@ -38,8 +38,8 @@ struct FlagClassifierView: View {
 
     var takePhotoButton: some View {
         Button {
-            classificationResults = nil
             showingCameraPicker = true
+            resetResults()
         } label: {
             Label("Take Photo", systemImage: "camera")
         }
@@ -47,8 +47,8 @@ struct FlagClassifierView: View {
 
     var chooseFileButton: some View {
         Button {
-            classificationResults = nil
             showingFilePicker = true
+            resetResults()
         } label: {
             Label("Choose File", systemImage: "folder")
         }
@@ -73,13 +73,15 @@ struct FlagClassifierView: View {
                     if let selectedImage = selectedImage {
                         Image(uiImage: selectedImage)
                             .resizable()
+                            .scaledToFill()
                     } else {
                         Image(systemName: "photo.fill")
                             .resizable()
+                            .scaledToFit()
                             .foregroundStyle(.tertiary)
                     }
                 }
-                .scaledToFit()
+                .frame(width: 299, height: 299)
                 .cornerRadius(10)
                 .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height / 3)
 
@@ -87,7 +89,7 @@ struct FlagClassifierView: View {
             }
             .padding(.vertical)
         }
-        .listRowBackground(imagePreviewBackground)
+        .listRowBackground(imagePreviewBorder)
     }
 
     var startButton: some View {
@@ -113,23 +115,39 @@ struct FlagClassifierView: View {
         }
     }
 
+    var displayedResults: [VNClassificationObservation] {
+        guard let classificationResults = classificationResults else { return [] }
+
+        if resultsExpanded {
+            let suitable = classificationResults.prefix { $0.confidence > 0.001 }
+            return Array(classificationResults.prefix(min(5, suitable.count)))
+        } else {
+            return Array(classificationResults.prefix(1))
+        }
+    }
+
     var resultsSection: some View {
         Section("Results") {
-            ForEach(classificationResults?.prefix(resultsExpanded ? 5 : 1) ?? [], id: \.self) { result in
-                HStack {
-                    Text(result.identifier)
-                        .fontWeight(result == classificationResults?.first ? .bold : .regular)
+            if displayedResults.isEmpty {
+                Text("There were no flags detected")
+                    .fontWeight(.medium)
+            } else {
+                ForEach(displayedResults, id: \.self) { result in
+                    HStack {
+                        Text(result.identifier)
 
-                    Spacer()
+                        Spacer()
 
-                    Text(result.confidence, format: .percent.precision(.significantDigits(3)))
-                        .foregroundStyle(.secondary)
+                        Text(result.confidence, format: .percent.precision(.significantDigits(3)))
+                            .foregroundStyle(.secondary)
+                    }
+                    .font(result == classificationResults?.first ? .body.bold() : .body)
                 }
-            }
 
-            if !resultsExpanded {
-                Button("See alternative suggestions…") {
-                    resultsExpanded = true
+                if classificationResults?.count ?? 0 > 1 && !resultsExpanded {
+                    Button("See alternative suggestions…") {
+                        resultsExpanded = true
+                    }
                 }
             }
         }
@@ -159,40 +177,44 @@ struct FlagClassifierView: View {
         }
     }
 
+    func resetResults() {
+        classificationResults = nil
+        resultsExpanded = false
+    }
+
+    func showErrorAlert(message: String) {
+        errorMessage = message
+        showingErrorAlert = true
+    }
+
     func classifyFlags() {
         guard let selectedImage = selectedImage,
               let cgImage = selectedImage.cgImage
         else {
-            errorMessage = "The image couldn't be prepared"
-            showingErrorAlert = true
-
+            showErrorAlert(message: "The image couldn't be prepared")
             return
         }
 
         guard let classifier = try? FlagClassifier(configuration: .init()),
               let model = try? VNCoreMLModel(for: classifier.model)
         else {
-            errorMessage = "The machine learning model couldn't be created"
-            showingErrorAlert = true
-
+            showErrorAlert(message: "The machine learning model couldn't be created")
             return
         }
 
         let request = VNCoreMLRequest(model: model) { request, error in
-            guard let results = request.results else {
-                errorMessage = error?.localizedDescription ?? ""
-                showingErrorAlert = true
-
+            guard let results = request.results,
+                  let classifications = results as? [VNClassificationObservation]
+            else {
+                showErrorAlert(message: error?.localizedDescription ?? "")
                 return
             }
 
-            guard let classifications = results as? [VNClassificationObservation] else { return }
             classificationResults = classifications
-
             isClassifying = false
         }
 
-        request.imageCropAndScaleOption = .scaleFit
+        request.imageCropAndScaleOption = .centerCrop
 
         let requestHandler = VNImageRequestHandler(cgImage: cgImage)
 
