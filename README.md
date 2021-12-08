@@ -20,3 +20,5 @@ My NEA project for A-level Computer Science. This is an iOS app made to help you
 
 #### Map with countries' flags
 - For each country, their flag on a pole is shown at their respective coordinates
+- Tapping on a flag shows a callout with the country's name and official name
+- Allows you to change the map style
