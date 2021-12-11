@@ -7,27 +7,13 @@
 
 import SwiftUI
 
-struct DataPoint: Equatable {
-    let value: Double
-}
-
-extension View {
-    @ViewBuilder func foregroundStyle<S: ShapeStyle>(_ style: S, disabled: Bool) -> some View {
-        if disabled {
-            foregroundStyle(.tertiary)
-        } else {
-            foregroundStyle(style)
-        }
-    }
-}
-
 struct ChartView: View {
-    enum DataType: String, CaseIterable {
+    private enum DataType: String, CaseIterable {
         case score = "Score"
         case time = "Time Taken"
     }
 
-    enum TimeFilter: String, CaseIterable {
+    private enum TimeFilter: String, CaseIterable {
         case total = "Relative To Total"
         case rate = "Per Question"
     }
@@ -43,41 +29,44 @@ struct ChartView: View {
 
     @State private var showingDeleteConfirmation = false
 
-    var continentFilters: [Continent?] {
+    private var continentFilters: [Continent?] {
         var allContinents: [Continent?] = [nil]
         allContinents.append(contentsOf: Continent.allCases.sorted())
 
         return allContinents
     }
 
-    var dataPoints: [DataPoint] {
+    private var dataPoints: [DataPoint] {
         let values = savedProgress.map { progress -> Double in
             switch dataType {
-                case .score:
-                    let filteredContinents = progress.progressPerContinent.filter { progress in
-                        filterContinents.contains(progress.continent)
-                    }
+            case .score:
+                // Filter progress by selected continents.
+                let filteredContinents = progress.progressPerContinent.filter { progress in
+                    filterContinents.contains(progress.continent)
+                }
 
-                    let score = filteredContinents.map(\.score).reduce(0, +)
-                    let numQuestions = filteredContinents.map(\.numberOfQuestions).reduce(0, +)
+                // Combine the individual `score` and `numberOfQuestions` properties into single values.
+                let score = filteredContinents.map(\.score).reduce(0, +)
+                let numQuestions = filteredContinents.map(\.numberOfQuestions).reduce(0, +)
 
-                    return Double(score) / Double(numQuestions)
-                case .time:
-                    guard let timing = progress.timing else { return .nan }
+                return Double(score) / Double(numQuestions)
+            case .time:
+                guard let timing = progress.timing else { return .nan }
 
-                    switch filterQuestionRate {
-                        case .total:
-                            return Double(timing.timeElapased) / Double(timing.totalTime)
-                        case .rate:
-                            return timing.questionRate / Double(yAxisValues.max() ?? 1) * 10
-                    }
+                switch filterQuestionRate {
+                case .total:
+                    return Double(timing.timeElapsed) / Double(timing.totalTime)
+                case .rate:
+                    return timing.questionRate / Double(yAxisValues.max() ?? 1) * 10
+                }
             }
         }
 
+        // Filters out all values that are NaN.
         return values.filter(\.isFinite).map(DataPoint.init)
     }
 
-    var continentsFilterButtons: some View {
+    private var continentsFilterButtons: some View {
         FlowLayoutView(continentFilters, spacing: 4) { continent in
             Toggle(continent?.rawValue ?? "All", isOn: toggleBinding(for: continent))
                 .toggleStyle(.borderedButton)
@@ -85,7 +74,7 @@ struct ChartView: View {
         }
     }
 
-    var timeFilterButtons: some View {
+    private var timeFilterButtons: some View {
         FlowLayoutView(TimeFilter.allCases, spacing: 4) { filter in
             Toggle(filter.rawValue, isOn: toggleBinding(for: filter))
                 .toggleStyle(.borderedButton)
@@ -93,20 +82,22 @@ struct ChartView: View {
         }
     }
 
-    var yAxisValues: StrideThrough<Int> {
+    private var yAxisValues: StrideThrough<Int> {
+        let defaultValues = stride(from: 1, through: 10, by: 1)
+
         if dataType == .time && filterQuestionRate == .rate {
             let times = savedProgress.compactMap(\.timing?.questionRate)
-            guard !times.isEmpty else { return stride(from: 1, through: 10, by: 1) }
+            guard !times.isEmpty else { return defaultValues }
 
             let highestValue = Int(times.max()?.rounded(.up) ?? 1)
 
             return stride(from: highestValue, through: highestValue * 10, by: highestValue)
         } else {
-            return stride(from: 1, through: 10, by: 1)
+            return defaultValues
         }
     }
 
-    var yAxisLines: some View {
+    private var yAxisLines: some View {
         VStack {
             ForEach(Array(yAxisValues), id: \.self) { _ in
                 Divider()
@@ -119,7 +110,7 @@ struct ChartView: View {
         }
     }
 
-    var yAxisLabels: some View {
+    private var yAxisLabels: some View {
         VStack(alignment: .trailing) {
             ForEach(yAxisValues.reversed(), id: \.self) { value in
                 Group {
@@ -138,7 +129,7 @@ struct ChartView: View {
         }
     }
 
-    var noDataText: some View {
+    private var noDataText: some View {
         VStack {
             Text("No Data")
                 .font(.title.weight(.semibold))
@@ -150,14 +141,14 @@ struct ChartView: View {
         .multilineTextAlignment(.center)
         .frame(maxWidth: 200)
         .padding()
-        .background {
+        .background(in: Capsule())
+        .overlay {
             Capsule()
                 .stroke(.tint, lineWidth: 2)
-                .background()
         }
     }
 
-    var lineGraph: some View {
+    private var lineGraph: some View {
         ZStack {
             if dataPoints.isEmpty {
                 noDataText
@@ -172,7 +163,7 @@ struct ChartView: View {
         .frame(maxWidth: .infinity)
     }
 
-    var deleteAllToolbarButton: some ToolbarContent {
+    private var deleteAllToolbarButton: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button("Delete All", role: .destructive) {
                 showingDeleteConfirmation = true
@@ -190,7 +181,7 @@ struct ChartView: View {
         }
     }
 
-    var titleToolbarMenu: some ToolbarContent {
+    private var titleToolbarMenu: some ToolbarContent {
         ToolbarItem(placement: .principal) {
             Menu {
                 Picker("Data type", selection: $dataType) {
@@ -211,7 +202,7 @@ struct ChartView: View {
         }
     }
 
-    var doneToolbarButton: some ToolbarContent {
+    private var doneToolbarButton: some ToolbarContent {
         ToolbarItem(placement: .confirmationAction) {
             Button("Done", action: dismiss.callAsFunction)
         }
@@ -221,10 +212,10 @@ struct ChartView: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 16) {
                 switch dataType {
-                    case .score:
-                        continentsFilterButtons
-                    case .time:
-                        timeFilterButtons
+                case .score:
+                    continentsFilterButtons
+                case .time:
+                    timeFilterButtons
                 }
 
                 ZStack {
@@ -254,7 +245,7 @@ struct ChartView: View {
         }
     }
 
-    func toggleBinding(for continent: Continent?) -> Binding<Bool> {
+    private func toggleBinding(for continent: Continent?) -> Binding<Bool> {
         Binding {
             if let continent = continent {
                 return filterContinents == [continent]
@@ -270,7 +261,7 @@ struct ChartView: View {
         }
     }
 
-    func toggleBinding(for questionRate: TimeFilter) -> Binding<Bool> {
+    private func toggleBinding(for questionRate: TimeFilter) -> Binding<Bool> {
         Binding {
             filterQuestionRate == questionRate
         } set: { _ in

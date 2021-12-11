@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MapView: UIViewRepresentable {
     let mapType: MKMapType
-    let annotations: [MKAnnotation]
+    let annotations: [FlagAnnotation]
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
@@ -18,8 +18,11 @@ struct MapView: UIViewRepresentable {
         mapView.pointOfInterestFilter = .excludingAll
         mapView.showsBuildings = false
 
-        mapView.register(FlagAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        mapView.register(FlagClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+        let annotationReuseID = MKMapViewDefaultAnnotationViewReuseIdentifier
+        let clusterReuseID = MKMapViewDefaultClusterAnnotationViewReuseIdentifier
+
+        mapView.register(FlagAnnotationView.self, forAnnotationViewWithReuseIdentifier: annotationReuseID)
+        mapView.register(FlagClusterAnnotationView.self, forAnnotationViewWithReuseIdentifier: clusterReuseID)
 
         return mapView
     }
@@ -37,6 +40,6 @@ struct MapView: UIViewRepresentable {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(mapType: .standard, annotations: [])
+        MapView(mapType: .standard, annotations: countries.map(FlagAnnotation.init))
     }
 }

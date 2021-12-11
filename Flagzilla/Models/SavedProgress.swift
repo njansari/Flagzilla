@@ -12,15 +12,27 @@ struct SavedProgress: Codable, Identifiable {
         let continent: Continent
         let score: Int
         let numberOfQuestions: Int
+
+        init(_ continent: Continent, score: Int, numberOfQuestions: Int) {
+            self.continent = continent
+            self.score = score
+            self.numberOfQuestions = numberOfQuestions
+        }
     }
 
     struct Timing: Codable {
-        let timeElapased: Int
+        let timeElapsed: Int
         let totalTime: Int
         let questionRate: Double
+
+        init(elapsed: Int, total: Int, rate: Double) {
+            timeElapsed = elapsed
+            totalTime = total
+            questionRate = rate
+        }
     }
 
-    var id = UUID()
+    private(set) var id = UUID()
 
     let progressPerContinent: [ProgressPerContinent]
     let timing: Timing?

@@ -8,13 +8,7 @@
 import Foundation
 
 extension Bundle {
-    func decodeJSON<T: Decodable>(
-        ofType type: T.Type = T.self,
-        from file: String,
-        dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .base64,
-        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
-        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys
-    ) -> T {
+    func decodeJSON<T: Decodable>(ofType type: T.Type = T.self, from file: String) -> T {
         let fileName = NSString(string: file).deletingPathExtension
 
         guard let url = url(forResource: fileName, withExtension: "json") else {
@@ -26,9 +20,6 @@ extension Bundle {
         }
 
         let decoder = JSONDecoder()
-        decoder.dataDecodingStrategy = dataDecodingStrategy
-        decoder.dateDecodingStrategy = dateDecodingStrategy
-        decoder.keyDecodingStrategy = keyDecodingStrategy
 
         do {
             return try decoder.decode(type, from: data)

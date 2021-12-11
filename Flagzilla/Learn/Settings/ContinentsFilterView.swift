@@ -10,7 +10,7 @@ import SwiftUI
 struct ContinentsFilterView: View {
     @EnvironmentObject private var settings: LearnSettings
 
-    var continentsList: some View {
+    private var continentsList: some View {
         ForEach(Continent.allCases.sorted(), id: \.self) { continent in
             HStack {
                 Text(continent.rawValue)
@@ -25,10 +25,13 @@ struct ContinentsFilterView: View {
                     }
                 }
             }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(continent.rawValue)
+            .accessibilityAddTraits(settings.continents.contains(continent) ? .isSelected : [])
         }
     }
 
-    var header: some View {
+    private var header: some View {
         HStack(alignment: .lastTextBaseline) {
             Text("Continents")
 
@@ -53,7 +56,7 @@ struct ContinentsFilterView: View {
         }
     }
 
-    func toggleSelection(of continent: Continent) {
+    private func toggleSelection(of continent: Continent) {
         if settings.continents.contains(continent) {
             if settings.continents.count > 1 {
                 settings.continents.remove(continent)

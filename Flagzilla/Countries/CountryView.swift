@@ -7,31 +7,41 @@
 
 import SwiftUI
 
+// This is the detail view that shows when the user selects a flag in the scrolling grid.
+// Information about the country is shown alongside a larger image of its flag.
 struct CountryView: View {
     let country: Country
 
-    var flagImage: some View {
-        AsyncImage(url: country.detailFlag, scale: 3, transaction: Transaction(animation: .easeOut)) { phase in
-            if let image = phase.image {
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .shadow(color: .primary.opacity(0.4), radius: 5)
-                    .transition(.opacity)
-            } else {
-                Color.clear
-                    .frame(height: 0)
-            }
+    private var capitalsLabel: LocalizedStringKey {
+        "Capitals \(country.capitalCities.count)"
+    }
+
+    private var continentsLabel: LocalizedStringKey {
+        "Continents \(country.continents.count)"
+    }
+
+    private var flagImage: some View {
+        AsyncFlagImage(url: country.largeFlag, animation: .easeOut) { image in
+            image
+                .resizable()
+                .scaledToFit()
+                .shadow(color: .primary.opacity(0.4), radius: 5)
+                .transition(.opacity.combined(with: .scale(scale: 0.95, anchor: .bottom)))
+        } placeholder: {
+            Rectangle()
+                .fill(.quaternary)
+                .blur(radius: 20)
+                .frame(height: 200)
+                .transition(.opacity)
         }
     }
 
-    var countryHeader: some View {
+    private var countryHeader: some View {
         VStack(spacing: 18) {
             flagImage
 
             Text(country.officialName)
                 .multilineTextAlignment(.center)
-                .animation(nil) // TODO: find alternative
         }
         .frame(maxWidth: .infinity)
     }
@@ -39,8 +49,8 @@ struct CountryView: View {
     var body: some View {
         Form {
             Section {
-                InformationRowView(label: "Capitals \(country.capitalCities.count)", content: country.capitalCities.formatted())
-                InformationRowView(label: "Continents \(country.continents.count)", content: country.continents.formatted())
+                InformationRowView(label: capitalsLabel, content: country.capitalCities.formatted())
+                InformationRowView(label: continentsLabel, content: country.continents.formatted())
                 InformationRowView(label: "Country code", content: country.id.uppercased())
                 InformationRowView(label: "Coordinates", content: country.coordinates.formatted())
             } header: {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NameToFlagStyle: View {
-    var textQuestion: some View {
+    private var textQuestion: some View {
         RoundedRectangle(cornerRadius: 2, style: .continuous)
             .fill(.tint)
             .overlay {
@@ -18,7 +18,7 @@ struct NameToFlagStyle: View {
             .frame(height: 15)
     }
 
-    var flagOption: some View {
+    private var flagOption: some View {
         RoundedRectangle(cornerRadius: 4, style: .continuous)
             .fill(.tertiary)
             .overlay {
@@ -44,6 +44,7 @@ struct NameToFlagStyle: View {
         .font(.system(size: 15))
         .foregroundStyle(.white, .tertiary)
         .frame(height: 100)
+        .accessibilityAddTraits(.isButton)
     }
 }
 

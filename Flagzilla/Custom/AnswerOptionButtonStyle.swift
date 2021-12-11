@@ -28,17 +28,17 @@ struct AnswerOptionButtonStyle: PrimitiveButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         switch state {
-            case .none:
-                Button(configuration)
-                    .buttonStyle(.bordered)
-            case .unselected(let isCorrect):
-                Button(configuration)
-                    .buttonStyle(.bordered)
-                    .tint(tintColor(isCorrect: isCorrect))
-            case .selected(let isCorrect):
-                Button(configuration)
-                    .buttonStyle(.borderedProminent)
-                    .tint(tintColor(isCorrect: isCorrect))
+        case .none:
+            Button(configuration)
+                .buttonStyle(.bordered)
+        case .unselected(let isCorrect):
+            Button(configuration)
+                .buttonStyle(.bordered)
+                .tint(tintColor(isCorrect: isCorrect))
+        case .selected(let isCorrect):
+            Button(configuration)
+                .buttonStyle(.borderedProminent)
+                .tint(tintColor(isCorrect: isCorrect))
         }
     }
 }

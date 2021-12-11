@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RoundedCornerRectangle: Shape {
-    let corners: UIRectCorner
-    let radius: Double
+    private let corners: UIRectCorner
+    private let radius: Double
 
     init(_ corners: UIRectCorner, cornerRadius: Double) {
         self.corners = corners

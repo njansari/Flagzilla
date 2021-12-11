@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct FlowLayoutView<Data: RandomAccessCollection, Content: View>: View where Data.Element: Hashable {
-    let data: Data
-    let spacing: CGFloat
-    let content: (Data.Element) -> Content
-
     @State private var totalHeight: Double = .infinity
+
+    private let data: Data
+    private let spacing: CGFloat
+    private let content: (Data.Element) -> Content
 
     init(_ data: Data, spacing: CGFloat = 4, @ViewBuilder content: @escaping (Data.Element) -> Content) {
         self.data = data
@@ -20,10 +20,10 @@ struct FlowLayoutView<Data: RandomAccessCollection, Content: View>: View where D
         self.content = content
     }
 
-    var background: some View {
+    private var background: some View {
         Color.clear
-            .onSizeChange { size in
-                totalHeight = size.height
+            .onSizeChange {
+                totalHeight = $0.height
             }
     }
 
@@ -32,7 +32,7 @@ struct FlowLayoutView<Data: RandomAccessCollection, Content: View>: View where D
             .frame(maxHeight: totalHeight)
     }
 
-    @ViewBuilder func main(geometry: GeometryProxy) -> some View {
+    @ViewBuilder private func main(geometry: GeometryProxy) -> some View {
         var size: CGSize = .zero
         var lastHeight: CGFloat = .zero
 
@@ -44,17 +44,18 @@ struct FlowLayoutView<Data: RandomAccessCollection, Content: View>: View where D
                         topAlignment(size: &size, item: item)
                     }
                     .alignmentGuide(.leading) { dimensions in
-                        leadingAlignment(geometry: geometry, dimensions: dimensions, size: &size, lastHeight: &lastHeight, item: item)
+                        leadingAlignment(
+                            geometry: geometry, dimensions: dimensions,
+                            size: &size, lastHeight: &lastHeight, item: item
+                        )
                     }
             }
         }
         .padding(-spacing)
-        .background {
-            background
-        }
+        .background { background }
     }
 
-    func topAlignment(size: inout CGSize, item: Data.Element) -> CGFloat {
+    private func topAlignment(size: inout CGSize, item: Data.Element) -> CGFloat {
         let result = size.height
 
         if item == data.last {
@@ -64,7 +65,10 @@ struct FlowLayoutView<Data: RandomAccessCollection, Content: View>: View where D
         return result
     }
 
-    func leadingAlignment(geometry: GeometryProxy, dimensions: ViewDimensions, size: inout CGSize, lastHeight: inout CGFloat, item: Data.Element) -> CGFloat {
+    private func leadingAlignment(
+        geometry: GeometryProxy, dimensions: ViewDimensions,
+        size: inout CGSize, lastHeight: inout CGFloat, item: Data.Element
+    ) -> CGFloat {
         if abs(size.width - dimensions.width) > geometry.size.width {
             size.width = 0
             size.height -= lastHeight

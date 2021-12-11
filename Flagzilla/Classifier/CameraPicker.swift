@@ -27,14 +27,17 @@ struct CameraPicker: UIViewControllerRepresentable {
 }
 
 extension CameraPicker {
-    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        let cameraPicker: CameraPicker
+    @MainActor final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        private let cameraPicker: CameraPicker
 
         init(cameraPicker: CameraPicker) {
             self.cameraPicker = cameraPicker
         }
 
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        func imagePickerController(
+            _ picker: UIImagePickerController,
+            didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+        ) {
             picker.dismiss(animated: true)
 
             if let image = info[.editedImage] as? UIImage {

@@ -8,6 +8,12 @@
 import SwiftUI
 
 extension Image {
+    static var checkmark: some View {
+        self.init(systemName: "checkmark")
+            .font(.body.bold())
+            .foregroundStyle(.tint)
+    }
+
     static var unselectedCheckmark: some View {
         self.init(systemName: "circle")
             .foregroundStyle(.quaternary)
@@ -17,21 +23,13 @@ extension Image {
         self.init(systemName: "checkmark.circle.fill")
             .foregroundStyle(.tint)
     }
-
-    static var checkmark: some View {
-        self.init(systemName: "checkmark")
-            .font(.body.bold())
-            .foregroundStyle(.tint)
-    }
 }
 
 struct Image_Checkmarks_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
             Image.checkmark
-
             Image.unselectedCheckmark
-
             Image.selectedCheckmark
         }
     }

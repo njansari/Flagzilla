@@ -10,27 +10,25 @@ import SwiftUI
 struct OtherSettingsView: View {
     @EnvironmentObject private var settings: LearnSettings
 
-    @FocusState var numberOfQuestionsFocused: Bool
+    @FocusState private var numberOfQuestionsFocused: Bool
 
-    var maxCountries: Int {
-        countries.filter { country in
-            country.continents.isSupersetOrSubset(of: settings.continents)
-        }.count
+    private var maxCountries: Int {
+        countries.filter { $0.continents.isSupersetOrSubset(of: settings.continents) }.count
     }
 
-    var numberOfQuestionsTextField: some View {
-        TextField("Number of questions", value: $settings.numberOfQuestions, format: .number, prompt: Text("max \(maxCountries)"))
+    private var numberOfQuestionsTextField: some View {
+        let promptText = Text("max \(maxCountries)")
+
+        return TextField("Number of questions", value: $settings.numberOfQuestions, format: .number, prompt: promptText)
             .foregroundColor(numberOfQuestionsFocused ? .primary : .accentColor)
             .multilineTextAlignment(.trailing)
             .frame(maxWidth: 100)
             .keyboardType(.numberPad)
             .focused($numberOfQuestionsFocused)
-            .toolbar {
-                keyboardDoneToolbarButton
-            }
+            .toolbar { keyboardDoneToolbarButton }
     }
 
-    var keyboardDoneToolbarButton: some ToolbarContent {
+    private var keyboardDoneToolbarButton: some ToolbarContent {
         ToolbarItemGroup(placement: .keyboard) {
             Spacer()
 
@@ -68,7 +66,7 @@ struct OtherSettingsView: View {
         }
     }
 
-    func validateNumberOfQuestions() {
+    private func validateNumberOfQuestions() {
         let range = 2...maxCountries
 
         if !range.contains(settings.numberOfQuestions) {

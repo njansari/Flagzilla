@@ -13,9 +13,9 @@ struct LineChartShape: Shape {
         case points
     }
 
-    let dataPoints: [DataPoint]
-    let pointSize: Double
-    let style: Style
+    private let dataPoints: [DataPoint]
+    private let pointSize: Double
+    private let style: Style
 
     init(for style: Style, dataPoints: [DataPoint], pointSize: Double) {
         self.style = style
@@ -41,19 +41,19 @@ struct LineChartShape: Shape {
             y = drawRect.height + drawRect.minY - y
 
             switch style {
-                case .points:
-                    x -= pointSize / 2
-                    y -= pointSize / 2
+            case .points:
+                x -= pointSize / 2
+                y -= pointSize / 2
 
-                    if index != 0 {
-                        path.addEllipse(in: CGRect(x: x, y: y, width: pointSize, height: pointSize))
-                    }
-                case .line:
-                    if index == 0 {
-                        path.move(to: CGPoint(x: x, y: y))
-                    } else {
-                        path.addLine(to: CGPoint(x: x, y: y))
-                    }
+                if index != 0 {
+                    path.addEllipse(in: CGRect(x: x, y: y, width: pointSize, height: pointSize))
+                }
+            case .line:
+                if index == 0 {
+                    path.move(to: CGPoint(x: x, y: y))
+                } else {
+                    path.addLine(to: CGPoint(x: x, y: y))
+                }
             }
         }
 

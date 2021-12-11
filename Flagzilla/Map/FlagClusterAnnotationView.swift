@@ -8,22 +8,22 @@
 import MapKit
 import SwiftUI
 
-@MainActor class FlagClusterAnnotationView: MKAnnotationView {
-    private let flagDelegate: FlagDelegate
+final class FlagClusterAnnotationView: MKAnnotationView {
+    private let flagDelegate = FlagDelegate()
 
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-        flagDelegate = FlagDelegate()
-
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
 
-        let flagView = FlagView(delegate: flagDelegate).onSizeChange { size in
-            self.centerOffset = CGPoint(x: size.width / 2, y: -size.height / 2)
-        }
+        let size = FlagView.flagSize
+
+        let flagView = FlagView(delegate: flagDelegate)
+            .offset(x: size.width / 2, y: size.height / 2)
 
         let flagViewController = UIHostingController(rootView: flagView)
-
         addSubview(flagViewController.view)
 
+        frame.size = size
+        centerOffset = CGPoint(x: size.width / 2, y: -size.height / 2)
         backgroundColor = .clear
     }
 

@@ -7,22 +7,22 @@
 
 import SwiftUI
 
+// This is first tab, responsible for showing the world flags browser.
 struct FlagsGridView: View {
-    @State private var filterContinent: Continents = {
-        let value = UserDefaults.standard.value(forKey: "filterContinent") as? Int ?? Continents.all.rawValue
-        return Continents(rawValue: value)
-    }()
+    @AppStorage("filterContinent") private var filterContinent: Continents = .all
 
     @State private var searchText = ""
 
-    let columns = [GridItem(.adaptive(minimum: 320 / 3))]
+    // The column width for the scrolling grid is defined by the width of the individual flags.
+    private let gridColumns = [GridItem(.adaptive(minimum: 320 / 3))]
 
-    var filteredCountries: [Country] {
+    private var filteredCountries: [Country] {
         countries.filter { country in
             var shouldInclude = true
 
             let trimmedSearchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
 
+            // Check if the search text contains any of the country's name properties.
             if !trimmedSearchText.isEmpty {
                 let searchParameters = [\Country.name, \Country.officialName, \Country.id]
 
@@ -33,19 +33,21 @@ struct FlagsGridView: View {
                 shouldInclude = containsSearch.contains(true)
             }
 
+            // Check if the country satisfies the current continents filter.
             if filterContinent != .all {
                 shouldInclude = shouldInclude && country.continents.isSuperset(of: filterContinent)
             }
 
             return shouldInclude
-        }.sorted { $0.name < $1.name }
+        }.sorted(using: KeyPathComparator(\.name))
     }
 
-    var navigationTitle: String {
+    // The title for this view is determined by the current continent filter.
+    private var navigationTitle: String {
         filterContinent == .all ? "All Countries" : filterContinent.formatted()
     }
 
-    var filterMenu: some View {
+    private var filterMenu: some View {
         Menu {
             Picker("Filter Continents", selection: $filterContinent.animation()) {
                 Text("All")
@@ -62,12 +64,10 @@ struct FlagsGridView: View {
             Label("Filter countries by continent", systemImage: "line.3.horizontal.decrease.circle")
                 .symbolVariant(filterContinent == .all ? .none : .fill)
         }
-        .onChange(of: filterContinent) { newfilter in
-            UserDefaults.standard.set(newfilter.rawValue, forKey: "filterContinent")
-        }
     }
 
-    var countriesCountText: some View {
+    // The number of countries visible in the grid is shown to give the user the effect of any operational filters.
+    private var countriesCountText: some View {
         Text("\(filteredCountries.count) countries")
             .font(.callout.weight(.medium))
             .animation(nil, value: filterContinent)
@@ -78,7 +78,7 @@ struct FlagsGridView: View {
             ScrollView {
                 countriesCountText
 
-                LazyVGrid(columns: columns, spacing: 12) {
+                LazyVGrid(columns: gridColumns, spacing: 12) {
                     ForEach(filteredCountries, content: FlagGridItem.init)
                 }
                 .padding([.horizontal, .bottom])
@@ -86,9 +86,7 @@ struct FlagsGridView: View {
             }
             .navigationTitle(navigationTitle)
             .background(.groupedBackground)
-            .toolbar {
-                filterMenu
-            }
+            .toolbar { filterMenu }
         }
     }
 }

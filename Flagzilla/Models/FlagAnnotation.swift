@@ -7,7 +7,7 @@
 
 import MapKit
 
-class FlagAnnotation: NSObject, MKAnnotation {
+final class FlagAnnotation: NSObject, MKAnnotation {
     let country: Country
 
     init(country: Country) {
@@ -23,10 +23,6 @@ class FlagAnnotation: NSObject, MKAnnotation {
     }
 
     var subtitle: String? {
-        if title == country.officialName {
-            return nil
-        } else {
-            return country.officialName
-        }
+        country.officialNameIsName ? nil : country.officialName
     }
 }

@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-@MainActor class LearnProgress: ObservableObject {
+@MainActor final class LearnProgress: ObservableObject {
+    typealias QuestionBreakdown = (correct: Double, incorrect: Double, unanswered: Double)
+
     @Published var questionNumber = 1 {
         didSet {
             currentQuestion = questions[questionNumber - 1]
@@ -22,12 +24,12 @@ import SwiftUI
         }
     }
 
-    @Published var score = 0
+    @Published private(set) var score = 0
     @Published var timeRemaining = 0
 
     private var settings = LearnSettings()
 
-    var questions: [Question] = []
+    private(set) var questions: [Question] = []
 
     var progressValue: Double {
         let questionsCompleted = Double(questionNumber) - 1
@@ -40,11 +42,31 @@ import SwiftUI
     }
 
     var timeElapsed: Int {
-       settings.timerDuration * 60 - timeRemaining
+        settings.timerDuration * 60 - timeRemaining
     }
 
     var questionRate: Double {
         Double(timeElapsed) / Double(questionNumber)
+    }
+
+    var percentageBreakdown: QuestionBreakdown {
+        let correct = Double(correctQuestions.count) / Double(settings.numberOfQuestions)
+        let incorrect = Double(incorrectQuestions.count) / Double(settings.numberOfQuestions)
+        let unanswered = Double(unansweredQuestions.count) / Double(settings.numberOfQuestions)
+
+        return (correct, incorrect, unanswered)
+    }
+
+    var correctQuestions: [EnumeratedQuestion] {
+        questions.enumerated().filter { $0.element.isCorrect }
+    }
+
+    var incorrectQuestions: [EnumeratedQuestion] {
+        questions.enumerated().filter { !$0.element.isCorrect && $0.element.isAnswered }
+    }
+
+    var unansweredQuestions: [EnumeratedQuestion] {
+        questions.enumerated().filter { !$0.element.isAnswered }
     }
 
     func setup(settings: LearnSettings) {
@@ -54,14 +76,21 @@ import SwiftUI
             country.continents.isSupersetOrSubset(of: settings.continents)
         }
 
-        let questionCountries = allCountries.prefix(settings.numberOfQuestions)
+        let questionCountries = allCountries.shuffled().prefix(settings.numberOfQuestions)
 
-        let allQuestions = questionCountries.map { country in
+        questions = questionCountries.map { country in
             Question(country: country, style: settings.style, answerContinents: settings.continents)
         }
 
-        questions = allQuestions.shuffled()
         currentQuestion = questions[0]
+    }
+
+    func setCurrentQuestionAnswer(to country: Country) {
+        currentQuestion.selectedAnswer = country
+
+        if currentQuestion.isCorrect {
+            score += 1
+        }
     }
 
     func back() {

@@ -15,7 +15,7 @@ struct LearnView: View {
     @State private var showingProgress = false
     @State private var showingLearn = false
 
-    var startButton: some View {
+    private var startButton: some View {
         Button("Start") {
             showingLearn = true
         }
@@ -26,7 +26,7 @@ struct LearnView: View {
         }
     }
 
-    var progressToolbarButton: some View {
+    private var progressToolbarButton: some View {
         Button {
             showingProgress = true
         } label: {
@@ -45,9 +45,7 @@ struct LearnView: View {
                 startButton
             }
             .navigationTitle("Learn")
-            .toolbar {
-                progressToolbarButton
-            }
+            .toolbar { progressToolbarButton }
         }
         .environmentObject(settings)
     }

@@ -28,10 +28,8 @@ struct QuestionsSummarySegmentedControl: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        uiView.selectedSegmentIndex = QuestionSummaryCategory.allCases.firstIndex(of: questionCategory) ?? 0
-
-        let questionType = QuestionSummaryCategory.allCases[uiView.selectedSegmentIndex]
-        uiView.selectedSegmentTintColor = UIColor(questionType.color)
+        uiView.selectedSegmentIndex = QuestionSummaryCategory.allCases.firstIndex(of: questionCategory)!
+        uiView.selectedSegmentTintColor = UIColor(questionCategory.color)
     }
 }
 

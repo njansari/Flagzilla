@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol Option: CaseIterable, Hashable {}
-
-enum Continent: String, Codable, Comparable, Option {
+enum Continent: String, CaseIterable, Codable, Comparable {
     case asia = "Asia"
     case africa = "Africa"
     case northAmerica = "North America"
@@ -25,19 +23,9 @@ enum Continent: String, Codable, Comparable, Option {
 
 typealias Continents = Set<Continent>
 
-extension Set where Element == Continent {
-    static var all: Continents {
-        Set(Continent.allCases)
-    }
-
-    func formatted() -> String {
-        map(\.rawValue).sorted().formatted()
-    }
-}
-
-extension Set where Element: Option {
-    init(rawValue: Int) {
-        var result: Set<Element> = []
+extension Continents: RawRepresentable {
+    public init(rawValue: Int) {
+        var result = Self()
 
         for (index, element) in Element.allCases.enumerated() {
             let value = rawValue >> index
@@ -50,7 +38,7 @@ extension Set where Element: Option {
         self = result
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
         var rawValue = 0
 
         for (index, element) in Element.allCases.enumerated() where contains(element) {
@@ -60,7 +48,15 @@ extension Set where Element: Option {
         return rawValue
     }
 
-    func isSupersetOrSubset(of other: Set<Element>) -> Bool {
+    static var all: Continents {
+        Set(Continent.allCases)
+    }
+
+    func formatted() -> String {
+        map(\.rawValue).sorted().formatted()
+    }
+
+    func isSupersetOrSubset(of other: Self) -> Bool {
         isSuperset(of: other) || isSubset(of: other)
     }
 }

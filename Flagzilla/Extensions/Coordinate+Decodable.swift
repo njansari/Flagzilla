@@ -22,26 +22,9 @@ extension Coordinate: Decodable {
 
         self.init(latitude: latitude, longitude: longitude)
     }
-}
 
-extension Coordinate {
     func formatted() -> String {
-        let formattedLatitude: String = {
-            if latitude.isLess(than: 0) {
-                return "\(latitude.magnitude)º S"
-            } else {
-                return "\(latitude)º N"
-            }
-        }()
-
-        let formattedLongitude: String = {
-            if longitude.isLess(than: 0) {
-                return "\(longitude.magnitude)º W"
-            } else {
-                return "\(longitude)º E"
-            }
-        }()
-
-        return "\(formattedLatitude), \(formattedLongitude)"
+        let formatStyle = CoordinateFormatStyle()
+        return formatStyle.format(self)
     }
 }

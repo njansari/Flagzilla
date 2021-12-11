@@ -29,8 +29,8 @@ struct PhotoPicker: UIViewControllerRepresentable {
 }
 
 extension PhotoPicker {
-    class Coordinator: PHPickerViewControllerDelegate {
-        let photoPicker: PhotoPicker
+    final class Coordinator: PHPickerViewControllerDelegate {
+        private let photoPicker: PhotoPicker
 
         init(photoPicker: PhotoPicker) {
             self.photoPicker = photoPicker
@@ -39,16 +39,14 @@ extension PhotoPicker {
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true)
 
-            if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
-                let previousImage = photoPicker.image
+            guard let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self)
+            else { return }
 
-                itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
-                    guard let self = self,
-                          let image = image as? UIImage,
-                          self.photoPicker.image == previousImage
-                    else { return }
-
-                    self.photoPicker.image = image
+            itemProvider.loadObject(ofClass: UIImage.self) { image, _ in
+                if let image = image as? UIImage {
+                    Task { @MainActor in
+                        self.photoPicker.image = image
+                    }
                 }
             }
         }

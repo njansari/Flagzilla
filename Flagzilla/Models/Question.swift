@@ -18,22 +18,14 @@ struct Question {
 
         var allAnswers = [answer]
 
-        let numberOfAnswers: Int = {
-            switch style {
-                case .flagToName: return 3
-                case .nameToFlag: return 4
-            }
-        }()
+        var allCountries = countries
+        allCountries.remove(answer)
 
-        while allAnswers.count < numberOfAnswers {
-            let newCountry = countries.filter { country in
-                country.continents.isSupersetOrSubset(of: answerContinents)
-            }.randomElement() ?? .example
+        let wrongAnswers = allCountries.filter { country in
+            country.continents.isSupersetOrSubset(of: answerContinents)
+        }.randomSample(count: style.numberOfAnswers - 1)
 
-            if !allAnswers.contains(newCountry) {
-                allAnswers.append(newCountry)
-            }
-        }
+        allAnswers.append(contentsOf: wrongAnswers)
 
         answerOptions = allAnswers.shuffled()
     }
@@ -49,6 +41,7 @@ struct Question {
     static var example: Question {
         var question = Question(country: .example, style: .flagToName, answerContinents: .all)
         question.selectedAnswer = .example
+
         return question
     }
 }

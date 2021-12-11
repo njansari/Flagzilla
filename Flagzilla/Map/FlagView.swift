@@ -6,36 +6,27 @@
 //
 
 import SwiftUI
-
-@MainActor class FlagDelegate: ObservableObject {
-    @Published var country: Country?
-    @Published var clusterCount = 0
-}
+import MapKit
 
 struct FlagView: View {
-    @ObservedObject var delegate: FlagDelegate
-    
-    var isCluster: Bool {
+    @ObservedObject private(set) var delegate: FlagDelegate
+
+    static let flagSize = CGSize(width: 48, height: 36)
+    static let flagOnPoleSize = CGSize(width: 54, height: 58)
+
+    private var isCluster: Bool {
         delegate.clusterCount != 0
     }
 
-    var flagImageUrl: URL? {
-        if let country = delegate.country {
-            return country.mapFlag
-        } else {
-            return nil
-        }
+    private var flagImageUrl: URL? {
+        delegate.country?.wavingFlag
     }
 
-    var flagTransition: AnyTransition {
-        if isCluster {
-            return .opacity
-        } else {
-            return .opacity.combined(with: .move(edge: .bottom))
-        }
+    private var flagTransition: AnyTransition {
+        isCluster ? .opacity : .opacity.combined(with: .move(edge: .bottom))
     }
 
-    var pole: some View {
+    private var pole: some View {
         VStack(spacing: -2) {
             Circle()
                 .fill(.conicGradient(colors: [.yellow, .brown, .yellow], center: .center, angle: .radians(.pi / -2)))
@@ -48,26 +39,24 @@ struct FlagView: View {
         }
     }
 
-    var flag: some View {
-        AsyncImage(url: flagImageUrl, scale: 3, transaction: Transaction(animation: .easeOut)) { phase in
-            if let image = phase.image {
-                ZStack {
-                    image
-                        .brightness(isCluster ? -0.2 : 0)
+    private var flag: some View {
+        AsyncFlagImage(url: flagImageUrl, animation: .easeOut) { image in
+            ZStack {
+                image
+                    .brightness(isCluster ? -0.2 : 0)
 
-                    if isCluster {
-                        Image(systemName: "\(delegate.clusterCount).circle")
-                            .font(.title2.bold())
-                            .foregroundStyle(.white)
-                            .shadow(radius: 1)
-                            .background(.ultraThinMaterial, in: Circle())
-                    }
+                if isCluster {
+                    Image(systemName: "\(delegate.clusterCount).circle")
+                        .font(.title2.bold())
+                        .foregroundStyle(.white)
+                        .shadow(radius: 1)
+                        .background(.ultraThinMaterial, in: Circle())
                 }
-                .transition(flagTransition)
-            } else {
-                Color.clear
-                    .frame(width: 48, height: 36)
             }
+            .transition(flagTransition)
+        } placeholder: {
+            Color.clear
+                .frame(width: Self.flagSize.width, height: Self.flagSize.height)
         }
     }
 

@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Capitals %lld</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>Captial %#@capitalsCount@</string>
-		<key>capitalsCount</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>lld</string>
-			<key>one</key>
-			<string>city</string>
-			<key>other</key>
-			<string>cities</string>
-		</dict>
-	</dict>
-	<key>Continents %lld</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@continentsCount@</string>
-		<key>continentsCount</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>lld</string>
-			<key>one</key>
-			<string>Continent</string>
-			<key>other</key>
-			<string>Continents</string>
-		</dict>
-	</dict>
-	<key>%lld countries</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@countriesCount@</string>
-		<key>countriesCount</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>lld</string>
-			<key>zero</key>
-			<string>No countries</string>
-			<key>one</key>
-			<string>1 country</string>
-			<key>other</key>
-			<string>%lld countries</string>
-		</dict>
-	</dict>
-</dict>
+    <dict>
+        <key>Capitals %lld</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>Captial %#@capitalsCount@</string>
+            <key>capitalsCount</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>lld</string>
+                <key>one</key>
+                <string>city</string>
+                <key>other</key>
+                <string>cities</string>
+            </dict>
+        </dict>
+        <key>Continents %lld</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@continentsCount@</string>
+            <key>continentsCount</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>lld</string>
+                <key>one</key>
+                <string>Continent</string>
+                <key>other</key>
+                <string>Continents</string>
+            </dict>
+        </dict>
+        <key>%lld countries</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@countriesCount@</string>
+            <key>countriesCount</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>lld</string>
+                <key>zero</key>
+                <string>No countries</string>
+                <key>one</key>
+                <string>1 country</string>
+                <key>other</key>
+                <string>%lld countries</string>
+            </dict>
+        </dict>
+    </dict>
 </plist>

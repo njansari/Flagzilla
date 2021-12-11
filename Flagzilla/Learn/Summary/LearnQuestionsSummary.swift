@@ -8,11 +8,8 @@
 import SwiftUI
 
 typealias EnumeratedQuestion = (offset: Int, element: Question)
-typealias QuestionBreakdown = (correct: Double, incorrect: Double, unanswered: Double)
 
 struct LearnQuestionsSummary: View {
-    @Environment(\.dismiss) private var dismiss
-
     @EnvironmentObject private var settings: LearnSettings
     @EnvironmentObject private var progress: LearnProgress
 
@@ -20,56 +17,13 @@ struct LearnQuestionsSummary: View {
 
     let dismissAction: DismissAction
 
-    var percentageBreakdown: QuestionBreakdown {
-        let correct = Double(correctQuestions.count) / Double(settings.numberOfQuestions)
-        let incorrect = Double(incorrectQuestions.count) / Double(settings.numberOfQuestions)
-        let unanswered = Double(unansweredQuestions.count) / Double(settings.numberOfQuestions)
-
-        return (correct, incorrect, unanswered)
+    private var questionBreakdown: LearnProgress.QuestionBreakdown {
+        progress.percentageBreakdown
     }
 
-    var correctQuestions: [EnumeratedQuestion] {
-        progress.questions.enumerated().filter { $0.element.isCorrect }
-    }
-
-    var incorrectQuestions: [EnumeratedQuestion] {
-        progress.questions.enumerated().filter { !$0.element.isCorrect && $0.element.isAnswered }
-    }
-
-    var unansweredQuestions: [EnumeratedQuestion] {
-        progress.questions.enumerated().filter { !$0.element.isAnswered }
-    }
-
-    var correctCircle: some View {
-        Circle()
-            .trim(from: 0, to: percentageBreakdown.correct)
-            .stroke(QuestionSummaryCategory.correct.color, lineWidth: selectedQuestionCategory == .correct ? 40 : 35)
-            .onTapGesture {
-                selectedQuestionCategory = .correct
-            }
-    }
-
-    var incorrectCircle: some View {
-        Circle()
-            .trim(from: percentageBreakdown.correct, to: percentageBreakdown.correct + percentageBreakdown.incorrect)
-            .stroke(QuestionSummaryCategory.incorrect.color, lineWidth: selectedQuestionCategory == .incorrect ? 40 : 35)
-            .onTapGesture {
-                selectedQuestionCategory = .incorrect
-            }
-    }
-
-    var unansweredCircle: some View {
-        Circle()
-            .trim(from: percentageBreakdown.correct + percentageBreakdown.incorrect, to: 1)
-            .stroke(QuestionSummaryCategory.unanswered.color, lineWidth: selectedQuestionCategory == .unanswered ? 40 : 35)
-            .onTapGesture {
-                selectedQuestionCategory = .unanswered
-            }
-    }
-
-    var scoreText: some View {
+    private var scoreText: some View {
         VStack {
-            Text(percentageBreakdown.correct, format: .percent)
+            Text(questionBreakdown.correct, format: .percent.rounded(rule: .down).precision(.significantDigits(2)))
                 .font(.largeTitle.bold())
 
             Text("\(progress.score)/\(settings.numberOfQuestions)")
@@ -78,12 +32,12 @@ struct LearnQuestionsSummary: View {
         }
     }
 
-    var questionRateLabel: String {
+    private var questionRateLabel: String {
         let formattedRate = progress.questionRate.formatted(.number.precision(.significantDigits(2)))
         return "\(formattedRate) sec"
     }
 
-    var statsPagingView: some View {
+    private var statsPagingView: some View {
         TabView {
             scoreText
 
@@ -102,19 +56,20 @@ struct LearnQuestionsSummary: View {
         .frame(width: 120, height: 120)
     }
 
-    var scoreHeader: some View {
+    private var scoreHeader: some View {
         VStack {
             ZStack {
                 statsPagingView
 
                 Group {
-                    correctCircle
-                    incorrectCircle
-                    unansweredCircle
+                    TrimmedProgressCircle(for: .correct, selectedCategory: $selectedQuestionCategory)
+                    TrimmedProgressCircle(for: .incorrect, selectedCategory: $selectedQuestionCategory)
+                    TrimmedProgressCircle(for: .unanswered, selectedCategory: $selectedQuestionCategory)
                 }
                 .rotationEffect(.radians(.pi / -2))
                 .frame(width: 150, height: 150)
                 .animation(.easeInOut, value: selectedQuestionCategory)
+                .accessibilityHidden(true)
             }
             .multilineTextAlignment(.center)
             .frame(maxHeight: 220)
@@ -124,14 +79,20 @@ struct LearnQuestionsSummary: View {
         .padding(.horizontal)
     }
 
-    var questionsSummaryList: some View {
+    private var questionSummaryList: some View {
         switch selectedQuestionCategory {
-            case .correct:
-                return QuestionSummaryList(category: .correct, questionsStyle: settings.style, questions: correctQuestions)
-            case .incorrect:
-                return QuestionSummaryList(category: .incorrect, questionsStyle: settings.style, questions: incorrectQuestions)
-            case .unanswered:
-                return QuestionSummaryList(category: .unanswered, questionsStyle: settings.style, questions: unansweredQuestions)
+        case .correct:
+            return QuestionSummaryList(for: .correct, questionStyle: settings.style)
+        case .incorrect:
+            return QuestionSummaryList(for: .incorrect, questionStyle: settings.style)
+        case .unanswered:
+            return QuestionSummaryList(for: .unanswered, questionStyle: settings.style)
+        }
+    }
+
+    private var doneToolbarButton: some ToolbarContent {
+        ToolbarItem(placement: .confirmationAction) {
+            Button("Done", action: dismissAction.callAsFunction)
         }
     }
 
@@ -141,42 +102,32 @@ struct LearnQuestionsSummary: View {
 
             Spacer()
 
-            List {
-                questionsSummaryList
-            }
-            .listStyle(.insetGrouped)
-            .navigationTitle("Summary")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done", action: dismissAction.callAsFunction)
-                }
-            }
+            questionSummaryList
+                .navigationTitle("Summary")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .toolbar { doneToolbarButton }
         }
         .background(.groupedBackground)
-        .task {
-            await loadAndSaveProgress()
-        }
+        .task { await saveProgress() }
     }
 
-    func loadAndSaveProgress() async {
+    private func saveProgress() async {
         var loadedProgress: [SavedProgress] = []
         await loadedProgress.loadSaved()
 
         let progressPerContinent = settings.continents.map { continent -> SavedProgress.ProgressPerContinent in
-            let score = correctQuestions.filter { $0.element.answer.continents.contains(continent) }.count
-            let numberOfQuestions = progress.questions.filter { $0.answer.continents.contains(continent) }.count
+            let score = progress.correctQuestions.filter { $0.element.answer.continents.contains(continent) }.count
+            let numQuestions = progress.questions.filter { $0.answer.continents.contains(continent) }.count
 
-            return SavedProgress.ProgressPerContinent(continent: continent, score: score, numberOfQuestions: numberOfQuestions)
+            return SavedProgress.ProgressPerContinent(continent, score: score, numberOfQuestions: numQuestions)
         }
 
-        let timing: SavedProgress.Timing?
+        var timing: SavedProgress.Timing? = nil
 
         if settings.useTimer {
-            timing = .init(timeElapased: progress.timeElapsed, totalTime: settings.timerDuration * 60, questionRate: progress.questionRate)
-        } else {
-            timing = nil
+            let duration = settings.timerDuration * 60
+            timing = .init(elapsed: progress.timeElapsed, total: duration, rate: progress.questionRate)
         }
 
         let newProgress = SavedProgress(progressPerContinent: progressPerContinent, timing: timing)

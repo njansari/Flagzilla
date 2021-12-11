@@ -10,31 +10,25 @@ struct FlagToNameQuestionView: View {
     @EnvironmentObject private var settings: LearnSettings
     @EnvironmentObject private var progress: LearnProgress
 
-    var questionFlagImage: some View {
-        AsyncImage(url: progress.currentQuestion.answer.detailFlag, scale: 3, transaction: Transaction(animation: .easeIn(duration: 0.2))) { phase in
-            if let image = phase.image {
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(10)
-                    .shadow(color: .primary.opacity(0.4), radius: 5)
-            } else {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(.quaternary)
-            }
+    private var questionFlagImage: some View {
+        AsyncFlagImage(url: progress.currentQuestion.answer.largeFlag, animation: .easeIn(duration: 0.2)) { image in
+            image
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(10)
+                .shadow(color: .primary.opacity(0.4), radius: 5)
+        } placeholder: {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.quaternary)
         }
         .frame(maxHeight: 200)
     }
 
-    var answerOptions: some View {
+    private var answerOptions: some View {
         VStack(spacing: 20) {
             ForEach(progress.currentQuestion.answerOptions) { country in
                 Button {
-                    progress.currentQuestion.selectedAnswer = country
-
-                    if progress.currentQuestion.isCorrect {
-                        progress.score += 1
-                    }
+                    progress.setCurrentQuestionAnswer(to: country)
                 } label: {
                     Text(settings.useOfficialName ? country.officialName : country.name)
                         .font(.title3.weight(.medium))
@@ -54,7 +48,7 @@ struct FlagToNameQuestionView: View {
         }
     }
 
-    func stateForAnswer(country: Country) -> AnswerState {
+    private func stateForAnswer(country: Country) -> AnswerState {
         guard let selectedAnswer = progress.currentQuestion.selectedAnswer else {
             return .none
         }
@@ -68,9 +62,9 @@ struct FlagToNameQuestionView: View {
         }
     }
 
-    func buttonAllowsHitTesting(country: Country) -> Bool {
+    private func buttonAllowsHitTesting(country: Country) -> Bool {
         if settings.showsAnswerAfterQuestion {
-            return progress.currentQuestion.selectedAnswer == nil
+            return !progress.currentQuestion.isAnswered
         } else {
             return progress.currentQuestion.selectedAnswer != country
         }

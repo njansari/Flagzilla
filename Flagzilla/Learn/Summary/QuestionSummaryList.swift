@@ -8,18 +8,35 @@
 import SwiftUI
 
 struct QuestionSummaryList: View {
-    let category: QuestionSummaryCategory
-    let questionsStyle: LearnSettings.QuestionAnswerStyle
-    let questions: [EnumeratedQuestion]
+    @EnvironmentObject private var progress: LearnProgress
 
-    var noQuestionsText: some View {
+    private let category: QuestionSummaryCategory
+    private let style: LearnSettings.QuestionAnswerStyle
+
+    init(for category: QuestionSummaryCategory, questionStyle: LearnSettings.QuestionAnswerStyle) {
+        self.category = category
+        style = questionStyle
+    }
+
+    private var questions: [EnumeratedQuestion] {
+        switch category {
+        case .correct:
+            return progress.correctQuestions
+        case .incorrect:
+            return progress.incorrectQuestions
+        case .unanswered:
+            return progress.unansweredQuestions
+        }
+    }
+
+    private var noQuestionsText: some View {
         Text(category.noAnswersLabel)
             .font(.headline)
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity)
     }
 
-    var questionsList: some View {
+    private var questionsList: some View {
         ForEach(questions, id: \.offset) { question in
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
@@ -55,44 +72,43 @@ struct QuestionSummaryList: View {
     }
 
     var body: some View {
-        if questions.isEmpty {
-            noQuestionsText
-        } else {
-            questionsList
-        }
-    }
-
-    func image(for country: Country) -> some View {
-        let transaction = Transaction(animation: .easeIn(duration: 0.1))
-
-        return AsyncImage(url: country.summmaryFlag, scale: 3, transaction: transaction) { phase in
-            if let image = phase.image {
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(2)
-                    .shadow(color: .primary.opacity(0.4), radius: 2)
+        List {
+            if questions.isEmpty {
+                noQuestionsText
             } else {
-                RoundedRectangle(cornerRadius: 2)
-                    .fill(.quaternary)
+                questionsList
             }
         }
+        .listStyle(.insetGrouped)
     }
 
-    func userAnswer(for question: EnumeratedQuestion) -> some View {
+    private func image(for country: Country) -> some View {
+        AsyncFlagImage(url: country.miniFlag, animation: .easeIn(duration: 0.1)) { image in
+            image
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(2)
+                .shadow(color: .primary.opacity(0.4), radius: 2)
+        } placeholder: {
+            RoundedRectangle(cornerRadius: 2)
+                .fill(.quaternary)
+        }
+    }
+
+    private func userAnswer(for question: EnumeratedQuestion) -> some View {
         Group {
             if let selectedCountry = question.element.selectedAnswer {
-                switch questionsStyle {
-                    case .flagToName:
-                        Text("You chose: **\(selectedCountry.name)**")
-                    case .nameToFlag:
-                        HStack {
-                            Text("You chose: ")
+                switch style {
+                case .flagToName:
+                    Text("You chose: **\(selectedCountry.name)**")
+                case .nameToFlag:
+                    HStack {
+                        Text("You chose: ")
 
-                            image(for: selectedCountry)
-                                .frame(height: 40)
-                                .frame(maxWidth: 80, alignment: .leading)
-                        }
+                        image(for: selectedCountry)
+                            .frame(height: 40)
+                            .frame(maxWidth: 80, alignment: .leading)
+                    }
                 }
             }
         }
@@ -102,12 +118,10 @@ struct QuestionSummaryList: View {
 
 struct QuestionSummaryList_Previews: PreviewProvider {
     static var previews: some View {
-        List {
-            QuestionSummaryList(category: .incorrect, questionsStyle: .flagToName, questions: (0...10).map { ($0, .example) })
+        Group {
+            QuestionSummaryList(for: .incorrect, questionStyle: .flagToName)
+            QuestionSummaryList(for: .incorrect, questionStyle: .nameToFlag)
         }
-
-        List {
-            QuestionSummaryList(category: .incorrect, questionsStyle: .nameToFlag, questions: (0...10).map { ($0, .example) })
-        }
+        .environmentObject(LearnProgress())
     }
 }
