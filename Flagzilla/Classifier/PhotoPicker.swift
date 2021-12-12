@@ -43,10 +43,8 @@ extension PhotoPicker {
             else { return }
 
             itemProvider.loadObject(ofClass: UIImage.self) { image, _ in
-                if let image = image as? UIImage {
-                    Task { @MainActor in
-                        self.photoPicker.image = image
-                    }
+                Task { @MainActor in
+                    self.photoPicker.image = image as? UIImage
                 }
             }
         }

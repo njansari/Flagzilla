@@ -39,10 +39,7 @@ extension CameraPicker {
             didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
         ) {
             picker.dismiss(animated: true)
-
-            if let image = info[.editedImage] as? UIImage {
-                cameraPicker.image = image
-            }
+            cameraPicker.image = info[.editedImage] as? UIImage
         }
     }
 }
