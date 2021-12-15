@@ -47,7 +47,7 @@ struct CountryView: View {
     }
 
     var body: some View {
-        Form {
+        List {
             Section {
                 InformationRowView(label: capitalsLabel, content: country.capitalCities.formatted())
                 InformationRowView(label: continentsLabel, content: country.continents.formatted())

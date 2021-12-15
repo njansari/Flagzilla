@@ -11,16 +11,19 @@ import Vision
 struct FlagClassifierView: View {
     @StateObject private var classifier = FlagImageClassifier()
 
-    @State private var comparisonCountry: Country?
+    @State private var isClassifying = false
+    @State private var showingErrorAlert = false
+    @State private var classificationError: ClassificationError?
 
     @State private var resultsExpanded = false
+    @State private var comparisonCountry: Country?
 
     private var startButton: some View {
         Button {
-            classifier.isClassifying = true
+            isClassifying = true
             classifier.classifyFlags()
         } label: {
-            if classifier.isClassifying {
+            if isClassifying {
                 ProgressView()
                     .tint(.white)
             } else {
@@ -29,10 +32,10 @@ struct FlagClassifierView: View {
         }
         .buttonStyle(.listRow)
         .disabled(classifier.selectedImage == nil)
-        .allowsHitTesting(!classifier.isClassifying)
-        .alert(isPresented: $classifier.showingErrorAlert, error: classifier.classificationError) {
+        .allowsHitTesting(!isClassifying)
+        .alert(isPresented: $showingErrorAlert, error: classificationError) {
             Button("OK") {
-                classifier.classificationError = nil
+                classificationError = nil
             }
         }
     }
@@ -90,6 +93,7 @@ struct FlagClassifierView: View {
         NavigationView {
             Form {
                 ClassificationImagePreview(classifier: classifier, resultsExpanded: $resultsExpanded)
+                    .disabled(isClassifying)
 
                 if classifier.classificationResults == nil {
                     startButton
@@ -99,8 +103,18 @@ struct FlagClassifierView: View {
             }
             .navigationTitle("Flag Classifier")
         }
-        .overlay {
-            ImageComparisonView(classifier: classifier, comparisonCountry: $comparisonCountry)
+        .overlay { ImageComparisonView(classifier: classifier, comparisonCountry: $comparisonCountry) }
+        .onAppear(perform: setupClassifier)
+    }
+
+    func setupClassifier() {
+        classifier.stopClassificationHandler = { error in
+            if let error = error {
+                showingErrorAlert = true
+                classificationError = error
+            }
+
+            isClassifying = false
         }
     }
 }

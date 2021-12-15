@@ -9,6 +9,8 @@ import SwiftUI
 import Vision
 
 @MainActor class FlagImageClassifier: ObservableObject {
+    typealias StopClassificationHandler = (ClassificationError?) -> Void
+
     struct ImageScaleOptions {
         let aspectRatio: CGFloat?
         let contentMode: ContentMode
@@ -17,12 +19,10 @@ import Vision
 
     @Published var selectedImage: UIImage?
     @Published var imageScaleOption: VNImageCropAndScaleOption = .centerCrop
-    @Published var isClassifying = false
 
     @Published var classificationResults: [VNClassificationObservation]?
 
-    @Published var showingErrorAlert = false
-    @Published var classificationError: ClassificationError?
+    var stopClassificationHandler: StopClassificationHandler?
 
     var imageOptions: ImageScaleOptions {
         let aspectRatio: CGFloat? = imageScaleOption == .scaleFill ? 1 : nil
@@ -32,17 +32,11 @@ import Vision
         return ImageScaleOptions(aspectRatio: aspectRatio, contentMode: contentMode, alignment: alignment)
     }
 
-    private func showErrorAlert(error: ClassificationError) {
-        classificationError = error
-        showingErrorAlert = true
-        isClassifying = false
-    }
-
     func classifyFlags() {
         guard let selectedImage = selectedImage,
               let cgImage = selectedImage.cgImage
         else {
-            showErrorAlert(error: .failureWithReason("The image couldn't be prepared"))
+            stopClassificationHandler?(.failureWithMessage("The image couldn't be prepared"))
             return
         }
 
@@ -52,32 +46,30 @@ import Vision
             let classifier = try FlagClassifier(configuration: .init())
             model = try VNCoreMLModel(for: classifier.model)
         } catch {
-            showErrorAlert(error: .failureWithError(error))
+            stopClassificationHandler?(.failureWithError(error))
             return
         }
 
-        let request = VNCoreMLRequest(model: model) { request, error in
-            guard let results = request.results,
-                  let classifications = results as? [VNClassificationObservation]
-            else {
-                self.showErrorAlert(error: .failureWithError(error))
-                return
-            }
-
-            withAnimation {
-                // Remove any results with a confidence level of less than 1%.
-                self.classificationResults = classifications.filter { $0.confidence >= 0.01 }
-            }
-
-            self.isClassifying = false
-        }
-
+        let request = VNCoreMLRequest(model: model)
         request.imageCropAndScaleOption = imageScaleOption
 
         let requestHandler = VNImageRequestHandler(cgImage: cgImage)
 
-        Task {
-            try? requestHandler.perform([request])
+        do {
+            try requestHandler.perform([request])
+        } catch {
+            stopClassificationHandler?(.failureWithError(error))
         }
+
+        let results = request.results as? [VNClassificationObservation]
+
+        // Remove any results with a confidence level of less than 1%.
+        let filteredResults = results?.filter { $0.confidence >= 0.01 }
+
+        withAnimation {
+            classificationResults = filteredResults?.sorted(by: \.confidence, order: .reverse)
+        }
+
+        stopClassificationHandler?(nil)
     }
 }

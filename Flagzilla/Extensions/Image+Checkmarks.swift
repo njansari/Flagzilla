@@ -1,4 +1,3 @@
-//
 //  Image+Checkmarks.swift
 //  Flagzilla
 //
@@ -9,18 +8,18 @@ import SwiftUI
 
 extension Image {
     static var checkmark: some View {
-        self.init(systemName: "checkmark")
+        Image(systemName: "checkmark")
             .font(.body.bold())
             .foregroundStyle(.tint)
     }
 
     static var unselectedCheckmark: some View {
-        self.init(systemName: "circle")
+        Image(systemName: "circle")
             .foregroundStyle(.quaternary)
     }
 
     static var selectedCheckmark: some View {
-        self.init(systemName: "checkmark.circle.fill")
+        Image(systemName: "checkmark.circle.fill")
             .foregroundStyle(.tint)
     }
 }
@@ -32,5 +31,7 @@ struct Image_Checkmarks_Previews: PreviewProvider {
             Image.unselectedCheckmark
             Image.selectedCheckmark
         }
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }

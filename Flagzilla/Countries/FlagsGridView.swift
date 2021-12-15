@@ -39,7 +39,7 @@ struct FlagsGridView: View {
             }
 
             return shouldInclude
-        }.sorted(using: KeyPathComparator(\.name))
+        }.sorted(by: \.name)
     }
 
     // The title for this view is determined by the current continent filter.

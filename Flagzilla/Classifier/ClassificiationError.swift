@@ -8,12 +8,12 @@
 import Foundation
 
 enum ClassificationError: LocalizedError {
-    case failureWithReason(String)
+    case failureWithMessage(String)
     case failureWithError(Error?)
 
     var errorDescription: String? {
         switch self {
-        case .failureWithReason(let reason):
+        case .failureWithMessage(let reason):
             return reason
         case .failureWithError(let error):
             return error?.localizedDescription

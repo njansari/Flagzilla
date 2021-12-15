@@ -10,6 +10,7 @@ import SwiftUI
 struct ImageComparisonView: View {
     @ObservedObject private(set) var classifier: FlagImageClassifier
 
+    @State private var selectedImageHeight: CGFloat?
     @Binding var comparisonCountry: Country?
 
     private var closeButton: some View {
@@ -64,7 +65,8 @@ struct ImageComparisonView: View {
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(options: classifier.imageOptions)
-                .frame(width: 299, height: 299)
+                .onSizeChange { selectedImageHeight = $0.height }
+                .frame(width: 299, height: selectedImageHeight?.clamped(to: 0...299))
                 .clipped()
 
             Text("Selected Image")
@@ -82,7 +84,15 @@ struct ImageComparisonView: View {
 }
 
 struct ImageComparisonView_Previews: PreviewProvider {
+    static let classifier: FlagImageClassifier = {
+        let classifier = FlagImageClassifier()
+        classifier.selectedImage = UIImage(systemName: "photo.fill")
+        classifier.imageScaleOption = .scaleFit
+
+        return classifier
+    }()
+
     static var previews: some View {
-        ImageComparisonView(classifier: FlagImageClassifier(), comparisonCountry: .constant(.example))
+        ImageComparisonView(classifier: classifier, comparisonCountry: .constant(.example))
     }
 }

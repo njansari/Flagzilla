@@ -38,6 +38,7 @@
 		BD54C3FF2765FEA30067F79D /* FlagImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD54C3FE2765FEA30067F79D /* FlagImageClassifier.swift */; };
 		BD54C40127661D640067F79D /* ImageComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD54C40027661D640067F79D /* ImageComparisonView.swift */; };
 		BD54C403276620870067F79D /* View+AspectRatioOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD54C402276620870067F79D /* View+AspectRatioOptions.swift */; };
+		BD54C405276656890067F79D /* Collection+SortedKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD54C404276656890067F79D /* Collection+SortedKeyPath.swift */; };
 		BD58C0082700BF710002407C /* OtherSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58C0072700BF710002407C /* OtherSettingsView.swift */; };
 		BD58C00A2700DDCE0002407C /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD58C0092700DDCE0002407C /* TimerView.swift */; };
 		BD5A210626D8FABA0025CCF3 /* FlagzillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5A210526D8FABA0025CCF3 /* FlagzillaApp.swift */; };
@@ -113,6 +114,7 @@
 		BD54C3FE2765FEA30067F79D /* FlagImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagImageClassifier.swift; sourceTree = "<group>"; };
 		BD54C40027661D640067F79D /* ImageComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageComparisonView.swift; sourceTree = "<group>"; };
 		BD54C402276620870067F79D /* View+AspectRatioOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AspectRatioOptions.swift"; sourceTree = "<group>"; };
+		BD54C404276656890067F79D /* Collection+SortedKeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SortedKeyPath.swift"; sourceTree = "<group>"; };
 		BD58C0072700BF710002407C /* OtherSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherSettingsView.swift; sourceTree = "<group>"; };
 		BD58C0092700DDCE0002407C /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		BD5A210226D8FABA0025CCF3 /* Flagzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flagzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,14 +274,15 @@
 			children = (
 				BD25B3E1270875E3006D157E /* Comparable+Clamp.swift */,
 				BDC3661B275AA800000754C4 /* Collection+RandomSample.swift */,
+				BD54C404276656890067F79D /* Collection+SortedKeyPath.swift */,
 				BD1AB90126E3A30B00C38D33 /* Bundle+DecodeJSON.swift */,
 				BD3D196826E5165F00400886 /* Coordinate+Decodable.swift */,
 				BDF43C9126EE55B800D21B9F /* ShapeStyle+Background.swift */,
 				BD25B3DD27038661006D157E /* Image+Checkmarks.swift */,
-				BD9CE41526EE72FA00BEA927 /* View+SizeChange.swift */,
+				BD54C402276620870067F79D /* View+AspectRatioOptions.swift */,
 				BDC3661527592319000754C4 /* View+ForegroundStyleDisabled.swift */,
 				BDC36617275924A3000754C4 /* View+RedactedCondition.swift */,
-				BD54C402276620870067F79D /* View+AspectRatioOptions.swift */,
+				BD9CE41526EE72FA00BEA927 /* View+SizeChange.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -289,10 +292,10 @@
 			children = (
 				BD994F572757572100DC9419 /* AsyncFlagImage.swift */,
 				BD994F552756B36E00DC9419 /* CloseButton.swift */,
+				BD221CBD27516B94000CF063 /* RoundedCornerRectangle.swift */,
 				BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */,
 				BD2169A02708DC980041BE71 /* AnswerOptionButtonStyle.swift */,
 				BD10FECE27172F2E00E9AB79 /* BorderedButtonToggleStyle.swift */,
-				BD221CBD27516B94000CF063 /* RoundedCornerRectangle.swift */,
 				BD5B97A327419D1F0022484A /* CountdownTimerFormatStyle.swift */,
 				BDC3661F275BD119000754C4 /* CoordinateFormatStyle.swift */,
 			);
@@ -349,6 +352,7 @@
 		BDB1964626E676E1001DC31F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BD9CE41726EE735200BEA927 /* FlagAnnotation.swift */,
 				BD54C3FE2765FEA30067F79D /* FlagImageClassifier.swift */,
 				BD07A9A626F4DE1000F7BAD0 /* LearnSettings.swift */,
 				BD2169A22708E2D20041BE71 /* LearnProgress.swift */,
@@ -356,7 +360,6 @@
 				BDAC7AC3270B746C00EFE49D /* Question.swift */,
 				BDCF63C726D93BBA00E4E4E6 /* Country.swift */,
 				BD07A9A826F62C4B00F7BAD0 /* Continents.swift */,
-				BD9CE41726EE735200BEA927 /* FlagAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				BD1AB90226E3A30B00C38D33 /* Bundle+DecodeJSON.swift in Sources */,
 				BDC3661627592319000754C4 /* View+ForegroundStyleDisabled.swift in Sources */,
 				BD54C3FB27651D460067F79D /* ClassificiationError.swift in Sources */,
+				BD54C405276656890067F79D /* Collection+SortedKeyPath.swift in Sources */,
 				BD07A9A726F4DE1000F7BAD0 /* LearnSettings.swift in Sources */,
 				BD5A210626D8FABA0025CCF3 /* FlagzillaApp.swift in Sources */,
 				BD9CE41A26EE786300BEA927 /* FlagAnnotationView.swift in Sources */,
@@ -569,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -624,7 +628,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -653,8 +657,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -687,8 +691,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -18,8 +18,11 @@ struct QuestionStyleView: View {
                 .font(.callout)
 
             switch settings.style {
-            case .flagToName: Image.selectedCheckmark
-            case .nameToFlag: Image.unselectedCheckmark
+            case .flagToName:
+                Image.selectedCheckmark
+                    .transition(.scale)
+            case .nameToFlag:
+                Image.unselectedCheckmark
             }
         }
         .frame(maxWidth: 100)
@@ -27,6 +30,7 @@ struct QuestionStyleView: View {
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Flag to name")
         .accessibilityValue("One flag as a question and three names as answer options.")
+        .accessibilityAddTraits(.isButton)
         .accessibilityAddTraits(settings.style == .flagToName ? .isSelected : [])
     }
 
@@ -38,8 +42,11 @@ struct QuestionStyleView: View {
                 .font(.callout)
 
             switch settings.style {
-            case .flagToName: Image.unselectedCheckmark
-            case .nameToFlag: Image.selectedCheckmark
+            case .flagToName:
+                Image.unselectedCheckmark
+            case .nameToFlag:
+                Image.selectedCheckmark
+                    .transition(.scale)
             }
         }
         .frame(maxWidth: 100)
@@ -47,6 +54,7 @@ struct QuestionStyleView: View {
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Name to flag")
         .accessibilityValue("One name as a question and four flags as answer options.")
+        .accessibilityAddTraits(.isButton)
         .accessibilityAddTraits(settings.style == .nameToFlag ? .isSelected : [])
     }
     
@@ -63,6 +71,7 @@ struct QuestionStyleView: View {
 
                 Spacer()
             }
+            .animation(.default, value: settings.style)
             .imageScale(.large)
             .padding(.vertical)
             .listRowInsets(.init())
