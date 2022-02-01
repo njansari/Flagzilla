@@ -66,7 +66,8 @@ struct FlagsGridView: View {
         }
     }
 
-    // The number of countries visible in the grid is shown to give the user the effect of any operational filters.
+    // The number of countries visible in the grid is shown to the user
+    // relaying the effect of any operational filters.
     private var countriesCountText: some View {
         Text("\(filteredCountries.count) countries")
             .font(.callout.weight(.medium))

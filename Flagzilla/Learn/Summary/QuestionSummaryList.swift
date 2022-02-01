@@ -33,7 +33,7 @@ struct QuestionSummaryList: View {
         Text(category.noAnswersLabel)
             .font(.headline)
             .multilineTextAlignment(.center)
-            .frame(maxWidth: .infinity)
+            .infiniteMaxWidth()
     }
 
     private var questionsList: some View {

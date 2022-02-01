@@ -99,7 +99,7 @@ struct LearnQuestionsToolbar: View {
         }
         .font(.title3.weight(.medium))
         .buttonStyle(.bordered)
-        .tint(.background)
+        .tint(.backgroundColor)
     }
 }
 

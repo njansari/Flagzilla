@@ -32,7 +32,7 @@ struct FlagToNameQuestionView: View {
                 } label: {
                     Text(settings.useOfficialName ? country.officialName : country.name)
                         .font(.title3.weight(.medium))
-                        .frame(maxWidth: .infinity)
+                        .infiniteMaxWidth()
                 }
                 .buttonStyle(.answerOption(state: stateForAnswer(country: country)))
                 .controlSize(.large)

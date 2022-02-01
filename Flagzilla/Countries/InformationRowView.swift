@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// A basic layout template view that is used to show information about a country.
 struct InformationRowView: View {
     let label: LocalizedStringKey
     let content: String

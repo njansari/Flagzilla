@@ -23,7 +23,7 @@ struct LearnQuestionsSummary: View {
 
     private var scoreText: some View {
         VStack {
-            Text(questionBreakdown.correct, format: .percent.rounded(rule: .down).precision(.significantDigits(2)))
+            Text(questionBreakdown.correct, format: .percent.rounded(rule: .down).precision(.fractionLength(0)))
                 .font(.largeTitle.bold())
 
             Text("\(progress.score)/\(settings.numberOfQuestions)")
@@ -67,12 +67,12 @@ struct LearnQuestionsSummary: View {
                     TrimmedProgressCircle(for: .unanswered, selectedCategory: $selectedQuestionCategory)
                 }
                 .rotationEffect(.radians(.pi / -2))
-                .frame(width: 150, height: 150)
+                .frame(maxWidth: 150, maxHeight: 150)
                 .animation(.easeInOut, value: selectedQuestionCategory)
                 .accessibilityHidden(true)
             }
             .multilineTextAlignment(.center)
-            .frame(maxHeight: 220)
+            .padding(.vertical, 25)
 
             QuestionsSummarySegmentedControl(questionCategory: $selectedQuestionCategory)
         }

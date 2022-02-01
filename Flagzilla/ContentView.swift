@@ -27,6 +27,12 @@ struct ContentView: View {
         tabBarAppearance.backgroundColor = .systemGroupedBackground
 
         UITabBar.appearance().standardAppearance = tabBarAppearance
+
+        // Sets a custom toolbar appearance.
+        let toolbarAppearance = UIToolbarAppearance()
+        toolbarAppearance.backgroundColor = .systemGroupedBackground
+
+        UIToolbar.appearance().standardAppearance = toolbarAppearance
     }
 
     private var flagsTab: some View {

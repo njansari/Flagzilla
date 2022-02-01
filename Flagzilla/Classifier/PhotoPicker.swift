@@ -8,10 +8,12 @@
 import PhotosUI
 import SwiftUI
 
+// A system photo picker that lets the user select a photo from their library.
 struct PhotoPicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
 
     func makeUIViewController(context: Context) -> PHPickerViewController {
+        // Only allow the user to select from images from the shared photo library.
         var configuration = PHPickerConfiguration(photoLibrary: .shared())
         configuration.filter = .images
 
@@ -39,6 +41,7 @@ extension PhotoPicker {
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true)
 
+            // Try and get the image asset that the user has selected, if there was one.
             guard let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self)
             else { return }
 

@@ -25,7 +25,7 @@ struct ContinentsFilterView: View {
                     }
                 }
             }
-            .accessibilityElement(children: .ignore)
+            .accessibilityElement()
             .accessibilityLabel(continent.rawValue)
             .accessibilityAddTraits(settings.continents.contains(continent) ? .isSelected : [])
         }

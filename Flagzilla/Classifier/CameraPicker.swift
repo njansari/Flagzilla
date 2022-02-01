@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// A system camera picker that lets the user take a picture and resize it.
 struct CameraPicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
 
@@ -14,6 +15,9 @@ struct CameraPicker: UIViewControllerRepresentable {
         let cameraPicker = UIImagePickerController()
         cameraPicker.delegate = context.coordinator
         cameraPicker.sourceType = .camera
+
+        // Allow the user to crop the photo they took to give it a 1:1 aspect ratio.
+        // This matches what the flag classifier model expects the image's frame to have.
         cameraPicker.allowsEditing = true
 
         return cameraPicker

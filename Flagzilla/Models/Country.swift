@@ -42,7 +42,11 @@ struct Country: Decodable, Hashable, Identifiable {
     }
 
     static var example: Country {
-        countries.randomElement()!
+        countries.randomElement() ?? empty
+    }
+
+    static var empty: Country {
+        Country(id: "", name: "", officialName: "", capitalCities: [], continents: .init(), coordinates: .init())
     }
 
     static func == (lhs: Country, rhs: Country) -> Bool {

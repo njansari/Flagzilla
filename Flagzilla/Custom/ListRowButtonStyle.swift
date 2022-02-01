@@ -12,7 +12,7 @@ struct ListRowButtonStyle: PrimitiveButtonStyle {
         Button(action: configuration.trigger) {
             configuration.label
                 .font(.headline)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .infiniteMaxFrame()
         }
         .buttonStyle(.borderedProminent)
         .listRowInsets(EdgeInsets())

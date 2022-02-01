@@ -19,6 +19,7 @@ struct LearnQuestionsView: View {
 
     private var timerText: some View {
         Text(progress.timeRemaining.formatted(.countdownTimer))
+            .monospacedDigit()
             .foregroundColor(progress.timeRemaining <= 10 ? .red : .primary)
             .onReceive(timer, perform: updateTimer)
     }
@@ -89,7 +90,7 @@ struct LearnQuestionsView: View {
     }
 
     private func updateTimer(_: Date) {
-        guard scenePhase == .active else { return }
+//        guard scenePhase == .active else { return }
 
         if progress.timeRemaining > 0 {
             progress.timeRemaining -= 1

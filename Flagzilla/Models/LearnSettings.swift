@@ -14,8 +14,10 @@ import SwiftUI
 
         var numberOfAnswers: Int {
             switch self {
-            case .flagToName: return 3
-            case .nameToFlag: return 4
+            case .flagToName:
+                return 3
+            case .nameToFlag:
+                return 4
             }
         }
     }
@@ -32,4 +34,18 @@ import SwiftUI
     @AppStorage("timerDuration") var timerDuration = 1
 
     static let timerDurations = [1, 2, 5, 10]
+
+    private var maxNumberOfCountries: Int {
+        countries.filter { $0.continents.isSupersetOrSubset(of: continents) }.count
+    }
+
+    var numberOfQuestionsRange: ClosedRange<Int> {
+        2...maxNumberOfCountries
+    }
+
+    func validateNumberOfQuestions() {
+        if !numberOfQuestionsRange.contains(numberOfQuestions) {
+            numberOfQuestions.clamp(to: numberOfQuestionsRange)
+        }
+    }
 }

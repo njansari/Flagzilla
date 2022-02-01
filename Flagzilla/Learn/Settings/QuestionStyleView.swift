@@ -27,7 +27,7 @@ struct QuestionStyleView: View {
         }
         .frame(maxWidth: 100)
         .onTapGesture { settings.style = .flagToName }
-        .accessibilityElement(children: .ignore)
+        .accessibilityElement()
         .accessibilityLabel("Flag to name")
         .accessibilityValue("One flag as a question and three names as answer options.")
         .accessibilityAddTraits(.isButton)
@@ -51,7 +51,7 @@ struct QuestionStyleView: View {
         }
         .frame(maxWidth: 100)
         .onTapGesture { settings.style = .nameToFlag }
-        .accessibilityElement(children: .ignore)
+        .accessibilityElement()
         .accessibilityLabel("Name to flag")
         .accessibilityValue("One name as a question and four flags as answer options.")
         .accessibilityAddTraits(.isButton)
@@ -76,7 +76,7 @@ struct QuestionStyleView: View {
             .padding(.vertical)
             .listRowInsets(.init())
 
-            Toggle("Use countries' official name", isOn: $settings.useOfficialName)
+            Toggle("Use the country's official name", isOn: $settings.useOfficialName)
                 .tint(.accentColor)
         }
     }

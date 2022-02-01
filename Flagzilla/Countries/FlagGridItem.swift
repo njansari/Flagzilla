@@ -20,7 +20,8 @@ struct FlagGridItem: View {
         return colors.randomElement()!.opacity(0.6)
     }
 
-    // If loading the flag image fails, an error icon replaces the placeholder to convey the message to the user.
+    // If loading the flag image fails, an error icon
+    // replaces the placeholder to convey the message to the user.
     private var errorImage: some View {
         Image(systemName: "xmark.octagon")
             .font(.largeTitle)

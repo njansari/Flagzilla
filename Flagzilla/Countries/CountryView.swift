@@ -12,12 +12,16 @@ import SwiftUI
 struct CountryView: View {
     let country: Country
 
+    // This string is looked up in the localised strings dictionary file
+    // and determines whether the word `city` should be pluralised or not.
     private var capitalsLabel: LocalizedStringKey {
-        "Capitals \(country.capitalCities.count)"
+        "Capitals \(country.capitalCities.count)" // Would become `Capital city(ies)`.
     }
 
+    // This string is looked up in the localised strings dictionary file
+    // and determines whether the word `continent` should be pluralised or not.
     private var continentsLabel: LocalizedStringKey {
-        "Continents \(country.continents.count)"
+        "Continents \(country.continents.count)"  // Would become `Continent(s)`.
     }
 
     private var flagImage: some View {
@@ -43,7 +47,7 @@ struct CountryView: View {
             Text(country.officialName)
                 .multilineTextAlignment(.center)
         }
-        .frame(maxWidth: .infinity)
+        .infiniteMaxWidth()
     }
 
     var body: some View {

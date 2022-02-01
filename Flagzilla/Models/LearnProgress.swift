@@ -1,4 +1,4 @@
-//
+ //
 //  LearnProgress.swift
 //  Flagzilla
 //
@@ -8,7 +8,11 @@
 import SwiftUI
 
 @MainActor final class LearnProgress: ObservableObject {
-    typealias QuestionBreakdown = (correct: Double, incorrect: Double, unanswered: Double)
+    struct QuestionBreakdown {
+        let correct: Double
+        let incorrect: Double
+        let unanswered: Double
+    }
 
     @Published var questionNumber = 1 {
         didSet {
@@ -54,7 +58,7 @@ import SwiftUI
         let incorrect = Double(incorrectQuestions.count) / Double(settings.numberOfQuestions)
         let unanswered = Double(unansweredQuestions.count) / Double(settings.numberOfQuestions)
 
-        return (correct, incorrect, unanswered)
+        return QuestionBreakdown(correct: correct, incorrect: incorrect, unanswered: unanswered)
     }
 
     var correctQuestions: [EnumeratedQuestion] {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func aspectRatio(options: FlagImageClassifier.ImageScaleOptions) -> some View {
+    func aspectRatio(options: FlagImageClassifier.ImageConfigurationOptions) -> some View {
         aspectRatio(options.aspectRatio, contentMode: options.contentMode)
     }
 }

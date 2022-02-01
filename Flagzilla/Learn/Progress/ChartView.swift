@@ -160,7 +160,7 @@ struct ChartView: View {
                     .fill(Color(white: 0.6))
             }
         }
-        .frame(maxWidth: .infinity)
+        .infiniteMaxWidth()
     }
 
     private var deleteAllToolbarButton: some ToolbarContent {

@@ -7,6 +7,8 @@
 
 import MapKit
 
+// A single annotation object used to provide data to the individual map annotations,
+// specifying is name and location given a country to work with.
 final class FlagAnnotation: NSObject, MKAnnotation {
     let country: Country
 

@@ -7,6 +7,8 @@
 
 import MapKit
 
+// The available map types that the user can switch between
+// to change the appearance of the map.
 enum MapType: String, CaseIterable {
     case standard = "Standard"
     case hybrid = "Hybrid"

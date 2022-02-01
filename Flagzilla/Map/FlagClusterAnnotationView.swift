@@ -8,15 +8,17 @@
 import MapKit
 import SwiftUI
 
+// This is the annotation that shows a group of flags with the count being shown on top.
+// The annotation view is made compatible with the map it is being assigned to.
 final class FlagClusterAnnotationView: MKAnnotationView {
-    private let flagDelegate = FlagDelegate()
+    private let flagConfig = MapFlagConfiguration()
 
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
 
         let size = FlagView.flagSize
 
-        let flagView = FlagView(delegate: flagDelegate)
+        let flagView = FlagView(config: flagConfig)
             .offset(x: size.width / 2, y: size.height / 2)
 
         let flagViewController = UIHostingController(rootView: flagView)
@@ -34,8 +36,8 @@ final class FlagClusterAnnotationView: MKAnnotationView {
     override func prepareForReuse() {
         super.prepareForReuse()
 
-        flagDelegate.country = nil
-        flagDelegate.clusterCount = 0
+        flagConfig.country = nil
+        flagConfig.clusterCount = 0
     }
 
     override func prepareForDisplay() {
@@ -46,7 +48,7 @@ final class FlagClusterAnnotationView: MKAnnotationView {
               !annotations.isEmpty
         else { return }
 
-        flagDelegate.country = annotations[0].country
-        flagDelegate.clusterCount = annotations.count
+        flagConfig.country = annotations[0].country
+        flagConfig.clusterCount = annotations.count
     }
 }

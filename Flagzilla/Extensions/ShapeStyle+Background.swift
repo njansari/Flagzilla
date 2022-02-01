@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension ShapeStyle where Self == Color {
-    static var background: Color {
+    static var backgroundColor: Color {
         Color(uiColor: .systemBackground)
     }
 

@@ -38,7 +38,7 @@ struct ImageComparisonView: View {
                     Spacer()
                 }
                 .font(.caption.bold())
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .infiniteMaxFrame()
 
                 closeButton
             }

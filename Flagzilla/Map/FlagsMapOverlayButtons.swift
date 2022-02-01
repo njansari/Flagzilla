@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// These are an arrangement of buttons that control features of the map and enable it to be dismissed.
 struct FlagsMapOverlayButtons: View {
     @Environment(\.dismiss) private var dismiss
 
@@ -15,6 +16,7 @@ struct FlagsMapOverlayButtons: View {
 
     private let buttonCornerRadius = 10.0
 
+    // The button that allows the user to dismiss the map and return to their previous screen.
     private var doneButton: some View {
         Button("Done", action: dismiss.callAsFunction)
             .padding(10)

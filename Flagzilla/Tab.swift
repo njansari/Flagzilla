@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Contains all the possible tab sections that form the app.
 enum Tab: Int {
     case flags
     case map

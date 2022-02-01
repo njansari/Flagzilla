@@ -91,7 +91,8 @@ struct ClassificationImagePreview: View {
                     .foregroundStyle(.tertiary)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height / 3)
+        .infiniteMaxWidth()
+        .frame(maxHeight: UIScreen.main.bounds.height / 3)
     }
 
     var body: some View {

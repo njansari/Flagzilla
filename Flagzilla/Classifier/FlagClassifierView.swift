@@ -50,7 +50,7 @@ struct FlagClassifierView: View {
             HStack(spacing: 20) {
                 Button {
                     withAnimation {
-                        comparisonCountry = countries.first { $0.name == result.identifier } ?? .example
+                        comparisonCountry = countries.first { $0.name == result.identifier } ?? .empty
                     }
                 } label: {
                     Label("Compare", systemImage: "arrow.left.arrow.right")

@@ -14,7 +14,6 @@ enum Continent: String, CaseIterable, Codable, Comparable {
     case southAmerica = "South America"
     case europe = "Europe"
     case oceania = "Oceania"
-    case antarctica = "Antarctica"
 
     static func < (lhs: Continent, rhs: Continent) -> Bool {
         lhs.rawValue < rhs.rawValue

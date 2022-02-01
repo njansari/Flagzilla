@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FlowLayoutView<Data: RandomAccessCollection, Content: View>: View where Data.Element: Hashable {
-    @State private var totalHeight: Double = .infinity
+    @State private var totalHeight: CGFloat = .infinity
 
     private let data: Data
     private let spacing: CGFloat
@@ -21,10 +21,8 @@ struct FlowLayoutView<Data: RandomAccessCollection, Content: View>: View where D
     }
 
     private var background: some View {
-        Color.clear
-            .onSizeChange {
-                totalHeight = $0.height
-            }
+        EmptyView()
+            .onSizeChange { totalHeight = $0.height }
     }
 
     var body: some View {
@@ -90,18 +88,17 @@ struct FlowLayoutView<Data: RandomAccessCollection, Content: View>: View where D
 
 struct FlowLayout_Previews: PreviewProvider {
     static let items = [
-        "Some long item here", "And then some longer one",
-        "Short", "Items", "Here", "And", "A", "Few", "More",
-        "And then a very very long one"
+        "The quick brown", "fox jumps over", "the", "lazy", "dog", "and runs", "away."
     ]
 
     static var previews: some View {
-        FlowLayoutView(items, spacing: 4) { item in
+        FlowLayoutView(items, spacing: 2) { item in
             Text(item)
-                .padding()
+                .padding(10)
                 .background(.yellow)
                 .cornerRadius(10)
         }
         .padding()
+        .previewLayout(.fixed(width: 300, height: 180))
     }
 }

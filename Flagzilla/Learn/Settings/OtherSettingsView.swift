@@ -10,40 +10,22 @@ import SwiftUI
 struct OtherSettingsView: View {
     @EnvironmentObject private var settings: LearnSettings
 
-    @FocusState private var numberOfQuestionsFocused: Bool
-
-    private var maxCountries: Int {
-        countries.filter { $0.continents.isSupersetOrSubset(of: settings.continents) }.count
-    }
-
     private var numberOfQuestionsTextField: some View {
-        let promptText = Text("max \(maxCountries)")
-
-        return TextField("Number of questions", value: $settings.numberOfQuestions, format: .number, prompt: promptText)
-            .foregroundColor(numberOfQuestionsFocused ? .primary : .accentColor)
-            .multilineTextAlignment(.trailing)
-            .frame(maxWidth: 100)
-            .keyboardType(.numberPad)
-            .focused($numberOfQuestionsFocused)
-            .toolbar { keyboardDoneToolbarButton }
-    }
-
-    private var keyboardDoneToolbarButton: some ToolbarContent {
-        ToolbarItemGroup(placement: .keyboard) {
-            Spacer()
-
-            Button("Done") {
-                numberOfQuestionsFocused = false
-                validateNumberOfQuestions()
-            }
-            .font(.body.bold())
+        NumberTextField(value: $settings.numberOfQuestions) {
+            settings.validateNumberOfQuestions()
         }
+        .frame(maxWidth: 100)
     }
 
     var body: some View {
         Section {
             HStack {
-                Text("Number of questions")
+                VStack(alignment: .leading) {
+                    Text("Number of questions")
+
+                    Text(settings.numberOfQuestionsRange, format: .integerInterval)
+                        .font(.caption2)
+                }
 
                 Spacer()
 
@@ -63,14 +45,6 @@ struct OtherSettingsView: View {
                 Text("Timer")
                     .badge(settings.useTimer ? "On" : "Off")
             }
-        }
-    }
-
-    private func validateNumberOfQuestions() {
-        let range = 2...maxCountries
-
-        if !range.contains(settings.numberOfQuestions) {
-            settings.numberOfQuestions.clamp(to: range)
         }
     }
 }

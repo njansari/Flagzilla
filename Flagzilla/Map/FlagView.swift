@@ -6,24 +6,22 @@
 //
 
 import SwiftUI
-import MapKit
 
+// The actual flag annotation view that shows the country's flag
+// dependent on the configuration provided by the system's map view.
 struct FlagView: View {
-    @ObservedObject private(set) var delegate: FlagDelegate
+    @ObservedObject private(set) var config: MapFlagConfiguration
 
+    // Constant properties that store the various sizes of the flag
+    // used to determine its position on the map. These values won't change
+    // so there is no dynamic size and position calculation.
     static let flagSize = CGSize(width: 48, height: 36)
     static let flagOnPoleSize = CGSize(width: 54, height: 58)
 
-    private var isCluster: Bool {
-        delegate.clusterCount != 0
-    }
-
-    private var flagImageUrl: URL? {
-        delegate.country?.wavingFlag
-    }
-
+    // When the flag has been fetched from the internet, and if the annotation is just for one flag,
+    // the flag should animate on screen as if it were being raised on a pole.
     private var flagTransition: AnyTransition {
-        isCluster ? .opacity : .opacity.combined(with: .move(edge: .bottom))
+        config.isCluster ? .opacity : .opacity.combined(with: .move(edge: .bottom))
     }
 
     private var pole: some View {
@@ -40,35 +38,32 @@ struct FlagView: View {
     }
 
     private var flag: some View {
-        AsyncFlagImage(url: flagImageUrl, animation: .easeOut) { image in
-            ZStack {
-                image
-                    .brightness(isCluster ? -0.2 : 0)
-
-                if isCluster {
-                    Image(systemName: "\(delegate.clusterCount).circle")
-                        .font(.title2.bold())
-                        .foregroundStyle(.white)
-                        .shadow(radius: 1)
-                        .background(.ultraThinMaterial, in: Circle())
+        AsyncFlagImage(url: config.country?.wavingFlag, animation: .easeOut) { image in
+            image
+                .brightness(config.isCluster ? -0.2 : 0)
+                .overlay {
+                    if config.isCluster {
+                        Image(systemName: "\(config.clusterCount).circle.fill")
+                            .font(.title2.bold())
+                            .background(.thickMaterial, in: Circle())
+                    }
                 }
-            }
-            .transition(flagTransition)
+                .transition(flagTransition)
         } placeholder: {
             Color.clear
-                .frame(width: Self.flagSize.width, height: Self.flagSize.height)
+                .frame(size: Self.flagSize)
         }
     }
 
     var body: some View {
         HStack(alignment: .top, spacing: -4) {
-            if !isCluster {
+            if !config.isCluster {
                 pole
             }
 
-            if delegate.country != nil {
+            if config.country != nil {
                 flag
-                    .offset(y: isCluster ? 0 : 5)
+                    .offset(y: config.isCluster ? 0 : 5)
                     .zIndex(-1)
             }
         }
@@ -77,16 +72,16 @@ struct FlagView: View {
 }
 
 struct FlagView_Previews: PreviewProvider {
-    @StateObject static private var flagDelegate: FlagDelegate = {
-        let delegate = FlagDelegate()
-        delegate.country = .example
-        delegate.clusterCount = 0
+    @StateObject static private var flagConfig: MapFlagConfiguration = {
+        let config = MapFlagConfiguration()
+        config.country = .example
+        config.clusterCount = 0
 
-        return delegate
+        return config
     }()
 
     static var previews: some View {
-        FlagView(delegate: flagDelegate)
+        FlagView(config: flagConfig)
             .padding()
             .previewLayout(.sizeThatFits)
     }
