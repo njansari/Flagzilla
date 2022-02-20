@@ -31,12 +31,6 @@
 		BD3D196926E5165F00400886 /* Coordinate+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196826E5165F00400886 /* Coordinate+Decodable.swift */; };
 		BD3D196B26E51E3300400886 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3D196A26E51E3300400886 /* CountryView.swift */; };
 		BD409B8327A9177F00AEECA6 /* IntegerIntervalFormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD409B8227A9177F00AEECA6 /* IntegerIntervalFormatStyle.swift */; };
-		BD409B8527A98CA400AEECA6 /* UIColor+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD409B8427A98CA400AEECA6 /* UIColor+Keyboard.swift */; };
-		BD409B8727A98CD200AEECA6 /* ButtonCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD409B8627A98CD200AEECA6 /* ButtonCellContentView.swift */; };
-		BD409B8927A98CE400AEECA6 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD409B8827A98CE400AEECA6 /* ButtonCell.swift */; };
-		BD409B8B27A98CFD00AEECA6 /* ButtonCellContentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD409B8A27A98CFD00AEECA6 /* ButtonCellContentConfiguration.swift */; };
-		BD409B8D27A98D1600AEECA6 /* NumberKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD409B8C27A98D1600AEECA6 /* NumberKeyboard.swift */; };
-		BD409B8F27A98DEE00AEECA6 /* KeyboardElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD409B8E27A98DEE00AEECA6 /* KeyboardElement.swift */; };
 		BD46D68726E7D8CB0073FCF2 /* ListRowButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */; };
 		BD4A2D25275D2897008B2165 /* FlagsMapOverlayButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4A2D24275D2897008B2165 /* FlagsMapOverlayButtons.swift */; };
 		BD4A2D27275D28AF008B2165 /* MapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4A2D26275D28AF008B2165 /* MapType.swift */; };
@@ -58,6 +52,7 @@
 		BD6EDA7D270CD15E00E36998 /* NameToFlagQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6EDA7C270CD15E00E36998 /* NameToFlagQuestionView.swift */; };
 		BD7B196526DB8449004F3643 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196426DB8449004F3643 /* MapView.swift */; };
 		BD7B196726DD4F92004F3643 /* FlagsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B196626DD4F92004F3643 /* FlagsGridView.swift */; };
+		BD7DAF3B27C2AD71006A1721 /* NumberKeyboardTextField in Frameworks */ = {isa = PBXBuildFile; productRef = BD7DAF3A27C2AD71006A1721 /* NumberKeyboardTextField */; };
 		BD97F8D9273DA9DB00EDA6E1 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD97F8D8273DA9DB00EDA6E1 /* PhotoPicker.swift */; };
 		BD994F542755641900DC9419 /* MapFlagConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD994F532755641900DC9419 /* MapFlagConfiguration.swift */; };
 		BD994F562756B36E00DC9419 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD994F552756B36E00DC9419 /* CloseButton.swift */; };
@@ -69,7 +64,6 @@
 		BD9CE41E26EE78BD00BEA927 /* FlagsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9CE41D26EE78BD00BEA927 /* FlagsMapView.swift */; };
 		BDAC7AC4270B746C00EFE49D /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAC7AC3270B746C00EFE49D /* Question.swift */; };
 		BDB29C44273C3D5E0093092A /* QuestionSummaryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB29C43273C3D5E0093092A /* QuestionSummaryList.swift */; };
-		BDBC20C827773DAD000E4C1C /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBC20C727773DAD000E4C1C /* NumberTextField.swift */; };
 		BDC36614275922F1000754C4 /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC36613275922F1000754C4 /* DataPoint.swift */; };
 		BDC3661627592319000754C4 /* View+ForegroundStyleDisabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC3661527592319000754C4 /* View+ForegroundStyleDisabled.swift */; };
 		BDC36618275924A3000754C4 /* View+RedactedCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC36617275924A3000754C4 /* View+RedactedCondition.swift */; };
@@ -116,12 +110,6 @@
 		BD3D196826E5165F00400886 /* Coordinate+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinate+Decodable.swift"; sourceTree = "<group>"; };
 		BD3D196A26E51E3300400886 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		BD409B8227A9177F00AEECA6 /* IntegerIntervalFormatStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerIntervalFormatStyle.swift; sourceTree = "<group>"; };
-		BD409B8427A98CA400AEECA6 /* UIColor+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Keyboard.swift"; sourceTree = "<group>"; };
-		BD409B8627A98CD200AEECA6 /* ButtonCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCellContentView.swift; sourceTree = "<group>"; };
-		BD409B8827A98CE400AEECA6 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
-		BD409B8A27A98CFD00AEECA6 /* ButtonCellContentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCellContentConfiguration.swift; sourceTree = "<group>"; };
-		BD409B8C27A98D1600AEECA6 /* NumberKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberKeyboard.swift; sourceTree = "<group>"; };
-		BD409B8E27A98DEE00AEECA6 /* KeyboardElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardElement.swift; sourceTree = "<group>"; };
 		BD46D68626E7D8CB0073FCF2 /* ListRowButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowButtonStyle.swift; sourceTree = "<group>"; };
 		BD4A2D24275D2897008B2165 /* FlagsMapOverlayButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsMapOverlayButtons.swift; sourceTree = "<group>"; };
 		BD4A2D26275D28AF008B2165 /* MapType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapType.swift; sourceTree = "<group>"; };
@@ -156,7 +144,6 @@
 		BD9CE41D26EE78BD00BEA927 /* FlagsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsMapView.swift; sourceTree = "<group>"; };
 		BDAC7AC3270B746C00EFE49D /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		BDB29C43273C3D5E0093092A /* QuestionSummaryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSummaryList.swift; sourceTree = "<group>"; };
-		BDBC20C727773DAD000E4C1C /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		BDC36613275922F1000754C4 /* DataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
 		BDC3661527592319000754C4 /* View+ForegroundStyleDisabled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ForegroundStyleDisabled.swift"; sourceTree = "<group>"; };
 		BDC36617275924A3000754C4 /* View+RedactedCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+RedactedCondition.swift"; sourceTree = "<group>"; };
@@ -183,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD7DAF3B27C2AD71006A1721 /* NumberKeyboardTextField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +198,6 @@
 				BD07A9B026F738A800F7BAD0 /* NameToFlagStyle.swift */,
 				BD07A9B326F7BCC200F7BAD0 /* ContinentsFilterView.swift */,
 				BD58C0072700BF710002407C /* OtherSettingsView.swift */,
-				BD409B9027A98DF700AEECA6 /* NumberKeyboard */,
 				BD58C0092700DDCE0002407C /* TimerView.swift */,
 			);
 			path = Settings;
@@ -298,7 +285,6 @@
 				BD3D196826E5165F00400886 /* Coordinate+Decodable.swift */,
 				BDF43C9126EE55B800D21B9F /* ShapeStyle+Background.swift */,
 				BD25B3DD27038661006D157E /* Image+Checkmarks.swift */,
-				BD409B8427A98CA400AEECA6 /* UIColor+Keyboard.swift */,
 				BD54C402276620870067F79D /* View+AspectRatioOptions.swift */,
 				BDC3661527592319000754C4 /* View+ForegroundStyleDisabled.swift */,
 				BDE42A96276D0BFB0005AA7E /* View+FrameSize.swift */,
@@ -306,19 +292,6 @@
 				BD9CE41526EE72FA00BEA927 /* View+SizeChange.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		BD409B9027A98DF700AEECA6 /* NumberKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				BDBC20C727773DAD000E4C1C /* NumberTextField.swift */,
-				BD409B8C27A98D1600AEECA6 /* NumberKeyboard.swift */,
-				BD409B8827A98CE400AEECA6 /* ButtonCell.swift */,
-				BD409B8A27A98CFD00AEECA6 /* ButtonCellContentConfiguration.swift */,
-				BD409B8627A98CD200AEECA6 /* ButtonCellContentView.swift */,
-				BD409B8E27A98DEE00AEECA6 /* KeyboardElement.swift */,
-			);
-			path = NumberKeyboard;
 			sourceTree = "<group>";
 		};
 		BD46D68826E7DA620073FCF2 /* Custom */ = {
@@ -415,6 +388,9 @@
 			dependencies = (
 			);
 			name = Flagzilla;
+			packageProductDependencies = (
+				BD7DAF3A27C2AD71006A1721 /* NumberKeyboardTextField */,
+			);
 			productName = Flagzilla;
 			productReference = BD5A210226D8FABA0025CCF3 /* Flagzilla.app */;
 			productType = "com.apple.product-type.application";
@@ -443,6 +419,9 @@
 				Base,
 			);
 			mainGroup = BD5A20F926D8FABA0025CCF3;
+			packageReferences = (
+				BD7DAF3927C2AD71006A1721 /* XCRemoteSwiftPackageReference "NumberKeyboardTextField" */,
+			);
 			productRefGroup = BD5A210326D8FABA0025CCF3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -477,14 +456,12 @@
 				BD9CE41E26EE78BD00BEA927 /* FlagsMapView.swift in Sources */,
 				BD086AE2273EE80700C7AA35 /* CameraPicker.swift in Sources */,
 				BDF43C9426EE629900D21B9F /* InformationRowView.swift in Sources */,
-				BD409B8727A98CD200AEECA6 /* ButtonCellContentView.swift in Sources */,
 				BD5A210826D8FABA0025CCF3 /* ContentView.swift in Sources */,
 				BDCE689C270ECD55004D414A /* QuestionsSummarySegmentedControl.swift in Sources */,
 				BD6EDA7D270CD15E00E36998 /* NameToFlagQuestionView.swift in Sources */,
 				BDAC7AC4270B746C00EFE49D /* Question.swift in Sources */,
 				BD221CBE27516B94000CF063 /* RoundedCornerRectangle.swift in Sources */,
 				BD07A9AB26F63E5200F7BAD0 /* QuestionStyleView.swift in Sources */,
-				BD409B8F27A98DEE00AEECA6 /* KeyboardElement.swift in Sources */,
 				BD10FED32719544200E9AB79 /* LineChartShape.swift in Sources */,
 				BD10FECF27172F2E00E9AB79 /* BorderedButtonToggleStyle.swift in Sources */,
 				BD10FED12717591500E9AB79 /* SavedProgress.swift in Sources */,
@@ -516,7 +493,6 @@
 				BD9CE41626EE72FA00BEA927 /* View+SizeChange.swift in Sources */,
 				BDE42A97276D0BFB0005AA7E /* View+FrameSize.swift in Sources */,
 				BDE3CF202711F1F200067105 /* QuestionSummaryCategory.swift in Sources */,
-				BD409B8B27A98CFD00AEECA6 /* ButtonCellContentConfiguration.swift in Sources */,
 				BD54C403276620870067F79D /* View+AspectRatioOptions.swift in Sources */,
 				BD3871572753A99D00690BB2 /* FlagClassifier.mlmodel in Sources */,
 				BD54C3FD2765FCA00067F79D /* ClassificationImagePreview.swift in Sources */,
@@ -524,7 +500,6 @@
 				BDE3CF222712116400067105 /* Tab.swift in Sources */,
 				BDEAE3A026ECF65B00A77183 /* FlagClassifierView.swift in Sources */,
 				BDC3661E275B6C15000754C4 /* TrimmedProgressCircle.swift in Sources */,
-				BD409B8D27A98D1600AEECA6 /* NumberKeyboard.swift in Sources */,
 				BD4A2D27275D28AF008B2165 /* MapType.swift in Sources */,
 				BD2169A32708E2D20041BE71 /* LearnProgress.swift in Sources */,
 				BD1AB90426E3A61C00C38D33 /* LearnView.swift in Sources */,
@@ -534,7 +509,6 @@
 				BDC3661A275A8060000754C4 /* LearnQuestionsToolbar.swift in Sources */,
 				BD58C00A2700DDCE0002407C /* TimerView.swift in Sources */,
 				BDB29C44273C3D5E0093092A /* QuestionSummaryList.swift in Sources */,
-				BD409B8927A98CE400AEECA6 /* ButtonCell.swift in Sources */,
 				BD07A9B126F738A800F7BAD0 /* NameToFlagStyle.swift in Sources */,
 				BDC36620275BD119000754C4 /* CoordinateFormatStyle.swift in Sources */,
 				BDC36618275924A3000754C4 /* View+RedactedCondition.swift in Sources */,
@@ -545,9 +519,7 @@
 				BD10FECD27160D2400E9AB79 /* ChartView.swift in Sources */,
 				BD07A9B426F7BCC200F7BAD0 /* ContinentsFilterView.swift in Sources */,
 				BD07A9AD26F7364000F7BAD0 /* FlagToNameStyle.swift in Sources */,
-				BD409B8527A98CA400AEECA6 /* UIColor+Keyboard.swift in Sources */,
 				BD409B8327A9177F00AEECA6 /* IntegerIntervalFormatStyle.swift in Sources */,
-				BDBC20C827773DAD000E4C1C /* NumberTextField.swift in Sources */,
 				BD4A2D25275D2897008B2165 /* FlagsMapOverlayButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -772,6 +744,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BD7DAF3927C2AD71006A1721 /* XCRemoteSwiftPackageReference "NumberKeyboardTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/njansari/NumberKeyboardTextField.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BD7DAF3A27C2AD71006A1721 /* NumberKeyboardTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD7DAF3927C2AD71006A1721 /* XCRemoteSwiftPackageReference "NumberKeyboardTextField" */;
+			productName = NumberKeyboardTextField;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BD5A20FA26D8FABA0025CCF3 /* Project object */;
 }

@@ -21,7 +21,7 @@ struct FlagClassifierView: View {
     private var startButton: some View {
         Button {
             isClassifying = true
-            classifier.classifyFlags()
+            classifier.startClassification()
         } label: {
             if isClassifying {
                 ProgressView()

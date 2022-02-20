@@ -23,15 +23,15 @@ struct NameToFlagQuestionView: View {
     }
 
     private var answerOptions: some View {
-        LazyVGrid(columns: columns, spacing: 10) {
+        LazyVGrid(columns: columns, spacing: 15) {
             ForEach(progress.currentQuestion.answerOptions) { country in
                 Button {
                     progress.setCurrentQuestionAnswer(to: country)
                 } label: {
                     image(for: country)
+                        .padding(.vertical, 5)
                 }
                 .buttonStyle(.answerOption(state: stateForAnswer(country: country)))
-                .controlSize(.large)
                 .allowsHitTesting(buttonAllowsHitTesting(country: country))
             }
         }

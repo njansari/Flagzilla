@@ -63,10 +63,7 @@ struct FlowLayoutView<Data: RandomAccessCollection, Content: View>: View where D
         return result
     }
 
-    private func leadingAlignment(
-        geometry: GeometryProxy, dimensions: ViewDimensions,
-        size: inout CGSize, lastHeight: inout CGFloat, item: Data.Element
-    ) -> CGFloat {
+    private func leadingAlignment(geometry: GeometryProxy, dimensions: ViewDimensions, size: inout CGSize, lastHeight: inout CGFloat, item: Data.Element) -> CGFloat {
         if abs(size.width - dimensions.width) > geometry.size.width {
             size.width = 0
             size.height -= lastHeight

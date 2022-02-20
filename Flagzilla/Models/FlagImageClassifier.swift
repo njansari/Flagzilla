@@ -32,7 +32,7 @@ import Vision
         return ImageConfigurationOptions(aspectRatio: aspectRatio, contentMode: contentMode, alignment: alignment)
     }
 
-    func classifyFlags() {
+    func startClassification() {
         // Convert the image to the format used by the model.
         guard let selectedImage = selectedImage,
               let cgImage = selectedImage.cgImage

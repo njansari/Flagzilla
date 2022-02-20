@@ -1,4 +1,4 @@
-//
+  //
 //  Country.swift
 //  Country
 //
@@ -7,7 +7,7 @@
 
 import CoreLocation
 
-let countries: Set<Country> = Bundle.main.decodeJSON(from: "countries")
+let countries: Set<Country> = Bundle.main.decodeJSON(fromFile: "countries")
 
 struct Country: Decodable, Hashable, Identifiable {
     let id: String

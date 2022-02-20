@@ -12,6 +12,7 @@ struct FlagsGridView: View {
     @AppStorage("filterContinent") private var filterContinent: Continents = .all
 
     @State private var searchText = ""
+    @State private var showingCountryNames = true
 
     // The column width for the scrolling grid is defined by the width of the individual flags.
     private let gridColumns = [GridItem(.adaptive(minimum: 320 / 3))]
@@ -66,6 +67,12 @@ struct FlagsGridView: View {
         }
     }
 
+    private var countryNameLabelToggle: some View {
+        Toggle(isOn: $showingCountryNames.animation()) {
+            Label("Show labels", image: "text.below.rectangle")
+        }
+    }
+
     // The number of countries visible in the grid is shown to the user
     // relaying the effect of any operational filters.
     private var countriesCountText: some View {
@@ -80,14 +87,21 @@ struct FlagsGridView: View {
                 countriesCountText
 
                 LazyVGrid(columns: gridColumns, spacing: 12) {
-                    ForEach(filteredCountries, content: FlagGridItem.init)
+                    ForEach(filteredCountries) { country in
+                        FlagGridItem(country: country, showsName: showingCountryNames)
+                    }
                 }
                 .padding([.horizontal, .bottom])
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             }
             .navigationTitle(navigationTitle)
             .background(.groupedBackground)
-            .toolbar { filterMenu }
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    countryNameLabelToggle
+                    filterMenu
+                }
+            }
         }
     }
 }

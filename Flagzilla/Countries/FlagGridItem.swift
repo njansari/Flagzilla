@@ -11,6 +11,7 @@ import SwiftUI
 struct FlagGridItem: View {
     // Receive the country whose flag should be retrieved and shown in the grid.
     let country: Country
+    let showsName: Bool
 
     private let cornerRadius = 8.0
 
@@ -33,15 +34,26 @@ struct FlagGridItem: View {
         NavigationLink {
             CountryView(country: country)
         } label: {
-            AsyncFlagImage(url: country.mediumFlag, animation: .spring(), content: imageContent) {
-                placeholderColor
-                    .transition(.opacity.combined(with: .scale))
-            } error: { _ in
-                errorImage
+            VStack {
+                AsyncFlagImage(url: country.mediumFlag, animation: .spring(), content: imageContent) {
+                    placeholderColor
+                        .transition(.opacity.combined(with: .scale))
+                } error: { _ in
+                    errorImage
+                }
+                .cornerRadius(cornerRadius)
+                .frame(width: 110, height: 80, alignment: .bottom)
+
+                if showsName {
+                    Text(country.name)
+                        .font(.caption.bold())
+                        .multilineTextAlignment(.center)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                }
             }
-            .cornerRadius(cornerRadius)
-            .frame(width: 110, height: 80)
         }
+        .buttonStyle(.plain)
         .drawingGroup() // Flattens a subtree of views into a single bitmap.
     }
 
@@ -60,6 +72,8 @@ struct FlagGridItem: View {
 
 struct FlagGridItem_Previews: PreviewProvider {
     static var previews: some View {
-        FlagGridItem(country: .example)
+        FlagGridItem(country: .example, showsName: true)
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }

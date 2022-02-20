@@ -14,9 +14,12 @@ enum QuestionSummaryCategory: String, CaseIterable {
 
     var color: Color {
         switch self {
-        case .correct: return .green
-        case .incorrect: return .red
-        case .unanswered: return .gray
+        case .correct:
+            return .green
+        case .incorrect:
+            return .red
+        case .unanswered:
+            return .gray
         }
     }
 

@@ -90,7 +90,7 @@ struct LearnQuestionsView: View {
     }
 
     private func updateTimer(_: Date) {
-//        guard scenePhase == .active else { return }
+        guard scenePhase == .active else { return }
 
         if progress.timeRemaining > 0 {
             progress.timeRemaining -= 1

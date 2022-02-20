@@ -8,7 +8,7 @@
 import Foundation
 
 extension Bundle {
-    func decodeJSON<T: Decodable>(ofType type: T.Type = T.self, from file: String) -> T {
+    func decodeJSON<T: Decodable>(ofType type: T.Type = T.self, fromFile file: String) -> T {
         let fileName = NSString(string: file).deletingPathExtension
 
         guard let url = url(forResource: fileName, withExtension: "json") else {

@@ -62,14 +62,13 @@ struct ChartView: View {
             }
         }
 
-        // Filters out all values that are NaN.
+        // Filters out all values that are NaN or ∞.
         return values.filter(\.isFinite).map(DataPoint.init)
     }
 
     private var continentsFilterButtons: some View {
         FlowLayoutView(continentFilters, spacing: 4) { continent in
             Toggle(continent?.rawValue ?? "All", isOn: toggleBinding(for: continent))
-                .toggleStyle(.borderedButton)
                 .font(.callout.weight(continent == nil ? .semibold : .regular))
         }
     }
@@ -77,7 +76,6 @@ struct ChartView: View {
     private var timeFilterButtons: some View {
         FlowLayoutView(TimeFilter.allCases, spacing: 4) { filter in
             Toggle(filter.rawValue, isOn: toggleBinding(for: filter))
-                .toggleStyle(.borderedButton)
                 .font(.callout)
         }
     }
@@ -175,7 +173,7 @@ struct ChartView: View {
                     SavedProgress.empty.save()
                 }
             } message: {
-                Text("All your progress will be deleted.")
+                Text("All your progress will be permanently deleted.")
             }
             .disabled(savedProgress.isEmpty)
         }
@@ -211,12 +209,17 @@ struct ChartView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 16) {
-                switch dataType {
-                case .score:
-                    continentsFilterButtons
-                case .time:
-                    timeFilterButtons
+                Group {
+                    switch dataType {
+                    case .score:
+                        continentsFilterButtons
+                    case .time:
+                        timeFilterButtons
+                    }
                 }
+                .toggleStyle(.borderedButton)
+                .controlSize(.small)
+                .buttonBorderShape(.roundedRectangle)
 
                 ZStack {
                     yAxisLines

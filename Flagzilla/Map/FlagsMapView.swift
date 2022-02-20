@@ -14,7 +14,7 @@ struct FlagsMapView: View {
     @AppStorage("mapFilterContinent") private var filterContinent: Continents = .all
 
     private var annotations: [FlagAnnotation] {
-        var countries: [Country] = Bundle.main.decodeJSON(from: "countries")
+        var countries: [Country] = Bundle.main.decodeJSON(fromFile: "countries")
 
         // Check which countries satisfy the current continents filter.
         if filterContinent != .all {

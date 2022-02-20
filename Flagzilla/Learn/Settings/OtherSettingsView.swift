@@ -5,17 +5,11 @@
 //  Created by Nayan Jansari on 26/09/2021.
 //
 
+import NumberKeyboardTextField
 import SwiftUI
 
 struct OtherSettingsView: View {
     @EnvironmentObject private var settings: LearnSettings
-
-    private var numberOfQuestionsTextField: some View {
-        NumberTextField(value: $settings.numberOfQuestions) {
-            settings.validateNumberOfQuestions()
-        }
-        .frame(maxWidth: 100)
-    }
 
     var body: some View {
         Section {
@@ -26,10 +20,13 @@ struct OtherSettingsView: View {
                     Text(settings.numberOfQuestionsRange, format: .integerInterval)
                         .font(.caption2)
                 }
+                .layoutPriority(1)
 
-                Spacer()
+                Spacer(minLength: 50)
 
-                numberOfQuestionsTextField
+                NumberKeyboardTextField(value: $settings.numberOfQuestions) {
+                    settings.validateNumberOfQuestions()
+                }
             }
 
             Toggle("Show answer after each question", isOn: $settings.showsAnswerAfterQuestion)

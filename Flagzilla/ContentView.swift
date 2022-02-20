@@ -22,13 +22,13 @@ struct ContentView: View {
 
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
 
-        // Sets a custom tab bar appearance.
+        // Sets a custom tab bar appearance with a solid background colour.
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.backgroundColor = .systemGroupedBackground
 
         UITabBar.appearance().standardAppearance = tabBarAppearance
 
-        // Sets a custom toolbar appearance.
+        // Sets a custom toolbar appearance with a solid background colour.
         let toolbarAppearance = UIToolbarAppearance()
         toolbarAppearance.backgroundColor = .systemGroupedBackground
 
@@ -73,8 +73,8 @@ struct ContentView: View {
     }
 
     private func tabChanged(from oldTab: Tab, to newTab: Tab) {
-        // Switches back to the previously selected tab.
-        // When selecting the map tab bar item, it creates an effect of tapping a standard button.
+        // Switches back to the previously selected tab,
+        // creating the effect of tapping a standard button.
         if newTab == .map {
             selectedTab = oldTab
             showingMap = true

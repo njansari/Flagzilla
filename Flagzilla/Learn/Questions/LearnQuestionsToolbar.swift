@@ -45,10 +45,10 @@ struct LearnQuestionsToolbar: View {
                 .frame(maxWidth: 50)
         }
         .foregroundColor(.red)
-        .confirmationDialog("Are you sure you want to end?", isPresented: $showingDismissConfirmation) {
+        .confirmationDialog("Are you sure you want to end?", isPresented: $showingDismissConfirmation, titleVisibility: .visible) {
             Button("End Now", role: .destructive, action: dismissAction.callAsFunction)
         } message: {
-            Text("Ending now will delete any progress made.")
+            Text("All progress made will not be saved.")
         }
     }
 
@@ -108,5 +108,9 @@ struct LearnQuestionsToolbar_Previews: PreviewProvider {
 
     static var previews: some View {
         LearnQuestionsToolbar(isFinished: .constant(false), dismissAction: dismiss)
+            .environmentObject(LearnSettings())
+            .environmentObject(LearnProgress())
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }
